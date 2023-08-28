@@ -1,25 +1,35 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=11586913&assignment_repo_type=AssignmentRepo)
-# Lista de Exercícios
+# Clone jogo WAR
 <img src="assets/images/Unicap_Icam_Tech-01.png" alt="drawing" width="200"/>
 
 ## Identificação
-**Professor**: Nome do Professor
+**Professor**: Diego Pinheiro
 
-**Disciplina**: Nome da Disciplina
+**Disciplina**: Engenharia de Software II
 
-**Atividade**: Lista XX - Nome da Lista
+**Grupo**: 
+* Abi-albom Lira - [(@bonelira)](https://github.com/bonelira)
+*
+*
+*
+*
 
-## Instruções 
-> 1. Sua implementação deve estar dentro da pasta src/**main**/java 
-> 2. Não modifique nenhum código dentro da pasta src/**test**/java).
-> 3. A submissão **não deve ser feita após o prazo** (nem 1 minuto a mais)
+## Sprint 1 (28 de Agosto a 17 de Setembro): Definição do Projeto, Modelagem Inicial e TDD
 
-## Descrição da Atividade
-### Questão 01
-Altere o método `messageNotImplemented` na classe `Hello` para, em vez de lançar uma exceção, retornar a menssagem `Hello World`. 
+### Semana 1 (28 de Agosto a 3 de Setembro)
+- [ ] Encontro para jogar WAR e entender: Objetivo do Jogo,Territórios e Fronteiras, Distribuição de Exércitos, Ataques e Defesas, Cartas de Território, Trocas de Cartas e Reforços, Dinâmica de Turnos 
+- [ ] Definir requisitos básicos do jogo (regras, mecânicas, recursos).
+- [ ] Configurar o ambiente de desenvolvimento (IDE, Git, workflow).
+- [ ] Estudar arquiteturas de projetos
+- [ ] Decidir a arquitetura do projeto, considerando uma abordagem em camadas para um design escalável e modular.
 
-A classe `Hello` possui os dois métodos a seguir: 
-1. Método `messageImplemented` que está corretamente implementado e retorna a mensagem `Hello World`.     
+### Semana 2 (4 de Setembro a 10 de Setembro)
+- [ ] Estudar diagramas
+- [ ] Criar um diagrama de classes inicial com as principais entidades do jogo.
+- [ ] Detalhar as classes, seus atributos e métodos principais.
+- [ ] Iniciar a documentação dos requisitos.
+- [ ] Estudar padrões de projeto.
+- [ ] Selecionar um padrão de projeto (como Observer) que se encaixe bem com a arquitetura escolhida.
 
-2. Método `messageNotImplemented` que não está corretamente implementado e lança uma exceção `UnsupportedOperationException`. 
+
 
