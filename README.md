@@ -9,7 +9,7 @@
 
 **Grupo**: 
 * Abi-albom Lira - [(@bonelira)](https://github.com/bonelira)
-*
+* Bruno Iraê dos Reis - [(@brunoirae)](https://github.com/BrunoIrae)
 *
 *
 *
