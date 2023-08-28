@@ -11,7 +11,7 @@
 * Abi-albom Lira - [(@bonelira)](https://github.com/bonelira)
 * Bruno Iraê dos Reis - [(@brunoirae)](https://github.com/BrunoIrae)
 * Leonardo H. C. da S. Cavalcanti - [(@leohcavalcanti)](https://github.com/leohcavalcanti)
-*
+* Bruno V. Ferreira. - [(@ferreirabrunno)](https://github.com/ferreirabrunno)
 *
 
 ## Sprint 1 (28 de Agosto a 17 de Setembro): Definição do Projeto, Modelagem Inicial e TDD
