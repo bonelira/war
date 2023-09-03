@@ -18,7 +18,7 @@
 
 ### Semana 1 (28 de Agosto a 3 de Setembro)
 - [ ] Encontro para jogar WAR e entender: Objetivo do Jogo,Territórios e Fronteiras, Distribuição de Exércitos, Ataques e Defesas, Cartas de Território, Trocas de Cartas e Reforços, Dinâmica de Turnos 
-- [ ] Definir requisitos básicos do jogo (regras, mecânicas, recursos).
+- [ ] Definir requisitos funcionais e não funcionais do jogo.
 - [ ] Configurar o ambiente de desenvolvimento (IDE, Git, workflow).
 - [ ] Estudar arquiteturas de projetos
 - [ ] Decidir a arquitetura do projeto, considerando uma abordagem em camadas para um design escalável e modular.
