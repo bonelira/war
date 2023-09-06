@@ -12,7 +12,7 @@
 * Bruno Iraê dos Reis - [(@brunoirae)](https://github.com/BrunoIrae)
 * Leonardo H. C. da S. Cavalcanti - [(@leohcavalcanti)](https://github.com/leohcavalcanti)
 * Bruno V. Ferreira. - [(@ferreirabrunno)](https://github.com/ferreirabrunno)
-*
+* 
 
 ## Sprint 1 (28 de Agosto a 17 de Setembro): Definição do Projeto, Modelagem Inicial e TDD
 
@@ -20,16 +20,17 @@
 - [ ] Encontro para jogar WAR e entender: Objetivo do Jogo,Territórios e Fronteiras, Distribuição de Exércitos, Ataques e Defesas, Cartas de Território, Trocas de Cartas e Reforços, Dinâmica de Turnos 
 - [ ] Definir requisitos funcionais e não funcionais do jogo.
 - [ ] Configurar o ambiente de desenvolvimento (IDE, Git, workflow).
-- [ ] Estudar arquiteturas de projetos
-- [ ] Decidir a arquitetura do projeto, considerando uma abordagem em camadas para um design escalável e modular.
+- [ ] Estudar padrões de projeto.
+- [ ] Selecionar padrão(ões) de projeto(s).
+
 
 ### Semana 2 (4 de Setembro a 10 de Setembro)
 - [ ] Estudar diagramas
 - [ ] Criar um diagrama de classes inicial com as principais entidades do jogo.
 - [ ] Detalhar as classes, seus atributos e métodos principais.
 - [ ] Iniciar a documentação dos requisitos.
-- [ ] Estudar padrões de projeto.
-- [ ] Selecionar um padrão de projeto (como Observer) que se encaixe bem com a arquitetura escolhida.
+- [ ] Estudar arquiteturas de projetos
+- [ ] Decidir a arquitetura do projeto, considerando um design escalável e modular e que se encaixe com os padrões escolhidos.
 
 
 
