@@ -17,10 +17,10 @@
 ## Sprint 1 (28 de Agosto a 17 de Setembro): Definição do Projeto, Modelagem Inicial e TDD
 
 ### Semana 1 (28 de Agosto a 3 de Setembro)
-- [ ] Encontro para jogar WAR e entender: Objetivo do Jogo,Territórios e Fronteiras, Distribuição de Exércitos, Ataques e Defesas, Cartas de Território, Trocas de Cartas e Reforços, Dinâmica de Turnos 
+- [x] Encontro para jogar WAR e entender: Objetivo do Jogo,Territórios e Fronteiras, Distribuição de Exércitos, Ataques e Defesas, Cartas de Território, Trocas de Cartas e Reforços, Dinâmica de Turnos 
 - [ ] Definir requisitos funcionais e não funcionais do jogo.
 - [ ] Configurar o ambiente de desenvolvimento (IDE, Git, workflow).
-- [ ] Estudar padrões de projeto.
+- [x] Estudar padrões de projeto.
 - [ ] Selecionar padrão(ões) de projeto(s).
 
 
