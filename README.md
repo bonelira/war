@@ -18,9 +18,9 @@
 
 ### Semana 1 (28 de Agosto a 3 de Setembro)
 - [x] Encontro para jogar WAR e entender: Objetivo do Jogo,Territórios e Fronteiras, Distribuição de Exércitos, Ataques e Defesas, Cartas de Território, Trocas de Cartas e Reforços, Dinâmica de Turnos 
-- [ ] Definir requisitos funcionais e não funcionais do jogo.
+- [x] Definir requisitos funcionais e não funcionais do jogo.
 - [x] Estudar padrões de projeto.
-- [ ] Selecionar padrão(ões) de projeto(s).
+- [x] Selecionar padrão(ões) de projeto(s).
 
 
 ### Semana 2 (4 de Setembro a 10 de Setembro)
