@@ -4,8 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-import br.unicap.eng2.debuggin_squad.war.Hello;
-
 public class TestHello {
 
   @Test
