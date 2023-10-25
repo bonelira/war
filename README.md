@@ -24,11 +24,11 @@
 
 
 ### Semana 2 (4 de Setembro a 10 de Setembro)
-- [ ] Estudar diagramas
-- [ ] Criar um diagrama de classes inicial com as principais entidades do jogo.
-- [ ] Detalhar as classes, seus atributos e métodos principais.
-- [ ] Iniciar a documentação dos requisitos.
-- [ ] Estudar arquiteturas de projetos
+- [x] Estudar diagramas
+- [x] Criar um diagrama de classes inicial com as principais entidades do jogo.
+- [x] Detalhar as classes, seus atributos e métodos principais.
+- [x] Iniciar a documentação dos requisitos.
+- [x] Estudar arquiteturas de projetos
 - [ ] Decidir a arquitetura do projeto, considerando um design escalável e modular e que se encaixe com os padrões escolhidos.
 
 
