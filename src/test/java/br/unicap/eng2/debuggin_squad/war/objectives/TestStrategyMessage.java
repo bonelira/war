@@ -1,6 +1,9 @@
 package br.unicap.eng2.debuggin_squad.war.objectives;
 
 import br.unicap.eng2.debuggin_squad.war.Player;
+import br.unicap.eng2.debuggin_squad.war.objectives.message.CreateMessage;
+import br.unicap.eng2.debuggin_squad.war.objectives.message.CreateMessageRelatedtoColor;
+import br.unicap.eng2.debuggin_squad.war.objectives.message.Message;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -40,4 +43,5 @@ public class TestStrategyMessage {
     String expected = "Domine o território do" + players.get(1).getColor();
     assertEquals(expected, actual);
   }
+
 }
