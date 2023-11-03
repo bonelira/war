@@ -1,4 +1,9 @@
+/**
+ * @author Bruno Iraê <brunoirae@gmail.com / @brunoirae>
+ */
+
 package br.unicap.eng2.debuggin_squad.war;
+
 import br.unicap.eng2.debuggin_squad.war.controller.Armies;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
