@@ -1,3 +1,6 @@
+/**
+ * @author Abi-albom Lira <bone-lira@hotmail.com / @bonelira>
+ */
 package br.unicap.eng2.debuggin_squad.war.test_inicializar;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -5,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 /** abaixo estão todas as classes atuais do modelo de domínio e  diagrama de classe */
 // TODO O QUE DEVE SER FEITO:
@@ -12,37 +16,42 @@ import org.junit.jupiter.api.Test;
 // [ ] excluir todos os imports que não deveriam estar nessa clase: exp:: RedDice,YellowDice,Attack etc
 // [ ] configurar todos os atributos 
 // [ ] Refatorar classe.
-// [ ] 
+// [x] Comentar as linhas que eu não for usar diretamente para poder criar as classes faltantes depois.
+// [ ] adicionar a cada nova classe criada o comentário de criador de classe:
 
-import br.unicap.eng2.debuggin_squad.war.GameWar;
+/**
+ * @author Abi-albom Lira <bone-lira@hotmail.com / @bonelira>
+ */
+
+// import br.unicap.eng2.debuggin_squad.war.GameWar;
 import br.unicap.eng2.debuggin_squad.war.Board;
 import br.unicap.eng2.debuggin_squad.war.Player;
-import br.unicap.eng2.debuggin_squad.war.Territory;
-import br.unicap.eng2.debuggin_squad.war.Army;
+// import br.unicap.eng2.debuggin_squad.war.Territory;
+// import br.unicap.eng2.debuggin_squad.war.Army;
 import br.unicap.eng2.debuggin_squad.war.GoalCard;
-import br.unicap.eng2.debuggin_squad.war.TerritoryCard;
-import br.unicap.eng2.debuggin_squad.war.RedDice;
-import br.unicap.eng2.debuggin_squad.war.YellowDice;
+// import br.unicap.eng2.debuggin_squad.war.TerritoryCard;
+// import br.unicap.eng2.debuggin_squad.war.RedDice;
+// import br.unicap.eng2.debuggin_squad.war.YellowDice;
 import br.unicap.eng2.debuggin_squad.war.Dealer;
 import br.unicap.eng2.debuggin_squad.war.TurnManager;
 import br.unicap.eng2.debuggin_squad.war.GameRules;
-import br.unicap.eng2.debuggin_squad.war.Attack;
-import br.unicap.eng2.debuggin_squad.war.Battle;
-import br.unicap.eng2.debuggin_squad.war.CardExchange;
-import br.unicap.eng2.debuggin_squad.war.PlayerElimination;
-import br.unicap.eng2.debuggin_squad.war.ConquerPhase;
-import br.unicap.eng2.debuggin_squad.war.MovementPhase;
-import br.unicap.eng2.debuggin_squad.war.EndGamePhase;
+// import br.unicap.eng2.debuggin_squad.war.Attack;
+// import br.unicap.eng2.debuggin_squad.war.Battle;
+// import br.unicap.eng2.debuggin_squad.war.CardExchange;
+// import br.unicap.eng2.debuggin_squad.war.PlayerElimination;
+// import br.unicap.eng2.debuggin_squad.war.ConquerPhase;
+// import br.unicap.eng2.debuggin_squad.war.MovementPhase;
+// import br.unicap.eng2.debuggin_squad.war.EndGamePhase;
 import br.unicap.eng2.debuggin_squad.war.MapGenerator;
 import br.unicap.eng2.debuggin_squad.war.SessionManager;
 import br.unicap.eng2.debuggin_squad.war.RuleManager;
 import br.unicap.eng2.debuggin_squad.war.GameConfigurator;
-import br.unicap.eng2.debuggin_squad.war.GoalConquerContinent;
-import br.unicap.eng2.debuggin_squad.war.GoalConquer24Territory;
-import br.unicap.eng2.debuggin_squad.war.GoalEliminatePlayer;
-import br.unicap.eng2.debuggin_squad.war.Deck;
+// import br.unicap.eng2.debuggin_squad.war.GoalConquerContinent;
+// import br.unicap.eng2.debuggin_squad.war.GoalConquer24Territory;
+// import br.unicap.eng2.debuggin_squad.war.GoalEliminatePlayer;
+// import br.unicap.eng2.debuggin_squad.war.Deck;
 import br.unicap.eng2.debuggin_squad.war.Continent;
-import br.unicap.eng2.debuggin_squad.war.Card;
+// import br.unicap.eng2.debuggin_squad.war.Card;
 
 public class TestInicializarJogo {
     public GameWar CurrentGame = new GameWar();
