@@ -3,7 +3,7 @@ package br.unicap.nomedisciplina.atividade00.territorio_controlado;
 import br.unicap.nomedisciplina.atividade00.player.Jogador;
 
 
-public class Territorio {
+public class Territorio implements Controlar{
 
 
     private String nome;

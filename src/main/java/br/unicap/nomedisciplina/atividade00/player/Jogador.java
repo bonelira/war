@@ -1,6 +1,6 @@
 package br.unicap.nomedisciplina.atividade00.player;
 
-public class Jogador {
+public class Jogador implements Players {
     
 
   
