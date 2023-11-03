@@ -1,0 +1,24 @@
+package br.unicap.eng2.debuggin_squad.war.objectives;
+
+public class Cards {
+    private int id;
+    private String description;
+
+    public Cards(int id, String description) {
+        this.id = id;
+        this.description = description;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    @Override
+    public String toString() {
+        return ", description='" + description;
+    }
+}
