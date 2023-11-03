@@ -4,26 +4,29 @@
 
 package br.unicap.eng2.debuggin_squad.war.service;
 
+import br.unicap.eng2.debuggin_squad.war.controller.Armies;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
 
 import java.util.List;
 
 public class FortifyService {
-    private Territory territory;
+    public FortifyService( ) {}
 
-    public FortifyService(Territory territory) {
-        this.territory = territory;
-    }
-
-    public int deliverArmiesInInitialTurn(List<Player> players) {
-        int totalTerritorios = 42;
-        if (players.isEmpty()) {
-            throw new IllegalArgumentException("O número de jogadores não pode ser zero.");
+    public void fortificationArmies(Player player, int armies, Territory origin) {
+        List<Territory> conqueredTerritories = player.getConqueredTerritories();
+        if (!conqueredTerritories.contains(origin)) {
+            throw new IllegalArgumentException("O jogador não possui esse território ou não possui territórios conquistados para fortificar.");
         }
-        int exercitosRecebidos = totalTerritorios / players.size();
-        return exercitosRecebidos;
+        while (armies > 0) {
+            Armies armiesInTerritory = new Armies(armies); // Aloque um exército de cada vez
+            origin.addArmies(armiesInTerritory);
+            armies--;
+        }
     }
+
+    //Criar método para cancelar a fortificação
+    /*Lógica: cancelaria a fortificação do território que ele teria colocado em um determinado local e retornaria o exercito*/
 
 
 }

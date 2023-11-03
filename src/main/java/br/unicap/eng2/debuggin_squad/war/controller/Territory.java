@@ -4,19 +4,38 @@
 
 package br.unicap.eng2.debuggin_squad.war.controller;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class Territory {
-    private String name;
-    private int total;
+    private String nome;
+    private Player proprietario;
+    private List<Armies> armiesList;
+    private Set<Territory> adjacentTerritories;
 
-    public Territory(){}
-
-    public String getName(){return name;}
-
-    public int getTotal() {
-        return total;
+    public Territory(String nome, Player proprietario) {
+        this.nome = nome;
+        this.proprietario = proprietario;
+        this.armiesList = new ArrayList<>();
+        adjacentTerritories = new HashSet<>();
     }
 
-    public String setName(String newName){return this.name = newName;}
+    public void addArmies(Armies armies) {
+        armiesList.add(armies);
+    }
 
-    public int setTotal(int newTotal){return this.total = newTotal;}
+    public void removeArmies(Armies armiesToRemove) {
+        armiesList.remove(armiesToRemove);
+    }
+
+    public int getArmiesCount() {
+        return armiesList.size();
+    }
+
+    public void addAdjacentTerritory(Territory territory) {
+        adjacentTerritories.add(territory);
+    }
+
 }
