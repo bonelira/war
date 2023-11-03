@@ -4,9 +4,6 @@ public class CreateMessage implements Message{
 
     @Override
     public String create(String description, String player) {
-        if (player == null) {
-            return description;
-        }
-        return description + player;
+        return description;
     }
 }
