@@ -5,11 +5,10 @@ package br.unicap.eng2.debuggin_squad.war.test_inicializar;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.jupiter.*;
 
 /** abaixo estão todas as classes atuais do modelo de domínio e  diagrama de classe */
 // TODO O QUE DEVE SER FEITO:
@@ -24,74 +23,94 @@ import org.mockito.jupiter.*;
  * @author Abi-albom Lira <bone-lira@hotmail.com / @bonelira>
  */
 
-// // import br.unicap.eng2.debuggin_squad.war.GameWar;
-// import br.unicap.eng2.debuggin_squad.war.Board;
-// import br.unicap.eng2.debuggin_squad.war.Player;
-// // import br.unicap.eng2.debuggin_squad.war.Territory;
-// // import br.unicap.eng2.debuggin_squad.war.Army;
-// import br.unicap.eng2.debuggin_squad.war.GoalCard;
-// // import br.unicap.eng2.debuggin_squad.war.TerritoryCard;
-// // import br.unicap.eng2.debuggin_squad.war.RedDice;
-// // import br.unicap.eng2.debuggin_squad.war.YellowDice;
-// import br.unicap.eng2.debuggin_squad.war.Dealer;
-// import br.unicap.eng2.debuggin_squad.war.TurnManager;
-// import br.unicap.eng2.debuggin_squad.war.GameRules;
-// // import br.unicap.eng2.debuggin_squad.war.Attack;
-// // import br.unicap.eng2.debuggin_squad.war.Battle;
-// // import br.unicap.eng2.debuggin_squad.war.CardExchange;
-// // import br.unicap.eng2.debuggin_squad.war.PlayerElimination;
-// // import br.unicap.eng2.debuggin_squad.war.ConquerPhase;
-// // import br.unicap.eng2.debuggin_squad.war.MovementPhase;
-// // import br.unicap.eng2.debuggin_squad.war.EndGamePhase;
-// import br.unicap.eng2.debuggin_squad.war.MapGenerator;
-// import br.unicap.eng2.debuggin_squad.war.SessionManager;
-// import br.unicap.eng2.debuggin_squad.war.RuleManager;
-// import br.unicap.eng2.debuggin_squad.war.GameConfigurator;
-// // import br.unicap.eng2.debuggin_squad.war.GoalConquerContinent;
-// // import br.unicap.eng2.debuggin_squad.war.GoalConquer24Territory;
-// // import br.unicap.eng2.debuggin_squad.war.GoalEliminatePlayer;
-// // import br.unicap.eng2.debuggin_squad.war.Deck;
-// import br.unicap.eng2.debuggin_squad.war.Continent;
-// // import br.unicap.eng2.debuggin_squad.war.Card;
+// import br.unicap.eng2.debuggin_squad.war.GameWar;
+import br.unicap.eng2.debuggin_squad.war.Board;
+import br.unicap.eng2.debuggin_squad.war.Player;
+import br.unicap.eng2.debuggin_squad.war.GoalCard;
+import br.unicap.eng2.debuggin_squad.war.Dealer;
+import br.unicap.eng2.debuggin_squad.war.GameRules;
+import br.unicap.eng2.debuggin_squad.war.TurnManager;
+import br.unicap.eng2.debuggin_squad.war.GameConfigurator;
+import br.unicap.eng2.debuggin_squad.war.SessionManager;
+import br.unicap.eng2.debuggin_squad.war.RuleManager;
+import br.unicap.eng2.debuggin_squad.war.MapGenerator;
+import br.unicap.eng2.debuggin_squad.war.Continent;
+// import br.unicap.eng2.debuggin_squad.war.Territory;
+// import br.unicap.eng2.debuggin_squad.war.Army;
+// import br.unicap.eng2.debuggin_squad.war.TerritoryCard;
+// import br.unicap.eng2.debuggin_squad.war.RedDice;
+// import br.unicap.eng2.debuggin_squad.war.YellowDice;
+// import br.unicap.eng2.debuggin_squad.war.Attack;
+// import br.unicap.eng2.debuggin_squad.war.Battle;
+// import br.unicap.eng2.debuggin_squad.war.CardExchange;
+// import br.unicap.eng2.debuggin_squad.war.PlayerElimination;
+// import br.unicap.eng2.debuggin_squad.war.ConquerPhase;
+// import br.unicap.eng2.debuggin_squad.war.MovementPhase;
+// import br.unicap.eng2.debuggin_squad.war.EndGamePhase;
+// import br.unicap.eng2.debuggin_squad.war.GoalConquerContinent;
+// import br.unicap.eng2.debuggin_squad.war.GoalConquer24Territory;
+// import br.unicap.eng2.debuggin_squad.war.GoalEliminatePlayer;
+// import br.unicap.eng2.debuggin_squad.war.Deck;
+// import br.unicap.eng2.debuggin_squad.war.Card;
 
-@ExtendWith(MockitoExtension.class)
 public class TestInicializarJogo {
-    @InjectMocks
-    Player player;
 
+    // private GameWar CurrentGame = new GameWar();
+    private Player player;
+    private Board board;
+    private GoalCard goalCard;
+    private Dealer dealer;
+    private GameRules gameRules;
+    private TurnManager turnManager;
+    private MapGenerator mapGenerator;
+    private SessionManager sessionManager;
+    private RuleManager ruleManager;
+    private Continent continent;
+    private GameConfigurator configurator;
+    // private Territory territory = new Territory();
+    // private Army army = new Army();
+    // private TerritoryCard territoryCard = new TerritoryCard();
+    // private RedDice redDice = new RedDice();
+    // private YellowDice yellowDice = new YellowDice();
+    // private Attack attack = new Attack();
+    // private Battle battle = new Battle();
+    // private CardExchange cardExchange = new CardExchange();
+    // private PlayerElimination playerElimination = new PlayerElimination();
+    // private ConquerPhase conquerPhase = new ConquerPhase();
+    // private MovementPhase movementPhase = new MovementPhase();
+    // private EndGamePhase endGamePhase = new EndGamePhase();
+    // private GoalConquerContinent goalConquerContinent = new
+    // GoalConquerContinent();
+    // private GoalConquer24Territory goalConquer24Territory = new
+    // GoalConquer24Territory();
+    // private GoalEliminatePlayer goalEliminatePlayer = new GoalEliminatePlayer();
 
-    // public GameWar CurrentGame = new GameWar();
+    // private Deck deck = new Deck();
+    // private Card ard = new Card();
 
-    // public Board board = new Board();
-    // public Player player = new Player();
-    // // public Territory territory = new Territory();
-    // // public Army army = new Army();
-    // public GoalCard goalCard = new GoalCard();
-    // // public TerritoryCard territoryCard = new TerritoryCard();
-    // // public RedDice redDice = new RedDice();
-    // // public YellowDice yellowDice = new YellowDice();
-    // public Dealer dealer = new Dealer();
-    // public TurnManager turnManager = new TurnManager();
-    // public GameRules gameRules = new GameRules();
-    // // public Attack attack = new Attack();
-    // // public Battle battle = new Battle();
-    // // public CardExchange cardExchange = new CardExchange();
-    // // public PlayerElimination playerElimination = new PlayerElimination();
-    // // public ConquerPhase conquerPhase = new ConquerPhase();
-    // // public MovementPhase movementPhase = new MovementPhase();
-    // // public EndGamePhase endGamePhase = new EndGamePhase();
-    // public MapGenerator mapGenerator = new MapGenerator();
-    // public SessionManager sessionManager = new SessionManager();
-    // public RuleManager ruleManager = new RuleManager();
-    // public GameConfigurator gameConfigurator = new GameConfigurator();
-    // // public GoalConquerContinent goalConquerContinent = new
-    // // GoalConquerContinent();
-    // // public GoalConquer24Territory goalConquer24Territory = new
-    // // GoalConquer24Territory();
-    // // public GoalEliminatePlayer goalEliminatePlayer = new
-    // GoalEliminatePlayer();
-    // // public Deck deck = new Deck();
-    // public Continent continent = new Continent();
-    // // public Card ard = new Card();
+    @BeforeEach
+    public void setup() {
+        configurator = new GameConfigurator(6, 1); // qntd de jogadores e o tipo do jogo, sendo 1 default param(int
+                                                   // numOfPlayers, int typeOfGame)
+
+    }
+
+    @Test
+    public void testVerifyQuantityOfPlayers() {
+        // verificar se a qntd de players está entre 3 - 6
+        // quem deve possuir a qntd total desses jogadores é a classe GameConfigurator
+        int numberOfPlayers = 3;
+        configurator.configureNumberOfPlayers(numberOfPlayers); // versão primorosa do setNumberOfPlayers()
+        assertTrue(configurator.isToValid());
+    }
+
+    @Test
+    public void testVerifyIdOfEachPlayer() {
+        // Neste caso ID é a cor do player, porém ID será int
+        // ID vai de 1 - 6.
+        // verifica se não há jogadores com mesmo ID através do sorteio
+        List<Player> players = configurator.getListOfPlayers();
+
+    }
 
 }
