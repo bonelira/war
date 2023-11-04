@@ -16,7 +16,7 @@ public class Jogador implements Players {
 
     public Jogador (String nome){
         this.nome = nome;
-         this.territorios = new ArrayList<>(6);
+         this.territorios = new ArrayList<>(5);
         this.qtdExercitos = 0;
     }
 
@@ -65,6 +65,22 @@ public class Jogador implements Players {
         System.out.println("Territórios de " + nome + ":");
         for (Territorio territorio : territorios) {
             System.out.println(territorio.getNome());
+        }
+    }
+
+    public void adicionarExercitos(int quantidade) {
+        if (quantidade > 0) {
+            qtdExercitos += quantidade;
+        } else {
+            throw new IllegalArgumentException("A quantidade de exércitos deve ser maior que zero.");
+        }
+    }
+
+    public void removerExercitos(int quantidade) {
+        if (quantidade > 0 && quantidade <= qtdExercitos) {
+            qtdExercitos -= quantidade;
+        } else {
+            throw new IllegalArgumentException("Quantidade inválida de exércitos para remover.");
         }
     }
 }
