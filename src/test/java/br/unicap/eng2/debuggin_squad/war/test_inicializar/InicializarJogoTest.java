@@ -55,7 +55,7 @@ import br.unicap.eng2.debuggin_squad.war.Continent;
 // import br.unicap.eng2.debuggin_squad.war.Deck;
 // import br.unicap.eng2.debuggin_squad.war.Card;
 
-public class TestInicializarJogo {
+public class InicializarJogoTest {
 
     // private GameWar CurrentGame = new GameWar();
     private Player player;
@@ -120,8 +120,10 @@ public class TestInicializarJogo {
         // ID vai de 1 - 6.
         // verifica se cada jogador recebeu um ID único
 
-        List<Player> players = configurator.getListOfPlayers();
-        for (Player player : players) {
+        List<br.unicap.eng2.debuggin_squad.war.controller.Player> players = configurator.getListOfPlayers();
+        for (int i = 0; i < players.size(); i++) {
+        
+        }
             
         }
 
