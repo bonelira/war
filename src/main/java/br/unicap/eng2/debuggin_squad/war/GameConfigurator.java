@@ -10,24 +10,34 @@ import java.util.List;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 
 public class GameConfigurator {
-    List<Player> players;
+    private List<Player> players;
+    private int numberOfPlayers;
 
-    public GameConfigurator(int qntd, int j) {
+    public GameConfigurator(int numberOfPlayers) {
+        this.numberOfPlayers = numberOfPlayers;
+    }
+
+    public List<Player> getListOfPlayers() {
+        return this.createListOfPlayers();
+    }
+
+    public void setNumberOfPlayers(int numberOfPlayers) {
+        this.numberOfPlayers = numberOfPlayers;
+    }
+
+    public int getNumbOfPlayers() {
+        return numberOfPlayers;
+    }
+
+    private List<Player> createListOfPlayers(thi) {
         players = new ArrayList<>(); // Inicialize a lista de jogadores
 
-        for (int i = 0; i < qntd; i++) {
+        for (int i = 0; i < getNumbOfPlayers(); i++) {
             // Crie instâncias de jogadores e adicione à lista
             Player player = new Player(null, null);
             players.add(player);
         }
-
-    }
-
-    public List<Player> getListOfPlayers() {
-        return null;
-    }
-
-    public void setNumberOfPlayers(int numberOfPlayers) {
+        return players;
     }
 
 }
