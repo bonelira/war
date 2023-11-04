@@ -200,9 +200,23 @@ public class InicializarJogoTest {
 
     }
 
-    // @Test
-    // public void test3playersHas7TerritoriesAtBegin() {
-    // List<Player> players = configurator.getListOfPlayers();
-    // }
+    @Test
+    public void testTerritoryHasAtLeastOneTroop() {
+        List<Player> players = configurator.getListOfPlayers();
+        int armyInTerritoriesPlayer0 = players.get(0).getConqueredTerritories().get(0).getArmiesCount();
+        int armyInTerritoriesPlayer1 = players.get(1).getConqueredTerritories().get(1).getArmiesCount();
+        int armyInTerritoriesPlayer2 = players.get(2).getConqueredTerritories().get(2).getArmiesCount();
+        int armyInTerritoriesPlayer3 = players.get(3).getConqueredTerritories().get(3).getArmiesCount();
+        int armyInTerritoriesPlayer4 = players.get(4).getConqueredTerritories().get(4).getArmiesCount();
+        int armyInTerritoriesPlayer5 = players.get(5).getConqueredTerritories().get(5).getArmiesCount();
+
+        assertNotNull(armyInTerritoriesPlayer0);
+        assertNotNull(armyInTerritoriesPlayer1);
+        assertNotNull(armyInTerritoriesPlayer2);
+        assertNotNull(armyInTerritoriesPlayer3);
+        assertNotNull(armyInTerritoriesPlayer4);
+        assertNotNull(armyInTerritoriesPlayer5);
+
+    }
 
 }
