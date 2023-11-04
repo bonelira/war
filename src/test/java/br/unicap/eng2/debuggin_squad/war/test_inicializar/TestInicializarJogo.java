@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -92,24 +94,36 @@ public class TestInicializarJogo {
     public void setup() {
         configurator = new GameConfigurator(6, 1); // qntd de jogadores e o tipo do jogo, sendo 1 default param(int
                                                    // numOfPlayers, int typeOfGame)
+        player = new Player();
 
     }
 
     @Test
-    public void testVerifyQuantityOfPlayers() {
+    public void testVerifyQuantityOfPlayersIsAllowed() {
         // verificar se a qntd de players está entre 3 - 6
         // quem deve possuir a qntd total desses jogadores é a classe GameConfigurator
+        int belowMinNumberOfPlayers = 2;
+        int aboveMaxNumberOfPlayers = 7;
         int numberOfPlayers = 3;
-        configurator.configureNumberOfPlayers(numberOfPlayers); // versão primorosa do setNumberOfPlayers()
-        assertTrue(configurator.isToValid());
+
+        configurator.setNumberOfPlayers(numberOfPlayers); // setNumberOfPlayers() que com o num de players na partida
+        List<Player> players = configurator.getListOfPlayers();
+        assertTrue(
+                players.size() > belowMinNumberOfPlayers
+                        &&
+                        players.size() < aboveMaxNumberOfPlayers);
     }
 
     @Test
-    public void testVerifyIdOfEachPlayer() {
-        // Neste caso ID é a cor do player, porém ID será int
+    public void testEachPlayerHasYourOwnID() {
+        // Neste caso ID é a cor do player, porém ID será Integer*
         // ID vai de 1 - 6.
-        // verifica se não há jogadores com mesmo ID através do sorteio
+        // verifica se cada jogador recebeu um ID único
+
         List<Player> players = configurator.getListOfPlayers();
+        for (Player player : players) {
+            
+        }
 
     }
 
