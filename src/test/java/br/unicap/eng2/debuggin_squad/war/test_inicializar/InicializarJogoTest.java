@@ -181,9 +181,28 @@ public class InicializarJogoTest {
 
     }
 
+    @Test
+    public void test6playersHas14TerritoriesAtBegin() {
+        List<Player> players = configurator.getListOfPlayers();
+        int territoriesPlayer0 = players.get(0).getConqueredTerritories().size();
+        int territoriesPlayer1 = players.get(1).getConqueredTerritories().size();
+        int territoriesPlayer2 = players.get(2).getConqueredTerritories().size();
+        int territoriesPlayer3 = players.get(3).getConqueredTerritories().size();
+        int territoriesPlayer4 = players.get(4).getConqueredTerritories().size();
+        int territoriesPlayer5 = players.get(5).getConqueredTerritories().size();
+
+        assertTrue(territoriesPlayer0 == 14);
+        assertTrue(territoriesPlayer1 == 14);
+        assertTrue(territoriesPlayer2 == 14);
+        assertTrue(territoriesPlayer3 == 14);
+        assertTrue(territoriesPlayer4 == 14);
+        assertTrue(territoriesPlayer5 == 14);
+
+    }
+
     // @Test
     // public void test3playersHas7TerritoriesAtBegin() {
-    //     List<Player> players = configurator.getListOfPlayers();
+    // List<Player> players = configurator.getListOfPlayers();
     // }
 
 }
