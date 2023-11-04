@@ -3,23 +3,29 @@
 <img src="assets/images/Unicap_Icam_Tech-01.png" alt="drawing" width="200"/>
 
 ## Identificação
-**Professor**: Nome do Professor
+**Professor**: Diego Pinheiro, PhD
 
-**Disciplina**: Nome da Disciplina
+**Disciplina**: Engenharia de Software 2
 
-**Atividade**: Lista XX - Nome da Lista
-
-## Instruções 
-> 1. Sua implementação deve estar dentro da pasta src/**main**/java 
-> 2. Não modifique nenhum código dentro da pasta src/**test**/java).
-> 3. A submissão **não deve ser feita após o prazo** (nem 1 minuto a mais)
+**Atividade**: Projeto War
 
 ## Descrição da Atividade
-### Questão 01
-Altere o método `messageNotImplemented` na classe `Hello` para, em vez de lançar uma exceção, retornar a menssagem `Hello World`. 
+### TroopsServiceTest
+Implementei a classe `TroopsServiceTest` para checar a distribuição de exercitos alocados corretamente e através dela criei os métodos da classe `TroopsService`.
 
-A classe `Hello` possui os dois métodos a seguir: 
-1. Método `messageImplemented` que está corretamente implementado e retorna a mensagem `Hello World`.     
+A classe `TroopsService` possui dois método a seguir:
+1. Método `deliverArmiesInInitialTurn` que faz o calculo correto da quantidade de exercitos a ser alocado na primeira rodada e retorna o resultado.
+2. Método `deliverArmiesByAmountOfTerritory` que faz o calculo da quantidade de exercitos através do território do player e divide por 2.
 
-2. Método `messageNotImplemented` que não está corretamente implementado e lança uma exceção `UnsupportedOperationException`. 
+### FortifyServiceTest
+Implementei a classe `FortifyServiceTest` para verificar a alocação do exercito dentro do território do player e através dela criei os métodos da classe `FortifyService`.
+
+A classe `TroopsService` possui um método a seguir:
+1. Método `fortificationArmies` que realiza a função de alocar o exercito dentro do território do player.
+
+### RelocationServiceTest
+Implementei a classe `RelocationServiceTest` para verificar a alocação do exercito dentro do território do player e através dela criei os métodos da classe `RelocationService`.
+
+A classe `RelocationService` possui um método a seguir:
+1. Método `relocateTroops` que realiza a realocação do exercito do player no final do turno.
 

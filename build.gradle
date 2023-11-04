@@ -7,6 +7,13 @@ repositories {
 }
 
 dependencies {
+	implementation 'junit:junit:4.13.2'
+	implementation 'junit:junit-dep:4.11'
+	implementation 'org.junit:junit-gradle:5.0.0-ALPHA'
+    implementation 'org.junit:junit-gradle:5.0.0-ALPHA'
+	implementation 'junit:junit:4.13.2'
+	implementation 'org.mockito:mockito-testng:0.5.0'
+	implementation 'org.mockito:mockito-testng:0.5.0'
 	testImplementation('org.junit.jupiter:junit-jupiter:5.9.2')
 }
 
