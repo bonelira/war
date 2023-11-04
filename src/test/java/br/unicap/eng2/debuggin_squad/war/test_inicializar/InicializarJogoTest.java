@@ -27,7 +27,7 @@ import org.junit.jupiter.api.Test;
 
 // import br.unicap.eng2.debuggin_squad.war.GameWar;
 import br.unicap.eng2.debuggin_squad.war.Board;
-import br.unicap.eng2.debuggin_squad.war.Player;
+import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.GoalCard;
 import br.unicap.eng2.debuggin_squad.war.Dealer;
 import br.unicap.eng2.debuggin_squad.war.GameRules;
@@ -116,16 +116,27 @@ public class InicializarJogoTest {
 
     @Test
     public void testEachPlayerHasYourOwnID() {
-        // Neste caso ID é a cor do player, porém ID será Integer*
+        // Neste caso ID é a cor do player, porém ID será String* e pode mudar de acordo
+        // com o modo de jogo
         // ID vai de 1 - 6.
         // verifica se cada jogador recebeu um ID único
 
-        List<br.unicap.eng2.debuggin_squad.war.controller.Player> players = configurator.getListOfPlayers();
-        for (int i = 0; i < players.size(); i++) {
-        
-        }
-            
-        }
+        // TODO
+        // [ ] refatorar classe
+        List<Player> players = configurator.getListOfPlayers();
+        String cor1 = players.get(0).getId();
+        String cor2 = players.get(1).getId();
+        String cor3 = players.get(2).getId();
+        String cor4 = players.get(3).getId();
+        String cor5 = players.get(4).getId();
+        String cor6 = players.get(5).getId();
+
+        assertEquals("Red", 0);
+        assertEquals("Blue", 1);
+        assertEquals("Green", 2);
+        assertEquals("Yellow", 3);
+        assertEquals("Orange", 4);
+        assertEquals("Black", 5);
 
     }
 
