@@ -1,4 +1,4 @@
-package br.unicap.eng2.debuggin_squad.war.Card;
+package br.unicap.eng2.debuggin_squad.war.card;
 
 public class CardObjective extends Card {
 
