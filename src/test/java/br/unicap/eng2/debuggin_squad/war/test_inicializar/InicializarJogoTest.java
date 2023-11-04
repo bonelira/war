@@ -5,6 +5,7 @@ package br.unicap.eng2.debuggin_squad.war.test_inicializar;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
@@ -26,17 +27,18 @@ import org.junit.jupiter.api.Test;
  */
 
 // import br.unicap.eng2.debuggin_squad.war.GameWar;
-import br.unicap.eng2.debuggin_squad.war.Board;
+//import br.unicap.eng2.debuggin_squad.war.Board;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.GoalCard;
-import br.unicap.eng2.debuggin_squad.war.Dealer;
-import br.unicap.eng2.debuggin_squad.war.GameRules;
-import br.unicap.eng2.debuggin_squad.war.TurnManager;
+//import br.unicap.eng2.debuggin_squad.war.Dealer;
+//import br.unicap.eng2.debuggin_squad.war.GameRules;
+//import br.unicap.eng2.debuggin_squad.war.TurnManager;
 import br.unicap.eng2.debuggin_squad.war.GameConfigurator;
-import br.unicap.eng2.debuggin_squad.war.SessionManager;
-import br.unicap.eng2.debuggin_squad.war.RuleManager;
-import br.unicap.eng2.debuggin_squad.war.MapGenerator;
-import br.unicap.eng2.debuggin_squad.war.Continent;
+// import br.unicap.eng2.debuggin_squad.war.SessionManager;
+// import br.unicap.eng2.debuggin_squad.war.RuleManager;
+// import br.unicap.eng2.debuggin_squad.war.MapGenerator;
+// import br.unicap.eng2.debuggin_squad.war.Continent;
+import br.unicap.eng2.debuggin_squad.war.EndGamePhase;
 // import br.unicap.eng2.debuggin_squad.war.Territory;
 // import br.unicap.eng2.debuggin_squad.war.Army;
 // import br.unicap.eng2.debuggin_squad.war.TerritoryCard;
@@ -48,7 +50,6 @@ import br.unicap.eng2.debuggin_squad.war.Continent;
 // import br.unicap.eng2.debuggin_squad.war.PlayerElimination;
 // import br.unicap.eng2.debuggin_squad.war.ConquerPhase;
 // import br.unicap.eng2.debuggin_squad.war.MovementPhase;
-// import br.unicap.eng2.debuggin_squad.war.EndGamePhase;
 // import br.unicap.eng2.debuggin_squad.war.GoalConquerContinent;
 // import br.unicap.eng2.debuggin_squad.war.GoalConquer24Territory;
 // import br.unicap.eng2.debuggin_squad.war.GoalEliminatePlayer;
@@ -59,16 +60,17 @@ public class InicializarJogoTest {
 
     // private GameWar CurrentGame = new GameWar();
     private Player player;
-    private Board board;
-    private GoalCard goalCard;
-    private Dealer dealer;
-    private GameRules gameRules;
-    private TurnManager turnManager;
-    private MapGenerator mapGenerator;
-    private SessionManager sessionManager;
-    private RuleManager ruleManager;
-    private Continent continent;
+    // private Board board;
+    // private GoalCard goalCard;
+    // private Dealer dealer;
+    // private GameRules gameRules;
+    // private TurnManager turnManager;
+    // private MapGenerator mapGenerator;
+    // private SessionManager sessionManager;
+    // private RuleManager ruleManager;
+    // private Continent continent;
     private GameConfigurator configurator;
+    private EndGamePhase endGamePhase = new EndGamePhase();
     // private Territory territory = new Territory();
     // private Army army = new Army();
     // private TerritoryCard territoryCard = new TerritoryCard();
@@ -80,7 +82,6 @@ public class InicializarJogoTest {
     // private PlayerElimination playerElimination = new PlayerElimination();
     // private ConquerPhase conquerPhase = new ConquerPhase();
     // private MovementPhase movementPhase = new MovementPhase();
-    // private EndGamePhase endGamePhase = new EndGamePhase();
     // private GoalConquerContinent goalConquerContinent = new
     // GoalConquerContinent();
     // private GoalConquer24Territory goalConquer24Territory = new
@@ -94,7 +95,9 @@ public class InicializarJogoTest {
     public void setup() {
         configurator = new GameConfigurator(6, 1); // qntd de jogadores e o tipo do jogo, sendo 1 default param(int
                                                    // numOfPlayers, int typeOfGame)
-        player = new Player();
+        player = new Player("Bone", null);
+        GoalCard goal = new GoalCard();
+        EndGamePhase endGame = new EndGamePhase();
 
     }
 
@@ -137,6 +140,25 @@ public class InicializarJogoTest {
         assertEquals("Yellow", 3);
         assertEquals("Orange", 4);
         assertEquals("Black", 5);
+
+    }
+
+    @Test
+    public void playerHasAtLeastOneGoalCard() {
+        List<Player> players = configurator.getListOfPlayers();
+        GoalCard obj0 = players.get(0).getGoalCard();
+        GoalCard obj1 = players.get(1).getGoalCard();
+        GoalCard obj2 = players.get(2).getGoalCard();
+        GoalCard obj3 = players.get(3).getGoalCard();
+        GoalCard obj4 = players.get(4).getGoalCard();
+        GoalCard obj5 = players.get(5).getGoalCard();
+
+        assertNotNull(obj0);
+        assertNotNull(obj1);
+        assertNotNull(obj2);
+        assertNotNull(obj3);
+        assertNotNull(obj4);
+        assertNotNull(obj5);
 
     }
 
