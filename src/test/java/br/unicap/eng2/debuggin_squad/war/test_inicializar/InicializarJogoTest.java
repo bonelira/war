@@ -93,8 +93,8 @@ public class InicializarJogoTest {
 
     @BeforeEach
     public void setup() {
-        configurator = new GameConfigurator(6, 1); // qntd de jogadores e o tipo do jogo, sendo 1 default param(int
-                                                   // numOfPlayers, int typeOfGame)
+        configurator = new GameConfigurator(6); // qntd de jogadores e o tipo do jogo, sendo 1 default param(int
+                                                // numOfPlayers, int typeOfGame)
         player = new Player("Bone", null);
         GoalCard goal = new GoalCard();
         EndGamePhase endGame = new EndGamePhase();
@@ -201,7 +201,7 @@ public class InicializarJogoTest {
     }
 
     @Test
-    public void testTerritoryHasAtLeastOneTroop() {
+    public void testTerritoryHasAtLeastOneTroop() { 
         List<Player> players = configurator.getListOfPlayers();
         int armyInTerritoriesPlayer0 = players.get(0).getConqueredTerritories().get(0).getArmiesCount();
         int armyInTerritoriesPlayer1 = players.get(1).getConqueredTerritories().get(1).getArmiesCount();
