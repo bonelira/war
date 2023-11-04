@@ -29,7 +29,7 @@ public class GameConfigurator {
         return numberOfPlayers;
     }
 
-    private List<Player> createListOfPlayers(thi) {
+    private List<Player> createListOfPlayers() {
         players = new ArrayList<>(); // Inicialize a lista de jogadores
 
         for (int i = 0; i < getNumbOfPlayers(); i++) {
