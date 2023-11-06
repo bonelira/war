@@ -30,6 +30,7 @@ import org.junit.jupiter.api.Test;
 //import br.unicap.eng2.debuggin_squad.war.Board;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.GoalCard;
+import br.unicap.eng2.debuggin_squad.war.WarGame;
 //import br.unicap.eng2.debuggin_squad.war.Dealer;
 //import br.unicap.eng2.debuggin_squad.war.GameRules;
 //import br.unicap.eng2.debuggin_squad.war.TurnManager;
@@ -144,6 +145,21 @@ public class InicializarJogoTest {
     }
 
     @Test
+    public void testGamePlayerInitialization() {
+        WarGame game = new WarGame();
+        game.start();
+
+        // verificando se os players foram criados
+        assertNotNull(game.getPlayer1);
+        assertNotNull(game.getPlayer2);
+        assertNotNull(game.getPlayer3);
+        assertNotNull(game.getPlayer4);
+        assertNotNull(game.getPlayer5);
+        assertNotNull(game.getPlayer6);
+
+    }
+
+    @Test
     public void playerHasAtLeastOneGoalCard() {
         List<Player> players = configurator.getListOfPlayers();
         GoalCard obj0 = players.get(0).getGoalCard();
@@ -201,7 +217,7 @@ public class InicializarJogoTest {
     }
 
     @Test
-    public void testTerritoryHasAtLeastOneTroop() { 
+    public void testTerritoryHasAtLeastOneTroop() {
         List<Player> players = configurator.getListOfPlayers();
         int armyInTerritoriesPlayer0 = players.get(0).getConqueredTerritories().get(0).getArmiesCount();
         int armyInTerritoriesPlayer1 = players.get(1).getConqueredTerritories().get(1).getArmiesCount();
