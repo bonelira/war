@@ -147,15 +147,23 @@ public class InicializarJogoTest {
     @Test
     public void testGamePlayerInitialization() {
         WarGame game = new WarGame();
+        List<Player> players = configurator.getListOfPlayers();
+        Player player1 = players.get(0);
+        Player player2 = players.get(1);
+        Player player3 = players.get(2);
+        Player player4 = players.get(3);
+        Player player5 = players.get(4);
+        Player player6 = players.get(5);
+
         game.start();
 
         // verificando se os players foram criados
-        assertNotNull(game.getPlayer1);
-        assertNotNull(game.getPlayer2);
-        assertNotNull(game.getPlayer3);
-        assertNotNull(game.getPlayer4);
-        assertNotNull(game.getPlayer5);
-        assertNotNull(game.getPlayer6);
+        assertNotNull(game.getPlayer(player1));
+        assertNotNull(game.getPlayer(player2));
+        assertNotNull(game.getPlayer(player3));
+        assertNotNull(game.getPlayer(player4));
+        assertNotNull(game.getPlayer(player5));
+        assertNotNull(game.getPlayer(player6));
 
     }
 
