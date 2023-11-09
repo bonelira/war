@@ -22,7 +22,7 @@ public class ObjectiveCards {
 
     public void addCards(String description, String player) {
         this.description = setMessage(description, player);
-        cardsList.add(cards = new Cards(idMessage, description));
+        cardsList.add(this.cards = new Cards(idMessage, this.description));
         idMessage++;
     }
 
