@@ -43,4 +43,17 @@ public class Territory {
         return !isAdjacent(territoryDestination);
     }
 
+    public Player getProprietario() {
+        return proprietario;
+    }
+
+    public void setProprietario(Player proprietario) {
+        this.proprietario = proprietario;
+    }
+
+    public boolean belongsToPlayer(Player player) {
+        return this.proprietario == player;
+    }
+
+
 }

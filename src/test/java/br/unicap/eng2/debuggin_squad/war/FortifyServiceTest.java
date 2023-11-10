@@ -7,6 +7,7 @@ package br.unicap.eng2.debuggin_squad.war;
 import br.unicap.eng2.debuggin_squad.war.controller.Armies;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
+import br.unicap.eng2.debuggin_squad.war.model.state.FortifyAfterConquerState;
 import br.unicap.eng2.debuggin_squad.war.service.FortifyService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -81,6 +83,18 @@ public class FortifyServiceTest {
         fortificar.fortificationArmies(player1, simulationArmies, territory);
 
         assertEquals(0, initialArmies - simulationArmies);
+    }
+
+    @Test
+    public void testValidateErrorArmyAllocation(){
+        mockPlayer1Territory();mockArmies();mockTerritory();
+        int armyZero = 0;
+
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            fortificar.fortificationArmies(player1, 0, territory);
+        });
+
+        assertEquals(FortifyAfterConquerState.MSG_ALLOCATE_MORE_ARMY, exception.getMessage());
     }
 
     //Criar teste para retroceder a alocação

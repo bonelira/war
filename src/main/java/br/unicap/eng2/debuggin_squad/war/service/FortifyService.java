@@ -6,21 +6,17 @@ package br.unicap.eng2.debuggin_squad.war.service;
 
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
-
-import java.util.List;
+import br.unicap.eng2.debuggin_squad.war.model.state.FortifyContext;
 
 public class FortifyService {
-    public static final String MSG_TERRITORY_NOT_CONQUERED = "The player does not have this territory";
-    public FortifyService( ) {}
+    private FortifyContext fortifyContext;
+
+    public FortifyService() {
+        fortifyContext = new FortifyContext();
+    }
 
     public void fortificationArmies(Player player, int armies, Territory origin) {
-        List<Territory> conqueredTerritories = player.getConqueredTerritories();
-        if (!conqueredTerritories.contains(origin)) {
-            throw new IllegalArgumentException(MSG_TERRITORY_NOT_CONQUERED);
-        }
-        while (armies > 0) {
-            origin.addArmies(armies);
-            armies--;
-        }
+        fortifyContext.fortifyArmies(player, armies, origin);
     }
 }
+
