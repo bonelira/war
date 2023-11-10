@@ -23,7 +23,6 @@ public class TroopsServiceTest {
     private Player player3;
     private List<Player> players;
 
-    private Territory territory;
     private List<Territory> conqueredTerritories;
     private Territory brasil;
     private Territory argentina;
@@ -66,10 +65,8 @@ public class TroopsServiceTest {
         int totalTerritoriosValue = 42;
         int exercitosRecebidos = alocar.deliverArmiesInInitialTurn(players);
 
-        // Calcule o número esperado de exércitos para cada jogador
         int expectedExercitosRecebidos = totalTerritoriosValue / players.size();
 
-        // Verifique se a quantidade de exércitos recebidos é igual à quantidade esperada para cada jogador
         assertEquals(expectedExercitosRecebidos, exercitosRecebidos);
 
     }
@@ -77,11 +74,6 @@ public class TroopsServiceTest {
     @Test
     public void testValidatesTroopsSentInTerritorial() {
         mockPlayers();mockPlayer1Territory();
-        conqueredTerritories = player1.getConqueredTerritories();
-
-        // Substituir o mock incorreto do território pelo território real
-        when(player1.getConqueredTerritories()).thenReturn(conqueredTerritories);
-
         int totalTerritoriosValue = conqueredTerritories.size();
         int expectedExercitosRecebidos = totalTerritoriosValue / 2;
 

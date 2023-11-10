@@ -44,7 +44,6 @@ public class FortifyServiceTest {
         argentina = mock(Territory.class);
         colombia = mock(Territory.class);
 
-        // Crie um mockTerritory válido e adicione-o a conqueredTerritories
         territory = mock(Territory.class);
         conqueredTerritories.add(territory);
     }

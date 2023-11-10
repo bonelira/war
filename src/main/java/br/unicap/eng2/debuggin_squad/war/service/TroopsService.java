@@ -1,7 +1,3 @@
-/**
- * @author Bruno Iraê <brunoirae@gmail.com / @brunoirae>
- */
-
 package br.unicap.eng2.debuggin_squad.war.service;
 
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
@@ -10,12 +6,14 @@ import br.unicap.eng2.debuggin_squad.war.controller.Territory;
 import java.util.List;
 
 public class TroopsService {
+    public static final String MSG_TERRITORY_EMPTY = "The territory cannot be empty";
+    public static final String MSG_TERRITORY_DID_NOT_CONQUER = "The player not did not conquer territories";
     public TroopsService( ) {}
 
     public int deliverArmiesInInitialTurn(List<Player> players) {
         int totalTerritorios = 42;
         if (players.isEmpty()) {
-            throw new IllegalArgumentException("O número de jogadores não pode ser zero.");
+            throw new IllegalArgumentException(MSG_TERRITORY_EMPTY);
         }
         int exercitosRecebidos = totalTerritorios / players.size();
         return exercitosRecebidos;
@@ -24,7 +22,7 @@ public class TroopsService {
     public int deliverArmiesByAmountOfTerritory(Player player) {
         List<Territory> conqueredTerritories = player.getConqueredTerritories();
         if (conqueredTerritories.isEmpty()) {
-            throw new IllegalArgumentException("O jogador não conquistou nenhum território.");
+            throw new IllegalArgumentException(MSG_TERRITORY_DID_NOT_CONQUER);
         }
         int totalTerritorios = conqueredTerritories.size();
         int exercitosRecebidos = totalTerritorios / 2;
