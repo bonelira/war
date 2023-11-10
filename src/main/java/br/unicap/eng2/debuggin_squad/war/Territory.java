@@ -27,7 +27,15 @@ public class Territory {
     public void removeArmies(Armies armiesToRemove) {
         armiesList.remove(armiesToRemove);
     }
-    public Object[] getArmiesCount() {
-        return armiesList.toArray();
+    public List<?> getArmies() {
+        return armiesList;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Player getOwner() {
+        return owner;
     }
 }
