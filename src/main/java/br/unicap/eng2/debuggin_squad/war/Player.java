@@ -1,5 +1,7 @@
 package br.unicap.eng2.debuggin_squad.war;
 
+
+// Classe temporária
 public class Player {
     private String name;
     private String id;
