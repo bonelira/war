@@ -112,6 +112,11 @@ public class Board {
         territories.add(borneo);
         territories.add(new_guinea);
 
+
+        // TODO
+        // [ ] criar os continentes e adicionar os países
+        // [ ] criar as subjacências 
+
         return territories;
 
     }
