@@ -26,5 +26,4 @@ public class Player {
     public List<Territory> getConqueredTerritories() {
         return conqueredTerritories;
     }
-
 }

@@ -18,8 +18,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class FortifyServiceTest {
     private Player player1;
@@ -52,6 +51,9 @@ public class FortifyServiceTest {
 
         territory = mock(Territory.class);
         conqueredTerritories.add(territory);
+
+        // Mock do método getArmies
+        when(territory.getArmiesCount()).thenReturn(0);
     }
 
     private void mockTerritoryAndArmy() {
@@ -64,7 +66,6 @@ public class FortifyServiceTest {
         colombia = mock(Territory.class);
         when(colombia.getArmiesCount()).thenReturn(5);
     }
-
     private void mockPlayer1Territory() {
         player1 = mock(Player.class);
         when(player1.getId()).thenReturn("1");
@@ -91,6 +92,7 @@ public class FortifyServiceTest {
 
         assertEquals(simulationArmies, totalArmies);
     }
+
     @Test
     public void testCheckWhetherTheArmyIsBeingAllocated() {
         mockPlayer1Territory();mockArmies();mockTerritoryAndArmy();

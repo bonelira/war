@@ -1,3 +1,7 @@
+/**
+ * @author Bruno Iraê <brunoirae@gmail.com / @brunoirae>
+ */
+
 package br.unicap.eng2.debuggin_squad.war;
 
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
@@ -102,7 +106,5 @@ public class RelocationServiceTest {
 
         assertEquals(RelocationService.MSG_TERRITORY_NOT_CONQUERED, exception.getMessage());
     }
-
-
 }
 

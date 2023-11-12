@@ -13,7 +13,6 @@ public class FortifyAfterConquerState implements FortifyState {
     public static final String MSG_TERRITORY_NOT_CONQUERED = "This territory does not belong to the player1";
     public static final String MSG_ALLOCATE_MORE_ARMY = "Need to allocate one or more exercises in the conquered territory";
 
-
     @Override
     public void fortifyArmies(Player player, int armies, Territory origin) {
         if (validateFortification(player, armies, origin)) {
