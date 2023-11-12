@@ -8,6 +8,7 @@ import br.unicap.eng2.debuggin_squad.war.controller.Armies;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
 import br.unicap.eng2.debuggin_squad.war.model.state.FortifyAfterConquerState;
+import br.unicap.eng2.debuggin_squad.war.model.state.FortifyContext;
 import br.unicap.eng2.debuggin_squad.war.service.FortifyService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -34,9 +35,12 @@ public class FortifyServiceTest {
 
     private FortifyService fortificar;
 
+    private FortifyContext fortifyContext;
+
     @BeforeEach
     public void setup() {
         fortificar = new FortifyService();
+        fortifyContext = new FortifyContext();
         conqueredTerritories = new ArrayList<Territory>();
         armiesList = new ArrayList<Armies>();
     }
@@ -85,17 +89,34 @@ public class FortifyServiceTest {
         assertEquals(0, initialArmies - simulationArmies);
     }
 
-    @Test
-    public void testValidateErrorArmyAllocation(){
-        mockPlayer1Territory();mockArmies();mockTerritory();
+    /*@Test
+    public void testValidateErrorArmyAllocation() {
         int armyZero = 0;
 
+        fortificar.fortificationArmies(player1, armyZero, territory);
+
+        verify(fortificar).fortificationArmies(player1, armyZero, territory);
+    }*/
+
+
+    @Test
+    public void testValidateErrorArmyAllocation() {
+        mockPlayer1Territory();
+        mockArmies();
+        mockTerritory();
+        int armyZero = 0;
+        fortifyContext.setState(new FortifyAfterConquerState());
+
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            fortificar.fortificationArmies(player1, 0, territory);
+            fortifyContext.fortifyArmies(player1, armyZero, brasil); // Use fortifyContext aqui
         });
 
         assertEquals(FortifyAfterConquerState.MSG_ALLOCATE_MORE_ARMY, exception.getMessage());
     }
+
+
+
+
 
     //Criar teste para retroceder a alocação
 
