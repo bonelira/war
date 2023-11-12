@@ -6,6 +6,8 @@ package br.unicap.eng2.debuggin_squad.war.troops;
 
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
+import br.unicap.eng2.debuggin_squad.war.model.state.troops.DeliveryOfTerritoryState;
+import br.unicap.eng2.debuggin_squad.war.model.state.troops.TroopsContext;
 import br.unicap.eng2.debuggin_squad.war.service.TroopsService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -29,10 +31,12 @@ public class TroopsServiceTest {
     private Territory colombia;
 
     private TroopsService alocar;
+    private TroopsContext troopsContext;
 
     @BeforeEach
     public void setup() {
         alocar = new TroopsService();
+        troopsContext = new TroopsContext();
         conqueredTerritories = new ArrayList<Territory>();
     }
 
@@ -63,7 +67,7 @@ public class TroopsServiceTest {
     public void testValidatesTroopsSentInTheInitialTurn() {
         mockPlayers();
         int totalTerritoriosValue = 42;
-        int exercitosRecebidos = alocar.deliverArmiesInInitialTurn(players);
+        int exercitosRecebidos = alocar.deliverArmiesInTerritory(players);
 
         int expectedExercitosRecebidos = totalTerritoriosValue / players.size();
 
@@ -76,8 +80,9 @@ public class TroopsServiceTest {
         mockPlayers();mockPlayer1Territory();
         int totalTerritoriosValue = conqueredTerritories.size();
         int expectedExercitosRecebidos = totalTerritoriosValue / 2;
+        troopsContext.setState(new DeliveryOfTerritoryState());
 
-        int exercitosRecebidos = alocar.deliverArmiesByAmountOfTerritory(player1);
+        int exercitosRecebidos = troopsContext.deliverArmies(player1);
 
         assertEquals(expectedExercitosRecebidos, exercitosRecebidos);
     }
