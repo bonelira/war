@@ -36,5 +36,30 @@ public class Board {
         Territory madagascar = new Territory("Madagascar", null);
         Territory south_africa = new Territory("África do Sul", null);
 
+        // Ásia
+        Territory japan = new Territory("Japão", null);
+        Territory vietnan = new Territory("Vietnã", null);
+        Territory india = new Territory("Índia", null);
+        Territory middle_east = new Territory("Oriente Médio", null);
+        Territory aral = new Territory("Aral", null);
+        Territory omsk = new Territory("Omsk", null);
+        Territory china = new Territory("China", null);
+        Territory dudinka = new Territory("Dudinka", null);
+        Territory tchita = new Territory("Tchita", null);
+        Territory mongolia = new Territory("Mongólia", null);
+        Territory siberia = new Territory("Sibéria", null);
+        Territory vladvostok = new Territory("Vladvostok", null);
+
+        // América do Norte
+        Territory alaska = new Territory("Alasca", null);
+        Territory mackenzie = new Territory("Mackenzie", null);
+        Territory vancouver = new Territory("Vancouver", null);
+        Territory ottawa = new Territory("Otawwa", null);
+        Territory new_york = new Territory("Nova York", null);
+        Territory labrador = new Territory("Labrador", null);
+        Territory mexico = new Territory("México", null);
+        Territory california = new Territory("Califórnia", null);
+
+        
     }
 }
