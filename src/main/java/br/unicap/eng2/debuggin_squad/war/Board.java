@@ -60,6 +60,19 @@ public class Board {
         Territory mexico = new Territory("México", null);
         Territory california = new Territory("Califórnia", null);
 
+        // América do Sul
+        Territory brasil = new Territory("Brasil", null);
+        Territory peru = new Territory("Peru", null);
+        Territory argentina = new Territory("Argentina", null);
+        Territory venezuela = new Territory("Venezuela", null);
+
+        // Oceania
+        Territory australia = new Territory("Austrália", null);
+        Territory sumatra = new Territory("Sumatra", null);
+        Territory borneo = new Territory("Borneo", null);
+        Territory new_guinea = new Territory("Nova Guiné", null);
+
         
+
     }
 }
