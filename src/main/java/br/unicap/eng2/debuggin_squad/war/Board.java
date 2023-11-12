@@ -73,47 +73,52 @@ public class Board {
         Territory borneo = new Territory("Borneo", null);
         Territory new_guinea = new Territory("Nova Guiné", null);
 
-        territories.add(sweden);
-        territories.add(germany);
-        territories.add(poland);
-        territories.add(moscow);
-        territories.add(france);
-        territories.add(england);
-        territories.add(iceland);
-        territories.add(algeria);
-        territories.add(egypt);
-        territories.add(sudan);
-        territories.add(congo);
-        territories.add(madagascar);
-        territories.add(south_africa);
-        territories.add(japan);
-        territories.add(vietnan);
-        territories.add(india);
-        territories.add(middle_east);
-        territories.add(aral);
-        territories.add(omsk);
-        territories.add(china);
-        territories.add(dudinka);
-        territories.add(tchita);
-        territories.add(mongolia);
-        territories.add(siberia);
-        territories.add(vladvostok);
-        territories.add(alaska);
-        territories.add(mackenzie);
-        territories.add(vancouver);
-        territories.add(ottawa);
-        territories.add(new_york);
-        territories.add(labrador);
-        territories.add(mexico);
-        territories.add(california);
-        territories.add(brasil);
-        territories.add(peru);
-        territories.add(argentina);
-        territories.add(venezuela);
-        territories.add(australia);
-        territories.add(sumatra);
-        territories.add(borneo);
-        territories.add(new_guinea);
+        // Europa
+        territories.add(sweden); // 1
+        territories.add(germany); // 2
+        territories.add(poland); // 3
+        territories.add(moscow); // 4
+        territories.add(france); // 5
+        territories.add(england); // 6
+        territories.add(iceland); // 7
+        // Africa
+        territories.add(algeria); // 8
+        territories.add(egypt); // 9
+        territories.add(sudan); // 10
+        territories.add(congo); // 11
+        territories.add(madagascar); // 12
+        territories.add(south_africa); // 13
+        // Asia
+        territories.add(japan); // 14
+        territories.add(vietnan); // 15
+        territories.add(india); // 16
+        territories.add(middle_east); // 17
+        territories.add(aral); // 18
+        territories.add(omsk); // 19
+        territories.add(china); // 20
+        territories.add(dudinka); // 21
+        territories.add(tchita); // 22
+        territories.add(mongolia); // 23
+        territories.add(siberia); // 24
+        territories.add(vladvostok); // 25
+        // América do Norte
+        territories.add(alaska); // 26
+        territories.add(mackenzie); // 27
+        territories.add(vancouver); // 28
+        territories.add(ottawa); // 29
+        territories.add(new_york); // 30
+        territories.add(labrador); // 31
+        territories.add(mexico); // 32
+        territories.add(california); // 33
+        // América do Sul
+        territories.add(brasil); // 34
+        territories.add(peru); // 35
+        territories.add(argentina); // 36
+        territories.add(venezuela); // 37
+        territories.add(australia); // 38
+        territories.add(sumatra); // 39
+        territories.add(borneo); // 40
+        territories.add(new_guinea); // 41
 
         // TODO
         // [ ] criar os continentes e add os países.
