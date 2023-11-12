@@ -6,7 +6,7 @@ package br.unicap.eng2.debuggin_squad.war.service;
 
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
-import br.unicap.eng2.debuggin_squad.war.model.state.FortifyContext;
+import br.unicap.eng2.debuggin_squad.war.model.state.fortify.FortifyContext;
 
 public class FortifyService {
     private FortifyContext fortifyContext;
