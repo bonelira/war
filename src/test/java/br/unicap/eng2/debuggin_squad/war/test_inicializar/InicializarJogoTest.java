@@ -1,5 +1,5 @@
 /**
- * @author Abi-albom Lira <bone-lira@hotmail.com / @bonelira>
+ * @author Abi-albom Lira / @bonelira>
  */
 package br.unicap.eng2.debuggin_squad.war.test_inicializar;
 

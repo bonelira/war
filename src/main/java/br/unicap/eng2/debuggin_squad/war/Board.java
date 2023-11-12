@@ -1,9 +1,12 @@
+/**
+ * @author Abi-albom Lira / @bonelira>
+ */
+
 package br.unicap.eng2.debuggin_squad.war;
 
 import java.util.List;
 import java.util.ArrayList;
 
-import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
 
 public class Board {
