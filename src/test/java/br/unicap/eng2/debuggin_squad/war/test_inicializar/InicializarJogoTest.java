@@ -129,8 +129,14 @@ public class InicializarJogoTest {
     // // ID vai de 1 - 6.
     // // verifica se cada jogador recebeu um ID único
 
-    // // TODO
-    // // [ ] refatorar classe
+    // TODO
+    // [ ] refatorar classe
+    // [ ] Teste inicialização: Board
+    // [ ] Teste inicialização: Player
+    // [ ] Teste inicialização: Dealer
+    // [ ] Teste inicialização: RuleManager
+    // [ ] Teste inicialização: GameConfigurator
+
     // List<Player> players = configurator.getListOfPlayers();
     // String cor1 = players.get(0).getId();
     // String cor2 = players.get(1).getId();
@@ -180,6 +186,26 @@ public class InicializarJogoTest {
 
         assertNotNull(map);
 
+    }
+
+    @Test
+    public void testBoardNumberOfTerritories() {
+        Board board = new Board();
+        List<Territory> map = board.init();
+        int totalTerritories = map.size();
+
+        assertEquals(41, totalTerritories);
+    }
+
+    @Test
+    public void testBoarHasCorrectAdjacency() {
+        Board board = new Board();
+        List<Territory> map = board.init();
+
+        // Suécia --> Inglaterra
+        // se n funcionar é pq a contagem do index está errada (considerando que o
+        // método está correto)
+        assertTrue(map.get(0).IsAdjacent(map.get(5)));
     }
 
     @Test
