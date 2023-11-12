@@ -53,6 +53,18 @@ public class FortifyServiceTest {
         territory = mock(Territory.class);
         conqueredTerritories.add(territory);
     }
+
+    private void mockTerritoryAndArmy() {
+        brasil = mock(Territory.class);
+        when(brasil.getArmiesCount()).thenReturn(5);
+
+        argentina = mock(Territory.class);
+        when(argentina.getArmiesCount()).thenReturn(5);
+
+        colombia = mock(Territory.class);
+        when(colombia.getArmiesCount()).thenReturn(5);
+    }
+
     private void mockPlayer1Territory() {
         player1 = mock(Player.class);
         when(player1.getId()).thenReturn("1");
@@ -72,32 +84,22 @@ public class FortifyServiceTest {
 
     @Test
     public void testVerifyExerciseAcquisitionAndAllocation() {
-        mockPlayer1Territory();mockArmies();mockTerritory();
+        mockPlayer1Territory();mockArmies();mockTerritoryAndArmy();
 
-        fortificar.fortificationArmies(player1, simulationArmies, territory);
+        fortificar.fortificationArmies(player1, simulationArmies, brasil);
         int totalArmies = armiesList.stream().mapToInt(Armies::getArmies).sum();
 
         assertEquals(simulationArmies, totalArmies);
     }
     @Test
     public void testCheckWhetherTheArmyIsBeingAllocated() {
-        mockPlayer1Territory();mockArmies();mockTerritory();
+        mockPlayer1Territory();mockArmies();mockTerritoryAndArmy();
 
         int initialArmies = simulationArmies;
-        fortificar.fortificationArmies(player1, simulationArmies, territory);
+        fortificar.fortificationArmies(player1, simulationArmies, brasil);
 
         assertEquals(0, initialArmies - simulationArmies);
     }
-
-    /*@Test
-    public void testValidateErrorArmyAllocation() {
-        int armyZero = 0;
-
-        fortificar.fortificationArmies(player1, armyZero, territory);
-
-        verify(fortificar).fortificationArmies(player1, armyZero, territory);
-    }*/
-
 
     @Test
     public void testValidateErrorArmyAllocation() {
@@ -108,16 +110,9 @@ public class FortifyServiceTest {
         fortifyContext.setState(new FortifyAfterConquerState());
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            fortifyContext.fortifyArmies(player1, armyZero, brasil); // Use fortifyContext aqui
+            fortifyContext.fortifyArmies(player1, armyZero, brasil);
         });
 
         assertEquals(FortifyAfterConquerState.MSG_ALLOCATE_MORE_ARMY, exception.getMessage());
     }
-
-
-
-
-
-    //Criar teste para retroceder a alocação
-
 }
