@@ -7,13 +7,8 @@ package br.unicap.eng2.debuggin_squad.war.fortify;
 import br.unicap.eng2.debuggin_squad.war.controller.Armies;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
-<<<<<<< Updated upstream:src/test/java/br/unicap/eng2/debuggin_squad/war/fortify/FortifyServiceTest.java
 import br.unicap.eng2.debuggin_squad.war.model.state.fortify.FortifyAfterConquerState;
 import br.unicap.eng2.debuggin_squad.war.model.state.fortify.FortifyContext;
-=======
-import br.unicap.eng2.debuggin_squad.war.model.state.FortifyAfterConquerState;
-import br.unicap.eng2.debuggin_squad.war.model.state.FortifyContext;
->>>>>>> Stashed changes:src/test/java/br/unicap/eng2/debuggin_squad/war/FortifyServiceTest.java
 import br.unicap.eng2.debuggin_squad.war.service.FortifyService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,12 +18,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-<<<<<<< Updated upstream:src/test/java/br/unicap/eng2/debuggin_squad/war/fortify/FortifyServiceTest.java
 import static org.mockito.Mockito.*;
-=======
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;;
->>>>>>> Stashed changes:src/test/java/br/unicap/eng2/debuggin_squad/war/FortifyServiceTest.java
 
 public class FortifyServiceTest {
     private Player player1;
@@ -113,25 +103,6 @@ public class FortifyServiceTest {
         assertEquals(0, initialArmies - simulationArmies);
     }
 
-<<<<<<< Updated upstream:src/test/java/br/unicap/eng2/debuggin_squad/war/fortify/FortifyServiceTest.java
-    @Test
-    public void testValidateErrorArmyAllocation() {
-        mockPlayer1Territory();
-        mockArmies();
-        mockTerritory();
-=======
-    /*@Test
-    public void testValidateErrorArmyAllocation() {
->>>>>>> Stashed changes:src/test/java/br/unicap/eng2/debuggin_squad/war/FortifyServiceTest.java
-        int armyZero = 0;
-        fortifyContext.setState(new FortifyAfterConquerState());
-
-        fortificar.fortificationArmies(player1, armyZero, territory);
-
-        verify(fortificar).fortificationArmies(player1, armyZero, territory);
-    }*/
-
-
     @Test
     public void testValidateErrorArmyAllocation() {
         mockPlayer1Territory();
@@ -146,16 +117,4 @@ public class FortifyServiceTest {
 
         assertEquals(FortifyAfterConquerState.MSG_ALLOCATE_MORE_ARMY, exception.getMessage());
     }
-<<<<<<< Updated upstream:src/test/java/br/unicap/eng2/debuggin_squad/war/fortify/FortifyServiceTest.java
-=======
-
-
-
-
-
-
-
-    //Criar teste para retroceder a alocação
-
->>>>>>> Stashed changes:src/test/java/br/unicap/eng2/debuggin_squad/war/FortifyServiceTest.java
 }
