@@ -37,8 +37,7 @@ public class CardObjective extends Card {
     }
 
     public Object getType() {
-        // TODO Auto-generated method stub
         return null;
     }
-    
+
 }
