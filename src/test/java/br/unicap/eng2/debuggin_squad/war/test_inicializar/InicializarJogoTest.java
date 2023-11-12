@@ -27,8 +27,9 @@ import org.junit.jupiter.api.Test;
  */
 
 // import br.unicap.eng2.debuggin_squad.war.GameWar;
-//import br.unicap.eng2.debuggin_squad.war.Board;
+import br.unicap.eng2.debuggin_squad.war.Board;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
+import br.unicap.eng2.debuggin_squad.war.controller.Territory;
 import br.unicap.eng2.debuggin_squad.war.GoalCard;
 import br.unicap.eng2.debuggin_squad.war.WarGame;
 //import br.unicap.eng2.debuggin_squad.war.Dealer;
@@ -61,7 +62,7 @@ public class InicializarJogoTest {
 
     // private GameWar CurrentGame = new GameWar();
     private Player player;
-    // private Board board;
+    private Board board;
     // private GoalCard goalCard;
     // private Dealer dealer;
     // private GameRules gameRules;
@@ -102,50 +103,55 @@ public class InicializarJogoTest {
 
     }
 
+    // @Test
+    // public void testVerifyQuantityOfPlayersIsAllowed() {
+    // // verificar se a qntd de players está entre 3 - 6
+    // // quem deve possuir a qntd total desses jogadores é a classe
+    // GameConfigurator
+    // int belowMinNumberOfPlayers = 2;
+    // int aboveMaxNumberOfPlayers = 7;
+    // int numberOfPlayers = 3;
+
+    // configurator.setNumberOfPlayers(numberOfPlayers); // setNumberOfPlayers() que
+    // com o num de players na partida
+    // List<Player> players = configurator.getListOfPlayers();
+    // assertTrue(
+    // players.size() > belowMinNumberOfPlayers
+    // &&
+    // players.size() < aboveMaxNumberOfPlayers);
+    // }
+
+    // @Test
+    // public void testEachPlayerHasYourOwnID() {
+    // // Neste caso ID é a cor do player, porém ID será String* e pode mudar de
+    // acordo
+    // // com o modo de jogo
+    // // ID vai de 1 - 6.
+    // // verifica se cada jogador recebeu um ID único
+
+    // // TODO
+    // // [ ] refatorar classe
+    // List<Player> players = configurator.getListOfPlayers();
+    // String cor1 = players.get(0).getId();
+    // String cor2 = players.get(1).getId();
+    // String cor3 = players.get(2).getId();
+    // String cor4 = players.get(3).getId();
+    // String cor5 = players.get(4).getId();
+    // String cor6 = players.get(5).getId();
+
+    // assertEquals("Red", 0);
+    // assertEquals("Blue", 1);
+    // assertEquals("Green", 2);
+    // assertEquals("Yellow", 3);
+    // assertEquals("Orange", 4);
+    // assertEquals("Black", 5);
+
+    // }
+
+    // testes das inicializações:
+
     @Test
-    public void testVerifyQuantityOfPlayersIsAllowed() {
-        // verificar se a qntd de players está entre 3 - 6
-        // quem deve possuir a qntd total desses jogadores é a classe GameConfigurator
-        int belowMinNumberOfPlayers = 2;
-        int aboveMaxNumberOfPlayers = 7;
-        int numberOfPlayers = 3;
-
-        configurator.setNumberOfPlayers(numberOfPlayers); // setNumberOfPlayers() que com o num de players na partida
-        List<Player> players = configurator.getListOfPlayers();
-        assertTrue(
-                players.size() > belowMinNumberOfPlayers
-                        &&
-                        players.size() < aboveMaxNumberOfPlayers);
-    }
-
-    @Test
-    public void testEachPlayerHasYourOwnID() {
-        // Neste caso ID é a cor do player, porém ID será String* e pode mudar de acordo
-        // com o modo de jogo
-        // ID vai de 1 - 6.
-        // verifica se cada jogador recebeu um ID único
-
-        // TODO
-        // [ ] refatorar classe
-        List<Player> players = configurator.getListOfPlayers();
-        String cor1 = players.get(0).getId();
-        String cor2 = players.get(1).getId();
-        String cor3 = players.get(2).getId();
-        String cor4 = players.get(3).getId();
-        String cor5 = players.get(4).getId();
-        String cor6 = players.get(5).getId();
-
-        assertEquals("Red", 0);
-        assertEquals("Blue", 1);
-        assertEquals("Green", 2);
-        assertEquals("Yellow", 3);
-        assertEquals("Orange", 4);
-        assertEquals("Black", 5);
-
-    }
-
-    @Test
-    public void testGamePlayerInitialization() {
+    public void testPlayersInitialization() {
         WarGame game = new WarGame();
         List<Player> players = configurator.getListOfPlayers();
         Player player1 = players.get(0);
@@ -164,6 +170,15 @@ public class InicializarJogoTest {
         assertNotNull(game.getPlayer(player4));
         assertNotNull(game.getPlayer(player5));
         assertNotNull(game.getPlayer(player6));
+
+    }
+
+    @Test
+    public void testBoardInitializationIsNotNull() {
+        Board board = new Board();
+        List<Territory> map = board.init();
+
+        assertNotNull(map);
 
     }
 
