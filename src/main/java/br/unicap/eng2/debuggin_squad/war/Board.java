@@ -28,5 +28,13 @@ public class Board {
         Territory england = new Territory("Inglaterra", null);
         Territory iceland = new Territory("Islândia", null);
 
+        // África
+        Territory algeria = new Territory("Argéria", null);
+        Territory egypt = new Territory("Egito", null);
+        Territory sudan = new Territory("Sudão", null);
+        Territory congo = new Territory("Congo", null);
+        Territory madagascar = new Territory("Madagascar", null);
+        Territory south_africa = new Territory("África do Sul", null);
+
     }
 }
