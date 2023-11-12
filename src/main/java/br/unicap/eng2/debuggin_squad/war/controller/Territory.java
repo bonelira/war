@@ -38,4 +38,9 @@ public class Territory {
         adjacentTerritories.add(territory);
     }
 
+    public boolean IsAdjacent(Territory territory) {
+        boolean contains = this.adjacentTerritories.contains(territory);
+        return contains;
+    }
+
 }
