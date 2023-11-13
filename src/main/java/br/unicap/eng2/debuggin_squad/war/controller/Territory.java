@@ -14,12 +14,14 @@ public class Territory {
     private Player proprietario;
     private List<Armies> armiesList;
     private Set<Territory> adjacentTerritories;
+    private String continent;
 
-    public Territory(String nome, Player proprietario) {
+    public Territory(String nome, String continent, Player proprietario) {
         this.nome = nome;
         this.proprietario = proprietario;
         this.armiesList = new ArrayList<>();
         adjacentTerritories = new HashSet<>();
+        this.continent = continent;
     }
 
     public void addArmies(Armies armies) {
@@ -41,6 +43,10 @@ public class Territory {
     public boolean IsAdjacent(Territory territory) {
         boolean contains = this.adjacentTerritories.contains(territory);
         return contains;
+    }
+
+    public String getContinent() {
+        return continent;
     }
 
 }
