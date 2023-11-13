@@ -24,12 +24,9 @@ public class FortifyNormalState implements FortifyState {
 
     @Override
     public boolean validateFortification(Player player, int armies, Territory origin) {
-        /*List<Territory> conqueredTerritories = player.getConqueredTerritories();
-        if (!conqueredTerritories.contains(origin)) {
+        Player ownerOfTerritory = origin.getProprietario();
+        if (!ownerOfTerritory.equals(player)) {
             throw new IllegalArgumentException(MSG_TERRITORY_NOT_CONQUERED);
-        }*/
-        if (origin.getArmiesCount() <= 0) {
-            throw new IllegalArgumentException(MSG_ALLOCATE_MORE_ARMY);
         }
         return true;
     }
