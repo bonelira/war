@@ -159,7 +159,7 @@ public class InicializarJogoTest {
     @Test
     public void testPlayersInitialization() {
         WarGame game = new WarGame();
-        List<Player> players = configurator.getListOfPlayers();
+        List<Player> players = configurator.createListOfPlayers(6);
         Player player1 = players.get(0);
         Player player2 = players.get(1);
         Player player3 = players.get(2);
@@ -210,13 +210,14 @@ public class InicializarJogoTest {
 
     @Test
     public void playerHasAtLeastOneGoalCard() {
-        List<Player> players = configurator.getListOfPlayers();
-        GoalCard obj0 = players.get(0).getGoalCard();
-        GoalCard obj1 = players.get(1).getGoalCard();
-        GoalCard obj2 = players.get(2).getGoalCard();
-        GoalCard obj3 = players.get(3).getGoalCard();
-        GoalCard obj4 = players.get(4).getGoalCard();
-        GoalCard obj5 = players.get(5).getGoalCard();
+        List<Player> players = configurator.createListOfPlayers(6);
+
+        String obj0 = players.get(0).getGoalCard().getGoal();
+        String obj1 = players.get(1).getGoalCard().getGoal();
+        String obj2 = players.get(2).getGoalCard().getGoal();
+        String obj3 = players.get(3).getGoalCard().getGoal();
+        String obj4 = players.get(4).getGoalCard().getGoal();
+        String obj5 = players.get(5).getGoalCard().getGoal();
 
         assertNotNull(obj0);
         assertNotNull(obj1);
@@ -228,27 +229,21 @@ public class InicializarJogoTest {
     }
 
     @Test
-    public void test3playersHas7TerritoriesAtBegin() {
-        List<Player> players = configurator.getListOfPlayers();
+    public void test3playersHas14TerritoriesAtBegin() {
+        List<Player> players = configurator.createListOfPlayers(6);
         int territoriesPlayer0 = players.get(0).getConqueredTerritories().size();
         int territoriesPlayer1 = players.get(1).getConqueredTerritories().size();
         int territoriesPlayer2 = players.get(2).getConqueredTerritories().size();
-        int territoriesPlayer3 = players.get(3).getConqueredTerritories().size();
-        int territoriesPlayer4 = players.get(4).getConqueredTerritories().size();
-        int territoriesPlayer5 = players.get(5).getConqueredTerritories().size();
 
         assertTrue(territoriesPlayer0 == 7);
         assertTrue(territoriesPlayer1 == 7);
         assertTrue(territoriesPlayer2 == 7);
-        assertTrue(territoriesPlayer3 == 7);
-        assertTrue(territoriesPlayer4 == 7);
-        assertTrue(territoriesPlayer5 == 7);
 
     }
 
     @Test
-    public void test6playersHas14TerritoriesAtBegin() {
-        List<Player> players = configurator.getListOfPlayers();
+    public void test6playersHas7TerritoriesAtBegin() {
+        List<Player> players = configurator.createListOfPlayers(3);
         int territoriesPlayer0 = players.get(0).getConqueredTerritories().size();
         int territoriesPlayer1 = players.get(1).getConqueredTerritories().size();
         int territoriesPlayer2 = players.get(2).getConqueredTerritories().size();
@@ -267,7 +262,7 @@ public class InicializarJogoTest {
 
     @Test
     public void testTerritoryHasAtLeastOneTroop() {
-        List<Player> players = configurator.getListOfPlayers();
+        List<Player> players = configurator.createListOfPlayers(6);
         int armyInTerritoriesPlayer0 = players.get(0).getConqueredTerritories().get(0).getArmiesCount();
         int armyInTerritoriesPlayer1 = players.get(1).getConqueredTerritories().get(1).getArmiesCount();
         int armyInTerritoriesPlayer2 = players.get(2).getConqueredTerritories().get(2).getArmiesCount();
