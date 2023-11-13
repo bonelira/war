@@ -59,13 +59,17 @@ public class FortifyServiceTest {
     private void mockTerritoryAndArmy() {
         brasil = mock(Territory.class);
         when(brasil.getArmiesCount()).thenReturn(5);
+        when(brasil.getProprietario()).thenReturn(player1); 
 
         argentina = mock(Territory.class);
         when(argentina.getArmiesCount()).thenReturn(5);
+        when(argentina.getProprietario()).thenReturn(player1); 
 
         colombia = mock(Territory.class);
         when(colombia.getArmiesCount()).thenReturn(5);
+        when(colombia.getProprietario()).thenReturn(player1); 
     }
+    
     private void mockPlayer1Territory() {
         player1 = mock(Player.class);
         when(player1.getId()).thenReturn("1");
