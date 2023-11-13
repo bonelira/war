@@ -16,7 +16,10 @@ public class FortifyNormalState implements FortifyState {
     @Override
     public void fortifyArmies(Player player, int armies, Territory origin) {
         if (validateFortification(player, armies, origin)) {
-            origin.addArmies(armies);
+            while (armies > 0){
+                origin.addArmies(armies);
+                armies --;
+            }
         } else {
             throw new IllegalArgumentException(MSG_ERROR_FORTIFICATION);
         }
