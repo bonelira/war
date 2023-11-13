@@ -10,21 +10,23 @@ public class Dealer {
     private List<Territory> deckTerritories;
     private List<GoalCard> deckG;
     private List<Territory> deckEmptyTerritories;
+    private List<GoalCard> deckEmptyGoalCards;
 
-    private void shuffleTerritoryCards() {
+    public Territory shuffleTerritoryCards() { // distribuir as cartas
 
+        return null;
     }
 
-    private void shuffleGoalCards() {
-
+    public GoalCard shuffleGoalCards() { // distribuir as cartas
+        return null;
     }
 
     public void putGoalCardBackInDeck(GoalCard goalCard) {
-
+        deckEmptyGoalCards.add(goalCard);
     }
 
     public void putTerritoryCardBackInDeck(Territory territoryCard) {
-
+        deckEmptyTerritories.add(territoryCard);
     }
 
 }
