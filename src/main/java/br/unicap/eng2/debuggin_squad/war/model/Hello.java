@@ -2,12 +2,25 @@ package br.unicap.eng2.debuggin_squad.war.model;
 
 public class Hello {
 
-	static String messageImplemented() {
-		return "Hello World";
+	public void skipPlayer(){
+		if (isAlive() == false){
+			skipTurn();
+			skipReceiveCards();
+			skipReceiveTroops();
 	}
 
-	static String messageNotImplemented() {
-		throw new UnsupportedOperationException();
-		
+    public void skipTurn() {
+		this.id = id;
 	}
+
+	public void skipReceiveTroops(){
+		
+        id;
+
+    }
+
+    public void skipReceiveCards(){
+        id;
+
+    }
 }
