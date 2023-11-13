@@ -30,8 +30,6 @@ public class Board {
         Territory iceland = new Territory("Islândia", "Europe", null);
         Territory greenland = new Territory("Groelândia", "Europe", null);
 
-        // TODO add groelandia
-
         // África // territórios: 6
         Territory algeria = new Territory("Argéria", "Africa", null);
         Territory egypt = new Territory("Egito", "Africa", null);
@@ -191,11 +189,149 @@ public class Board {
         south_africa.addAdjacentTerritory(sudan);
 
         // Asia adjacências
+        japan.addAdjacentTerritory(vladvostok);
+        japan.addAdjacentTerritory(china);
+
+        vietnan.addAdjacentTerritory(india);
+        vietnan.addAdjacentTerritory(borneo);
+        vietnan.addAdjacentTerritory(china);
+
+        india.addAdjacentTerritory(vietnan);
+        india.addAdjacentTerritory(middle_east);
+        india.addAdjacentTerritory(aral);
+        india.addAdjacentTerritory(china);
+        india.addAdjacentTerritory(sumatra);
+
+        middle_east.IsAdjacent(india);
+        middle_east.IsAdjacent(moscow);
+        middle_east.IsAdjacent(poland);
+        middle_east.IsAdjacent(aral);
+
+        aral.addAdjacentTerritory(india);
+        aral.addAdjacentTerritory(middle_east);
+        aral.addAdjacentTerritory(moscow);
+        aral.addAdjacentTerritory(omsk);
+        aral.addAdjacentTerritory(china);
+
+        omsk.addAdjacentTerritory(dudinka);
+        omsk.addAdjacentTerritory(mongolia);
+        omsk.addAdjacentTerritory(china);
+        omsk.addAdjacentTerritory(aral);
+        omsk.addAdjacentTerritory(moscow);
+
+        china.addAdjacentTerritory(vietnan);
+        china.addAdjacentTerritory(india);
+        china.addAdjacentTerritory(aral);
+        china.addAdjacentTerritory(omsk);
+        china.addAdjacentTerritory(mongolia);
+        china.addAdjacentTerritory(vladvostok);
+        china.addAdjacentTerritory(tchita);
+        china.addAdjacentTerritory(japan);
+
+        dudinka.addAdjacentTerritory(omsk);
+        dudinka.addAdjacentTerritory(tchita);
+        dudinka.addAdjacentTerritory(siberia);
+        dudinka.addAdjacentTerritory(mongolia);
+
+        tchita.addAdjacentTerritory(dudinka);
+        tchita.addAdjacentTerritory(siberia);
+        tchita.addAdjacentTerritory(vladvostok);
+        tchita.addAdjacentTerritory(china);
+        tchita.addAdjacentTerritory(mongolia);
+
+        mongolia.addAdjacentTerritory(tchita);
+        mongolia.addAdjacentTerritory(dudinka);
+        mongolia.addAdjacentTerritory(omsk);
+        mongolia.addAdjacentTerritory(china);
+
+        siberia.addAdjacentTerritory(tchita);
+        siberia.addAdjacentTerritory(vladvostok);
+        siberia.addAdjacentTerritory(dudinka);
+
+        vladvostok.addAdjacentTerritory(alaska);
+        vladvostok.addAdjacentTerritory(japan);
+        vladvostok.addAdjacentTerritory(siberia);
+        vladvostok.addAdjacentTerritory(china);
+        vladvostok.addAdjacentTerritory(tchita);
+
+        // América do Norte Adjancências
+
+        alaska.addAdjacentTerritory(mackenzie);
+        alaska.addAdjacentTerritory(vancouver);
+        alaska.addAdjacentTerritory(vladvostok);
+
+        mackenzie.addAdjacentTerritory(alaska);
+        mackenzie.addAdjacentTerritory(vancouver);
+        mackenzie.addAdjacentTerritory(greenland);
+        mackenzie.addAdjacentTerritory(ottawa);
+
+        vancouver.addAdjacentTerritory(alaska);
+        vancouver.addAdjacentTerritory(mackenzie);
+        vancouver.addAdjacentTerritory(ottawa);
+        vancouver.addAdjacentTerritory(california);
+
+        california.addAdjacentTerritory(vancouver);
+        california.addAdjacentTerritory(ottawa);
+        california.addAdjacentTerritory(mexico);
+        california.addAdjacentTerritory(new_york);
+
+        ottawa.addAdjacentTerritory(vancouver);
+        ottawa.addAdjacentTerritory(mackenzie);
+        ottawa.addAdjacentTerritory(labrador);
+        ottawa.addAdjacentTerritory(new_york);
+        ottawa.addAdjacentTerritory(california);
+
+        new_york.addAdjacentTerritory(mexico);
+        new_york.addAdjacentTerritory(california);
+        new_york.addAdjacentTerritory(ottawa);
+        new_york.addAdjacentTerritory(labrador);
+
+        labrador.addAdjacentTerritory(greenland);
+        labrador.addAdjacentTerritory(new_york);
+        labrador.addAdjacentTerritory(ottawa);
+
+        mexico.addAdjacentTerritory(venezuela);
+        mexico.addAdjacentTerritory(california);
+        mexico.addAdjacentTerritory(new_york);
+
+        // América do Sul adjacências
+
+        brasil.addAdjacentTerritory(algeria);
+        brasil.addAdjacentTerritory(venezuela);
+        brasil.addAdjacentTerritory(peru);
+        brasil.addAdjacentTerritory(argentina);
+
+        peru.addAdjacentTerritory(brasil);
+        peru.addAdjacentTerritory(venezuela);
+        peru.addAdjacentTerritory(argentina);
+
+        argentina.addAdjacentTerritory(brasil);
+        argentina.addAdjacentTerritory(peru);
+
+        venezuela.addAdjacentTerritory(mexico);
+        venezuela.addAdjacentTerritory(brasil);
+        venezuela.addAdjacentTerritory(peru);
+
+        // Oceania adjacências
+
+        australia.addAdjacentTerritory(new_guinea);
+        australia.addAdjacentTerritory(borneo);
+        australia.addAdjacentTerritory(sumatra);
+
+        sumatra.addAdjacentTerritory(india);
+        sumatra.addAdjacentTerritory(australia);
+
+        borneo.addAdjacentTerritory(new_guinea);
+        borneo.addAdjacentTerritory(vietnan);
+        borneo.addAdjacentTerritory(australia);
+
+        new_guinea.addAdjacentTerritory(australia);
+        new_guinea.addAdjacentTerritory(borneo);
 
         // TODO
         // [x] criar os continentes e add os países.
         // [ ] criar um método para pegar a lista de países de cada continente
-        // [ ] criar as subjacências de cada país
+        // [x] criar as subjacências de cada país
         // [ ] refatorar 'pertencimento a continente'
 
         return territories;
