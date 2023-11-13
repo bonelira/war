@@ -8,17 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
+import br.unicap.eng2.debuggin_squad.war.controller.Territory;
 
 public class GameConfigurator {
     private List<Player> players;
+
     private int numberOfPlayers;
 
     public GameConfigurator(int numberOfPlayers) {
         this.numberOfPlayers = numberOfPlayers;
-    }
-
-    public List<Player> getListOfPlayers() {
-        return this.createListOfPlayers();
     }
 
     public void setNumberOfPlayers(int numberOfPlayers) {
@@ -29,7 +27,7 @@ public class GameConfigurator {
         return numberOfPlayers;
     }
 
-    private List<Player> createListOfPlayers() {
+    public List<Player> createListOfPlayers(int numberOfPlayers) {
         players = new ArrayList<>(); // Inicialize a lista de jogadores
 
         for (int i = 0; i < getNumbOfPlayers(); i++) {
@@ -37,6 +35,46 @@ public class GameConfigurator {
             Player player = new Player(null, null);
             players.add(player);
         }
+
+        setInitialTerritoriesForEachPlayer(numberOfPlayers);
+        return players;
+    }
+
+    private void setInitialTerritoriesForEachPlayer(int numberOfPlayers) {
+        List<Territory> nullTerritories = new ArrayList<>();
+
+        if (numberOfPlayers == 6) {
+            nullTerritories.add(null);
+            nullTerritories.add(null);
+            nullTerritories.add(null);
+            nullTerritories.add(null);
+            nullTerritories.add(null);
+            nullTerritories.add(null);
+            nullTerritories.add(null);
+        } else if (numberOfPlayers == 3) {
+            nullTerritories.add(null);
+            nullTerritories.add(null);
+            nullTerritories.add(null);
+            nullTerritories.add(null);
+            nullTerritories.add(null);
+            nullTerritories.add(null);
+            nullTerritories.add(null);
+            nullTerritories.add(null);
+            nullTerritories.add(null);
+            nullTerritories.add(null);
+            nullTerritories.add(null);
+            nullTerritories.add(null);
+            nullTerritories.add(null);
+            nullTerritories.add(null);
+        }
+
+        for (int i = 0; i < players.size(); i++) {
+            players.get(i).setConqueredTerritories(nullTerritories);
+            ;
+        }
+    }
+
+    public List<Player> getPlayers() {
         return players;
     }
 
