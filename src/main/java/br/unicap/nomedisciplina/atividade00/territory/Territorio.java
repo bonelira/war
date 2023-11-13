@@ -3,14 +3,14 @@ package br.unicap.nomedisciplina.atividade00.territory;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.unicap.nomedisciplina.atividade00.player.Jogador;
+import br.unicap.nomedisciplina.atividade00.player.Player;
 
 
 public class Territorio implements Territorys{
 
 
     private String nome;
-    private Jogador propritario;
+    private Player propritario;
     private int exercitos;
     private List<Territorio> territorios;
 
@@ -39,18 +39,18 @@ public class Territorio implements Territorys{
     }
 
 
-    public Jogador getProprietario() {
+    public Player getProprietario() {
         return propritario;
     }
 
 
 
-    public void setProprietario(Jogador proprietario) {
+    public void setProprietario(Player proprietario) {
         this.propritario = proprietario;
     }
 
 
-    public void realizarConquista (Jogador jogador, int qtdExercitos){
+    public void realizarConquista (Player jogador, int qtdExercitos){
         this.propritario = jogador;
         this.exercitos = qtdExercitos;
     }

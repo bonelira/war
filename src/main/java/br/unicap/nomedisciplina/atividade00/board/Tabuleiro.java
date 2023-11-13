@@ -5,17 +5,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import br.unicap.nomedisciplina.atividade00.player.Jogador;
+import br.unicap.nomedisciplina.atividade00.player.Player;
 import br.unicap.nomedisciplina.atividade00.territory.Territorio;
 
 
 public class Tabuleiro implements Boards{
 
     private List<Territorio> territorios;
-    private List<Jogador> jogadores;
+    private List<Player> jogadores;
 
 
-    public Tabuleiro (List<Territorio> territorios, List<Jogador> jogadores){
+    public Tabuleiro (List<Territorio> territorios, List<Player> jogadores){
         this.territorios = territorios;
         this.jogadores = jogadores;
     }
@@ -28,7 +28,7 @@ public class Tabuleiro implements Boards{
         
         int indiceJogador = 0;
         for(Territorio territorio : territoriosEmbaralhados){
-            Jogador jogadorAtual = jogadores.get(indiceJogador);
+            Player jogadorAtual = jogadores.get(indiceJogador);
             territorio.setProprietario(jogadorAtual);
             indiceJogador = (indiceJogador + 1) % jogadores.size();  
                 

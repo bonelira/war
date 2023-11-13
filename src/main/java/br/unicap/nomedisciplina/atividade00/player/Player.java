@@ -5,7 +5,7 @@ import java.util.List;
 
 import br.unicap.nomedisciplina.atividade00.territory.Territorio;
 
-public class Jogador implements Players {
+public class Player implements Players {
     
 
   
@@ -14,7 +14,7 @@ public class Jogador implements Players {
     private int qtdExercitos;
 
 
-    public Jogador (String nome){
+    public Player (String nome){
         this.nome = nome;
          this.territorios = new ArrayList<>(5);
         this.qtdExercitos = 0;
