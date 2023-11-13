@@ -27,6 +27,10 @@ public class GameConfigurator {
         return numberOfPlayers;
     }
 
+    public List<Player> getPlayers() {
+        return players;
+    }
+
     public List<Player> createListOfPlayers(int numberOfPlayers) {
         players = new ArrayList<>(); // Inicialize a lista de jogadores
 
@@ -74,8 +78,15 @@ public class GameConfigurator {
         }
     }
 
-    public List<Player> getPlayers() {
-        return players;
+    public void setGoalCards() {
+        Dealer dealer = new Dealer();
+
+        for (Player player : players) {
+            player.setGoalCard(dealer.shuffleGoalCards());
+        }
     }
+
+
+
 
 }

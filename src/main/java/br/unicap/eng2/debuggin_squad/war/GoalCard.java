@@ -4,6 +4,10 @@ public class GoalCard {
 
     private String goal;
 
+    public GoalCard(String goal) {
+        this.goal = goal;
+    }
+
     public GoalCard() {
 
     }
