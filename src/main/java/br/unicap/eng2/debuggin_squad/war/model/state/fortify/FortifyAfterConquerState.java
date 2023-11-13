@@ -24,14 +24,14 @@ public class FortifyAfterConquerState implements FortifyState {
 
     @Override
     public boolean validateFortification(Player player, int armies, Territory origin) {
-        /*List<Territory> conqueredTerritories = player.getConqueredTerritories();
-        if (!conqueredTerritories.contains(origin)) {
-            throw new IllegalArgumentException(MSG_TERRITORY_NOT_CONQUERED);
-        }*/
+        Player ownerOfTerritory = origin.getProprietario();
         if (origin.getArmiesCount() <= 0) {
             throw new IllegalArgumentException(MSG_ALLOCATE_MORE_ARMY);
         }
-        return true; // Precisa alocar ao menos 1 army após a conquista
+        else if (!ownerOfTerritory.equals(player)) {
+            throw new IllegalArgumentException(MSG_TERRITORY_NOT_CONQUERED);
+        }
+        return true;
     }
 
     @Override
