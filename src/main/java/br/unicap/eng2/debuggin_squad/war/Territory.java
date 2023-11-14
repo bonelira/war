@@ -1,41 +1,55 @@
 package br.unicap.eng2.debuggin_squad.war;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 
 // Classe temporária
 public class Territory {
-    private String name;
-    private Player owner;
-    private List<Armies> armiesList;
+    private String nome;
+    private Player proprietario;
+    private int army;
     private Set<Territory> adjacentTerritories;
 
-    public Territory(String name, Player owner) {
-        this.name = name;
-        this.owner = owner;
-        this.armiesList = new ArrayList<>();
-        this.adjacentTerritories = new HashSet<>();
+    public Territory(String nome, int army) {
+        this.nome = nome;
+        this.army = army;
+        adjacentTerritories = new HashSet<>();
     }
 
-    public void addArmies(Armies armies) {
-        armiesList.add(armies);
+    public void addArmies(int armies) {
+        army+= armies;
     }
 
-    public void removeArmies(Armies armiesToRemove) {
-        armiesList.remove(armiesToRemove);
-    }
-    public List<?> getArmies() {
-        return armiesList;
+    public void removeArmies(int armies) {
+        army-= armies;
     }
 
-    public String getName() {
-        return name;
+    public int getArmiesCount() {
+        return army;
     }
 
-    public Player getOwner() {
-        return owner;
+    public int setArmiesCount(int newArmies) {
+        return army = newArmies;
+    }
+
+    public boolean isAdjacent(Territory territoryDestination) {
+        return adjacentTerritories.contains(territoryDestination);
+    }
+
+    public boolean isNotAdjacent(Territory territoryDestination) {
+        return !isAdjacent(territoryDestination);
+    }
+
+    public Player getProprietario() {
+        return proprietario;
+    }
+
+    public void setProprietario(Player proprietario) {
+        this.proprietario = proprietario;
+    }
+
+    public boolean belongsToPlayer(Player player) {
+        return this.proprietario == player;
     }
 }
