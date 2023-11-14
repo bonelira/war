@@ -330,7 +330,7 @@ public class Board {
 
         // TODO
         // [x] criar os continentes e add os países.
-        // [ ] criar um método para pegar a lista de países de cada continente
+        // [x] criar um método para pegar a lista de países de cada continente
         // [x] criar as subjacências de cada país
         // [ ] refatorar 'pertencimento a continente'
 
