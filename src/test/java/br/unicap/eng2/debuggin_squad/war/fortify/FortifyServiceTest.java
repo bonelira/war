@@ -83,12 +83,6 @@ public class FortifyServiceTest extends Initialization {
         when(player1.getConqueredTerritories()).thenReturn(conqueredTerritories);
     }
 
-    private void mockArmies() {
-        Armies armies = mock(Armies.class);
-        when(armies.getArmies()).thenReturn(simulationArmies);
-        armiesList.add(armies);
-    }
-
     @Test
     public void testVerifyExerciseAcquisitionAndAllocation() {
         player1 = initializePlayer();
