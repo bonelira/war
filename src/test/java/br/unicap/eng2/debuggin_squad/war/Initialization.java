@@ -1,0 +1,28 @@
+package br.unicap.eng2.debuggin_squad.war;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import br.unicap.eng2.debuggin_squad.war.controller.Player;
+import br.unicap.eng2.debuggin_squad.war.controller.Territory;
+
+public class Initialization {
+    private Player player1;
+
+    private Territory brasil;
+    private Territory argentina;
+
+    private List<Territory> conqueredTerritories;
+
+        public Player initializePlayer() {
+        player1 = new Player("Bruno", "1");
+        conqueredTerritories = new ArrayList<>();
+
+        conqueredTerritories.add(brasil);
+        conqueredTerritories.add(argentina);
+
+        player1.setConqueredTerritories(conqueredTerritories);
+        return player1;
+    }
+    
+}
