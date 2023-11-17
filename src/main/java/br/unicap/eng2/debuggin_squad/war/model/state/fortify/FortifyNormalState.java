@@ -17,7 +17,7 @@ public class FortifyNormalState implements FortifyState {
     public void fortifyArmies(Player player, int armies, Territory origin) {
         if (validateFortification(player, armies, origin)) {
             while (armies > 0){
-                origin.addArmies(armies);
+                origin.addArmies(1);
                 armies --;
             }
         } else {
