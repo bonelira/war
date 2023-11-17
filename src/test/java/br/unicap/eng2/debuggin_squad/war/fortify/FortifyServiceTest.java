@@ -93,8 +93,8 @@ public class FortifyServiceTest extends Initialization {
         player1 = initializePlayer();
         territory = initializeTerritoryEmpty();
 
-        fortificar.fortificationArmies(player1, simulationArmies, brasil);
-        int totalArmies = armiesList.stream().mapToInt(Armies::getArmies).sum();
+        fortificar.fortificationArmies(player1, simulationArmies, territory);
+        int totalArmies = territory.getArmiesCount();
 
         assertEquals(simulationArmies, totalArmies);
     }
