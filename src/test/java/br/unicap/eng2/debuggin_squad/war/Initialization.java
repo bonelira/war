@@ -36,5 +36,12 @@ public class Initialization {
 
         return brasil;
     }
+
+    public Territory initializeTerritoryEmpty() {
+        argentina = new Territory("Argentina", 0);
+        argentina.setProprietario(player1);
+
+        return argentina;
+    }
     
 }
