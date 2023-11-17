@@ -19,7 +19,7 @@ public class Initialization {
         initializePlayer();
     }
 
-        public Player initializePlayer() {
+    public Player initializePlayer() {
         player1 = new Player("Bruno", "1");
         conqueredTerritories = new ArrayList<>();
 
@@ -48,5 +48,5 @@ public class Initialization {
         brasil.isAdjacent(argentina);
         return brasil;
     }
-    
+
 }
