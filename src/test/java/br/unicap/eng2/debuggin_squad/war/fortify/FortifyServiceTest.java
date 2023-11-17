@@ -25,6 +25,7 @@ public class FortifyServiceTest extends Initialization {
     private Player player1;
 
     private Territory territory;
+    private Territory adjacent;
     private List<Territory> conqueredTerritories;
     private Territory brasil;
     private Territory argentina;
@@ -114,7 +115,7 @@ public class FortifyServiceTest extends Initialization {
     public void testValidateErrorArmyAllocation() {
         player1 = initializePlayer();
         territory = initializeTerritoryEmpty();
-        adjacente = initializeAdjacents();
+        adjacent = initializeAdjacents();
         int armyZero = 0;
         fortifyContext.setState(new FortifyAfterConquerState());
 
