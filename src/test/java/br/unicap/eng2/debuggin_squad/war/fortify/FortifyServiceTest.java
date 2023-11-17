@@ -4,6 +4,7 @@
 
 package br.unicap.eng2.debuggin_squad.war.fortify;
 
+import br.unicap.eng2.debuggin_squad.war.Initialization;
 import br.unicap.eng2.debuggin_squad.war.controller.Armies;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
@@ -20,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
-public class FortifyServiceTest {
+public class FortifyServiceTest extends Initialization {
     private Player player1;
 
     private Territory territory;
