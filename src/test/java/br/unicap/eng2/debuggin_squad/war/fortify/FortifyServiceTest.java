@@ -72,16 +72,7 @@ public class FortifyServiceTest extends Initialization {
         when(colombia.getProprietario()).thenReturn(player1); 
     }
     
-    private void mockPlayer1Territory() {
-        player1 = mock(Player.class);
-        when(player1.getId()).thenReturn("1");
 
-        conqueredTerritories.add(brasil);
-        conqueredTerritories.add(argentina);
-        conqueredTerritories.add(colombia);
-
-        when(player1.getConqueredTerritories()).thenReturn(conqueredTerritories);
-    }
 
     @Test
     public void testVerifyExerciseAcquisitionAndAllocation() {
