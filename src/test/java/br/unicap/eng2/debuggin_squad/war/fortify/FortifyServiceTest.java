@@ -46,17 +46,7 @@ public class FortifyServiceTest extends Initialization {
         armiesList = new ArrayList<Armies>();
     }
 
-    private void mockTerritory() {
-        brasil = mock(Territory.class);
-        argentina = mock(Territory.class);
-        colombia = mock(Territory.class);
 
-        territory = mock(Territory.class);
-        conqueredTerritories.add(territory);
-
-        // Mock do método getArmies
-        when(territory.getArmiesCount()).thenReturn(0);
-    }
     @Test
     public void testVerifyExerciseAcquisitionAndAllocation() {
         player1 = initializePlayer();
