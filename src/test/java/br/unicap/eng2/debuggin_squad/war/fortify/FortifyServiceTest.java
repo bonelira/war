@@ -90,7 +90,8 @@ public class FortifyServiceTest extends Initialization {
 
     @Test
     public void testVerifyExerciseAcquisitionAndAllocation() {
-        mockPlayer1Territory();mockArmies();mockTerritoryAndArmy();
+        player1 = initializePlayer();
+        territory = initializeTerritoryEmpty();
 
         fortificar.fortificationArmies(player1, simulationArmies, brasil);
         int totalArmies = armiesList.stream().mapToInt(Armies::getArmies).sum();
