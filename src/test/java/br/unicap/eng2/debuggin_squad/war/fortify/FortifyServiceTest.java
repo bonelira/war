@@ -5,7 +5,6 @@
 package br.unicap.eng2.debuggin_squad.war.fortify;
 
 import br.unicap.eng2.debuggin_squad.war.Initialization;
-import br.unicap.eng2.debuggin_squad.war.controller.Armies;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
 import br.unicap.eng2.debuggin_squad.war.model.state.fortify.FortifyAfterConquerState;
@@ -14,24 +13,16 @@ import br.unicap.eng2.debuggin_squad.war.service.FortifyService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.*;
+
 
 public class FortifyServiceTest extends Initialization {
     private Player player1;
 
     private Territory territory;
     private Territory adjacent;
-    private List<Territory> conqueredTerritories;
-    private Territory brasil;
-    private Territory argentina;
-    private Territory colombia;
 
-    private List<Armies> armiesList;
     private int simulationArmies = 7;
 
     private FortifyService fortificar;
@@ -42,8 +33,6 @@ public class FortifyServiceTest extends Initialization {
     public void setup() {
         fortificar = new FortifyService();
         fortifyContext = new FortifyContext();
-        conqueredTerritories = new ArrayList<Territory>();
-        armiesList = new ArrayList<Armies>();
     }
 
 
