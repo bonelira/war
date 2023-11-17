@@ -43,5 +43,10 @@ public class Initialization {
 
         return argentina;
     }
+
+    public Territory initializeAdjacents() {
+        brasil.isAdjacent(argentina);
+        return brasil;
+    }
     
 }
