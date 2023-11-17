@@ -12,6 +12,7 @@ public class FortifyAfterConquerState implements FortifyState {
     public static final String MSG_ERROR_AFTER_FORTIFICATION = "Fortification after conquering failed.";
     public static final String MSG_TERRITORY_NOT_CONQUERED = "This territory does not belong to the player1";
     public static final String MSG_ALLOCATE_MORE_ARMY = "Need to allocate one or more exercises in the conquered territory";
+    public static final String ALLOCATE_ALL_ARMIES = "Cannot move your entire army";
 
     @Override
     public void fortifyArmies(Player player, int armies, Territory origin) {
@@ -30,6 +31,9 @@ public class FortifyAfterConquerState implements FortifyState {
         }
         else if (!ownerOfTerritory.equals(player)) {
             throw new IllegalArgumentException(MSG_TERRITORY_NOT_CONQUERED);
+        }
+        else if (origin.getArmiesCount() <= armies) {
+            throw new IllegalArgumentException(ALLOCATE_ALL_ARMIES);
         }
         return true;
     }
