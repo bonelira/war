@@ -14,6 +14,11 @@ public class Initialization {
 
     private List<Territory> conqueredTerritories;
 
+    public Initialization() {
+        initializeTerritory();
+        initializePlayer();
+    }
+
         public Player initializePlayer() {
         player1 = new Player("Bruno", "1");
         conqueredTerritories = new ArrayList<>();
