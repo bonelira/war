@@ -24,5 +24,12 @@ public class Initialization {
         player1.setConqueredTerritories(conqueredTerritories);
         return player1;
     }
+
+    public Territory initializeTerritory() {
+        brasil = new Territory("Brasil", 5);
+        brasil.setProprietario(player1);
+
+        return brasil;
+    }
     
 }
