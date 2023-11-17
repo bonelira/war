@@ -100,10 +100,11 @@ public class FortifyServiceTest extends Initialization {
 
     @Test
     public void testCheckWhetherTheArmyIsBeingAllocated() {
-        mockPlayer1Territory();mockArmies();mockTerritoryAndArmy();
+        player1 = initializePlayer();
+        territory = initializeTerritory();
 
         int initialArmies = simulationArmies;
-        fortificar.fortificationArmies(player1, simulationArmies, brasil);
+        fortificar.fortificationArmies(player1, simulationArmies, territory);
 
         assertEquals(0, initialArmies - simulationArmies);
     }
