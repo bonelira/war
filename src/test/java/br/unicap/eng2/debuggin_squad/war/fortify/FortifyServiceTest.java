@@ -72,4 +72,18 @@ public class FortifyServiceTest extends Initialization {
 
         assertEquals(FortifyAfterConquerState.MSG_ALLOCATE_MORE_ARMY, exception.getMessage());
     }
+
+    @Test
+    public void testValidateErrorAllocateAllArmies() {
+        player1 = initializePlayer();
+        territory = initializeTerritory();
+        int armyZero = 5;
+        fortifyContext.setState(new FortifyAfterConquerState());
+
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            fortifyContext.fortifyArmies(player1, armyZero, territory);
+        });
+
+        assertEquals(FortifyAfterConquerState.ALLOCATE_ALL_ARMIES, exception.getMessage());
+    }
 }
