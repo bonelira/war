@@ -5,6 +5,7 @@
 package br.unicap.eng2.debuggin_squad.war;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
@@ -12,8 +13,12 @@ import br.unicap.eng2.debuggin_squad.war.controller.Territory;
 
 public class GameConfigurator {
     private List<Player> players;
-
     private int numberOfPlayers;
+
+    public List<Player> getShufflePlayersList() {
+        Collections.shuffle(players);
+        return players;
+    }
 
     public GameConfigurator(int numberOfPlayers) {
         this.numberOfPlayers = numberOfPlayers;
@@ -85,8 +90,5 @@ public class GameConfigurator {
             player.setGoalCard(dealer.shuffleGoalCards());
         }
     }
-
-
-
 
 }
