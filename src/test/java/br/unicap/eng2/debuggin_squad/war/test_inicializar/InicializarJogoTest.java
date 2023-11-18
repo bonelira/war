@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -160,7 +161,6 @@ public class InicializarJogoTest {
     public void testPlayersInitialization() {
         WarGame game = new WarGame();
 
-
         game.start();
 
         // verificando se os players foram criados
@@ -298,5 +298,16 @@ public class InicializarJogoTest {
     // assertNotNull(armyInTerritoriesPlayer5);
 
     // }
+
+    @Test
+
+    public void isPlayerListOrderShuffle() {
+        configurator.createListOfPlayers(3);
+        List<Player> actualList = new ArrayList<>(configurator.getPlayers());
+        List<Player> expecList = configurator.getShufflePlayersList();
+
+        assertNotEquals(expecList, actualList);
+
+    }
 
 }
