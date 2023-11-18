@@ -16,12 +16,20 @@ public class GameConfigurator {
     private int numberOfPlayers;
 
     public List<Player> getShufflePlayersList() {
-        Collections.shuffle(players);
-        return players;
+        Collections.shuffle(players); // toda as variáveis que apontam para Players irão apontar para o objeto da
+                                      // memória que vai ser alterado, sendo assim n é necessário retornar a 'lista
+                                      // embaralhada' apneas chamar esse método e todas as referências a lista d e
+                                      // players serão atualizadas para a nova ordem embaralhada.
+        return players; // coloco para retornar o novo valor apenas para facilitar, talvez refatorar
+                        // para n fazer esse retorno desnecessário. Se eu chamar o método no começo da
+                        // configuração do jogo todo o resto estará embaralhado...
     }
 
     public GameConfigurator(int numberOfPlayers) {
         this.numberOfPlayers = numberOfPlayers;
+    }
+
+    public GameConfigurator() {
     }
 
     public void setNumberOfPlayers(int numberOfPlayers) {
