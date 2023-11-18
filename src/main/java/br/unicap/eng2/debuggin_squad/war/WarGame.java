@@ -1,3 +1,7 @@
+/**
+ * @author Abi-albom Lira / @bonelira>
+ */
+
 package br.unicap.eng2.debuggin_squad.war;
 
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
