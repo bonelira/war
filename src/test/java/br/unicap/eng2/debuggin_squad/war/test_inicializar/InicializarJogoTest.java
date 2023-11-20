@@ -310,4 +310,16 @@ public class InicializarJogoTest {
 
     }
 
+    @Test
+
+    public void allCurrentPlayersHaveColor() {
+
+        List<Player> players = configurator.createListOfPlayers(3);
+
+        assertNotNull(players.get(0).getId());
+        assertNotNull(players.get(1).getId());
+        assertNotNull(players.get(0).getId());
+
+    }
+
 }
