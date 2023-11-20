@@ -10,10 +10,12 @@ import java.util.List;
 
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
+import br.unicap.eng2.debuggin_squad.war.enumWar.EnumColor;
 
 public class GameConfigurator {
     private List<Player> players;
     private int numberOfPlayers;
+    private EnumColor color;
 
     public List<Player> getShufflePlayersList() {
         Collections.shuffle(players); // toda as variáveis que apontam para Players irão apontar para o objeto da
@@ -44,6 +46,15 @@ public class GameConfigurator {
         return players;
     }
 
+    public void setPlayerID() {
+        EnumColor[] cores = color.values();
+        int i = 0;
+        for (Player player : players) {
+            player.setId(cores[i].getColorName());
+            i++;
+        }
+    }
+
     public List<Player> createListOfPlayers(int numberOfPlayers) {
         players = new ArrayList<>(); // Inicialize a lista de jogadores
 
@@ -53,7 +64,9 @@ public class GameConfigurator {
             players.add(player);
         }
 
+        getShufflePlayersList();
         setInitialTerritoriesForEachPlayer(numberOfPlayers);
+        setPlayerID();
         return players;
     }
 
