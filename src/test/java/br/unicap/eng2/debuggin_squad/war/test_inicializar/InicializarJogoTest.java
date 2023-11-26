@@ -221,7 +221,10 @@ public class InicializarJogoTest {
 
     @Test
     public void test3playersHas14TerritoriesAtBegin() {
-        List<Player> players = configurator.createListOfPlayers(6);
+        game = new WarGame();
+        game.start();
+        List<Player> players = configurator.getPlayers();
+
         int territoriesPlayer0 = players.get(0).getConqueredTerritories().size();
         int territoriesPlayer1 = players.get(1).getConqueredTerritories().size();
         int territoriesPlayer2 = players.get(2).getConqueredTerritories().size();
