@@ -55,6 +55,7 @@ public class GameConfigurator {
         }
     }
 
+    // deveria ser void:
     public List<Player> createListOfPlayers(int numberOfPlayers) {
         players = new ArrayList<>(); // Inicialize a lista de jogadores
 
