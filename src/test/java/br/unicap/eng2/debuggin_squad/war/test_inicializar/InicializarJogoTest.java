@@ -133,17 +133,27 @@ public class InicializarJogoTest {
 
     @Test
     public void testPlayersInitialization() {
+
+        // Verificar se os player foram criados (3 - 6)
+        /*
+         * // TODO
+         * ESSES TESTES DEVEM SER FEITOS PELA CLASSE DE TESTES DO PLAYER:
+         * Testar se a inicialização dos Players acontece da forma correta, que seria:
+         * Player possui um nome, valor diferente de null.
+         * Player possui um Id único.
+         * Player possui uma, apenas uma, carta objetivo.
+         * Player tem uma lista de territórios entre 7 e 14 territórios
+         *
+         */
+
         WarGame game = new WarGame();
 
         game.start();
 
         // verificando se os players foram criados
-        assertNotNull(game.getPlayers());
-        assertNotNull(game.getPlayers());
-        assertNotNull(game.getPlayers());
-        assertNotNull(game.getPlayers());
-        assertNotNull(game.getPlayers());
-        assertNotNull(game.getPlayers());
+        assertNotNull(game.getPlayers()); // lista de players não está vazia(null)
+        // assertNotNull(game.getPlayers().get(0)); // para verificar individualmente se
+        // um player (.get(index do player)) foi criado.
 
     }
 
