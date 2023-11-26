@@ -104,32 +104,6 @@ public class InicializarJogoTest {
 
     }
 
-    // @Test
-    // public void testVerifyQuantityOfPlayersIsAllowed() {
-    // // verificar se a qntd de players está entre 3 - 6
-    // // quem deve possuir a qntd total desses jogadores é a classe
-    // GameConfigurator
-    // int belowMinNumberOfPlayers = 2;
-    // int aboveMaxNumberOfPlayers = 7;
-    // int numberOfPlayers = 3;
-
-    // configurator.setNumberOfPlayers(numberOfPlayers); // setNumberOfPlayers() que
-    // com o num de players na partida
-    // List<Player> players = configurator.getListOfPlayers();
-    // assertTrue(
-    // players.size() > belowMinNumberOfPlayers
-    // &&
-    // players.size() < aboveMaxNumberOfPlayers);
-    // }
-
-    // @Test
-    // public void testEachPlayerHasYourOwnID() {
-    // // Neste caso ID é a cor do player, porém ID será String* e pode mudar de
-    // acordo
-    // // com o modo de jogo
-    // // ID vai de 1 - 6.
-    // // verifica se cada jogador recebeu um ID único
-
     // TODO
     // [ ] refatorar classe
     // [ ] Teste inicialização: Board
@@ -203,7 +177,7 @@ public class InicializarJogoTest {
     }
 
     @Test
-    public void playerHasAtLeastOneGoalCard() {
+    public void testPlayerHasAtLeastOneGoalCard() {
         List<Player> players = configurator.createListOfPlayers(6);
 
         GoalCard goal1 = new GoalCard("Correr");
@@ -272,6 +246,28 @@ public class InicializarJogoTest {
 
     }
 
+    @Test
+
+    public void testIsPlayerListOrderShuffle() {
+        configurator.createListOfPlayers(3);
+        List<Player> actualList = new ArrayList<>(configurator.getPlayers());
+        List<Player> expecList = configurator.getShufflePlayersList();
+
+        assertNotEquals(expecList, actualList);
+
+    }
+
+    @Test
+
+    public void testAllCurrentPlayersHaveColor() {
+
+        List<Player> players = configurator.createListOfPlayers(3);
+
+        assertNotNull(players.get(0).getId());
+        assertNotNull(players.get(1).getId());
+        assertNotNull(players.get(0).getId());
+
+    }
     // Deprecated
 
     // @Test
@@ -299,27 +295,30 @@ public class InicializarJogoTest {
 
     // }
 
-    @Test
+    // @Test
+    // public void testVerifyQuantityOfPlayersIsAllowed() {
+    // // verificar se a qntd de players está entre 3 - 6
+    // // quem deve possuir a qntd total desses jogadores é a classe
+    // GameConfigurator
+    // int belowMinNumberOfPlayers = 2;
+    // int aboveMaxNumberOfPlayers = 7;
+    // int numberOfPlayers = 3;
+    // configurator.setNumberOfPlayers(numberOfPlayers); // setNumberOfPlayers() que
+    // com o num de players na partida
+    // List<Player> players = configurator.getListOfPlayers();
+    // assertTrue(
+    // players.size() > belowMinNumberOfPlayers
+    // &&
+    // players.size() < aboveMaxNumberOfPlayers);
+    // }
 
-    public void isPlayerListOrderShuffle() {
-        configurator.createListOfPlayers(3);
-        List<Player> actualList = new ArrayList<>(configurator.getPlayers());
-        List<Player> expecList = configurator.getShufflePlayersList();
-
-        assertNotEquals(expecList, actualList);
-
-    }
-
-    @Test
-
-    public void allCurrentPlayersHaveColor() {
-
-        List<Player> players = configurator.createListOfPlayers(3);
-
-        assertNotNull(players.get(0).getId());
-        assertNotNull(players.get(1).getId());
-        assertNotNull(players.get(0).getId());
-
-    }
+    // @Test
+    // public void testEachPlayerHasYourOwnID() {
+    // // Neste caso ID é a cor do player, porém ID será String* e pode mudar de
+    // acordo
+    // // com o modo de jogo
+    // // ID vai de 1 - 6.
+    // // verifica se cada jogador recebeu um ID único
+    // }
 
 }
