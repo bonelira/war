@@ -135,11 +135,11 @@ public class Board {
         poland.addAdjacentTerritory(moscow);
         poland.addAdjacentTerritory(egypt);
 
-        moscow.IsAdjacent(sweden);
-        moscow.IsAdjacent(omsk);
-        moscow.IsAdjacent(aral);
-        moscow.IsAdjacent(poland);
-        moscow.IsAdjacent(middle_east);
+        moscow.addAdjacentTerritory(sweden);
+        moscow.addAdjacentTerritory(omsk);
+        moscow.addAdjacentTerritory(aral);
+        moscow.addAdjacentTerritory(poland);
+        moscow.addAdjacentTerritory(middle_east);
 
         france.addAdjacentTerritory(england);
         france.addAdjacentTerritory(algeria);
@@ -202,10 +202,10 @@ public class Board {
         india.addAdjacentTerritory(china);
         india.addAdjacentTerritory(sumatra);
 
-        middle_east.IsAdjacent(india);
-        middle_east.IsAdjacent(moscow);
-        middle_east.IsAdjacent(poland);
-        middle_east.IsAdjacent(aral);
+        middle_east.addAdjacentTerritory(india);
+        middle_east.addAdjacentTerritory(moscow);
+        middle_east.addAdjacentTerritory(poland);
+        middle_east.addAdjacentTerritory(aral);
 
         aral.addAdjacentTerritory(india);
         aral.addAdjacentTerritory(middle_east);
