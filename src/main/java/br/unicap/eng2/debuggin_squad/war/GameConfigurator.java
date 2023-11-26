@@ -13,7 +13,7 @@ import br.unicap.eng2.debuggin_squad.war.controller.Territory;
 import br.unicap.eng2.debuggin_squad.war.enumWar.EnumColor;
 
 public class GameConfigurator {
-    private List<Player> players;
+    private static List<Player> players;
     private int numberOfPlayers;
     private EnumColor color;
 

@@ -192,7 +192,9 @@ public class InicializarJogoTest {
 
     @Test
     public void testPlayerHasAtLeastOneGoalCard() {
-        List<Player> players = configurator.createListOfPlayers(6);
+        game = new WarGame();
+        game.start();
+        List<Player> players = configurator.getPlayers();
 
         GoalCard goal1 = new GoalCard("Correr");
         GoalCard goal2 = new GoalCard("Correr");
@@ -208,19 +210,12 @@ public class InicializarJogoTest {
         players.get(4).setGoalCard(goal5);
         players.get(5).setGoalCard(goal6);
 
-        GoalCard obj0 = players.get(0).getGoalCard();
-        GoalCard obj1 = players.get(1).getGoalCard();
-        GoalCard obj2 = players.get(2).getGoalCard();
-        GoalCard obj3 = players.get(3).getGoalCard();
-        GoalCard obj4 = players.get(4).getGoalCard();
-        GoalCard obj5 = players.get(5).getGoalCard();
-
-        assertNotNull(obj0);
-        assertNotNull(obj1);
-        assertNotNull(obj2);
-        assertNotNull(obj3);
-        assertNotNull(obj4);
-        assertNotNull(obj5);
+        assertNotNull(players.get(0).getGoalCard());
+        assertNotNull(players.get(1).getGoalCard());
+        assertNotNull(players.get(2).getGoalCard());
+        assertNotNull(players.get(3).getGoalCard());
+        assertNotNull(players.get(4).getGoalCard());
+        assertNotNull(players.get(5).getGoalCard());
 
     }
 
