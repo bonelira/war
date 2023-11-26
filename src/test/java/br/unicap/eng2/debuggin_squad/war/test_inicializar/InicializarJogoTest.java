@@ -215,16 +215,12 @@ public class InicializarJogoTest {
         GoalCard obj4 = players.get(4).getGoalCard();
         GoalCard obj5 = players.get(5).getGoalCard();
 
-        String times = "um pokito mais";
-
         assertNotNull(obj0);
         assertNotNull(obj1);
         assertNotNull(obj2);
         assertNotNull(obj3);
         assertNotNull(obj4);
         assertNotNull(obj5);
-
-        assertNotNull(times);
 
     }
 
