@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
 
 public class Board {
-    private List<Territory> territories;
+    private static List<Territory> territories;
 
     public Board() {
         this.territories = new ArrayList<>();
@@ -75,14 +75,14 @@ public class Board {
         Territory new_guinea = new Territory("Nova Guiné", "Oceania", null);
 
         // Europa
-        territories.add(sweden); // 1
-        territories.add(germany); // 2
-        territories.add(poland); // 3
-        territories.add(moscow); // 4
-        territories.add(france); // 5
-        territories.add(england); // 6
-        territories.add(iceland); // 7
-        territories.add(greenland);
+        this.territories.add(sweden); // 1
+        this.territories.add(germany); // 2
+        this.territories.add(poland); // 3
+        this.territories.add(moscow); // 4
+        this.territories.add(france); // 5
+        this.territories.add(england); // 6
+        this.territories.add(iceland); // 7
+        this.territories.add(greenland);
         // Africa
         territories.add(algeria); // 8
         territories.add(egypt); // 9
