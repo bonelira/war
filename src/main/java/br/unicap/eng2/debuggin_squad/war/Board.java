@@ -346,12 +346,11 @@ public class Board {
         List<Territory> allCountries = new ArrayList<>();
 
         for (Territory territory : territories) {
-            int i = 0;
-            String actualContinent = territories.get(i).getContinent();
+            String actualContinent = territory.getContinent();
             if (actualContinent.equals(continentName)) {
-                allCountries.add(territories.get(i));
+                allCountries.add(territory);
             }
-            i++;
+            
         }
         return allCountries;
     }
