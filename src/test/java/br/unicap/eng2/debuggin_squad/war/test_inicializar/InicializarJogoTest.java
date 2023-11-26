@@ -179,14 +179,15 @@ public class InicializarJogoTest {
 
     @Test
     public void testBoarHasCorrectAdjacency() {
-        Board board = new Board();
-        board.init();
+        board = new Board();
+        game = new WarGame();
+        game.start();
         List<Territory> map = board.getTerritories();
 
         // Suécia --> Inglaterra
         // se n funcionar é pq a contagem do index está errada (considerando que o
         // método está correto)
-        assertTrue(map.get(0).IsAdjacent(map.get(5)));
+        assertTrue(map.get(11).IsAdjacent(map.get(8)));
     }
 
     @Test
