@@ -75,14 +75,14 @@ public class Board {
         Territory new_guinea = new Territory("Nova Guiné", "Oceania", null);
 
         // Europa
-        this.territories.add(sweden); // 1
-        this.territories.add(germany); // 2
-        this.territories.add(poland); // 3
-        this.territories.add(moscow); // 4
-        this.territories.add(france); // 5
-        this.territories.add(england); // 6
-        this.territories.add(iceland); // 7
-        this.territories.add(greenland);
+        this.territories.add(sweden); // 0
+        this.territories.add(germany); // 1
+        this.territories.add(poland); // 2
+        this.territories.add(moscow); // 3
+        this.territories.add(france); // 4
+        this.territories.add(england); // 5
+        this.territories.add(iceland); // 6
+        this.territories.add(greenland); // 7
         // Africa
         territories.add(algeria); // 8
         territories.add(egypt); // 9
@@ -350,7 +350,7 @@ public class Board {
             if (actualContinent.equals(continentName)) {
                 allCountries.add(territory);
             }
-            
+
         }
         return allCountries;
     }
