@@ -64,6 +64,7 @@ public class InicializarJogoTest {
     // private GameWar CurrentGame = new GameWar();
     private Player player;
     private Board board;
+    private WarGame game;
     // private GoalCard goalCard;
     // private Dealer dealer;
     // private GameRules gameRules;
@@ -146,7 +147,7 @@ public class InicializarJogoTest {
          *
          */
 
-        WarGame game = new WarGame();
+        game = new WarGame();
 
         game.start();
 
@@ -159,9 +160,11 @@ public class InicializarJogoTest {
 
     @Test
     public void testBoardInitializationIsNotNull() {
-        Board board = new Board();
-        List<Territory> map = board.init();
+        game = new WarGame();
+        board = new Board();
+        game.start();
 
+        List<Territory> map = board.getTerritories();
         assertNotNull(map);
 
     }
@@ -169,7 +172,8 @@ public class InicializarJogoTest {
     @Test
     public void testBoardNumberOfTerritories() {
         Board board = new Board();
-        List<Territory> map = board.init();
+        board.init();
+        List<Territory> map = board.getTerritories();
         int totalTerritories = map.size();
 
         assertEquals(42, totalTerritories);
@@ -178,7 +182,8 @@ public class InicializarJogoTest {
     @Test
     public void testBoarHasCorrectAdjacency() {
         Board board = new Board();
-        List<Territory> map = board.init();
+        board.init();
+        List<Territory> map = board.getTerritories();
 
         // Suécia --> Inglaterra
         // se n funcionar é pq a contagem do index está errada (considerando que o
