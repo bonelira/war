@@ -160,8 +160,8 @@ public class InicializarJogoTest {
 
     @Test
     public void testBoardInitializationIsNotNull() {
-        game = new WarGame();
         board = new Board();
+        game = new WarGame();
         game.start();
 
         List<Territory> map = board.getTerritories();
@@ -171,12 +171,10 @@ public class InicializarJogoTest {
 
     @Test
     public void testBoardNumberOfTerritories() {
-        Board board = new Board();
-        board.init();
-        List<Territory> map = board.getTerritories();
-        int totalTerritories = map.size();
-
-        assertEquals(42, totalTerritories);
+        board = new Board();
+        game = new WarGame();
+        game.start();
+        assertEquals(42, board.getTerritories().size());
     }
 
     @Test
