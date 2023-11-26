@@ -23,7 +23,7 @@ public class WarGame {
         this.players = players;
     }
 
-    public void start() {
+    public void start() { // método principal para criação do jogo.
         players = game.createListOfPlayers(6);
     }
 
