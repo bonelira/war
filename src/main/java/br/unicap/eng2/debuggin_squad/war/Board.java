@@ -16,7 +16,7 @@ public class Board {
         this.territories = new ArrayList<>();
     }
 
-    public List<Territory> init() {
+    public void init() {
 
         // Criando territórios
 
@@ -334,8 +334,12 @@ public class Board {
         // [x] criar as subjacências de cada país
         // [ ] refatorar 'pertencimento a continente'
 
-        return territories;
+        // return territories;
 
+    }
+
+    public List<Territory> getTerritories() {
+        return this.territories;
     }
 
     public List<Territory> getContinentCountriesList(String continentName) {
