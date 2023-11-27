@@ -281,35 +281,41 @@ public class InicializarJogoTest {
 
     // @Test
     // public void testTerritoryHasAtLeastOneTroopAtGamesBegin() {
-    //     board = new Board();
-    //     game = new WarGame();
-    //     game.start();
-    //     List<Territory> territories = board.getTerritories();
+    // board = new Board();
+    // game = new WarGame();
+    // game.start();
+    // List<Territory> territories = board.getTerritories();
 
-    //     int actual = territories.get(35).getArmiesCount();
-    //     assertEquals(1, actual);
+    // int actual = territories.get(35).getArmiesCount();
+    // assertEquals(1, actual);
 
     // }
 
-    // @Test
-    // public void testVerifyQuantityOfPlayersIsAllowed() {
-    // // verificar se a qntd de players está entre 3 - 6
-    // // quem deve possuir a qntd total desses jogadores é a classe
-    // GameConfigurator
-    // int belowMinNumberOfPlayers = 2;
-    // int aboveMaxNumberOfPlayers = 7;
-    // int numberOfPlayers = 3;
-    // configurator.setNumberOfPlayers(numberOfPlayers); // setNumberOfPlayers() que
-    // com o num de players na partida
-    // List<Player> players = configurator.getListOfPlayers();
-    // assertTrue(
-    // players.size() > belowMinNumberOfPlayers
-    // &&
-    // players.size() < aboveMaxNumberOfPlayers);
-    // }
+    @Test
+    public void testVerifyQuantityOfPlayersIsAllowed() {
+        // // verificar se a qntd de players está entre 3 - 6
+        // // quem deve possuir a qntd total desses jogadores é a classe
+        // GameConfigurator
+        // int belowMinNumberOfPlayers = 2;
+        // int aboveMaxNumberOfPlayers = 7;
+        // int numberOfPlayers = 3;
+        // configurator.setNumberOfPlayers(numberOfPlayers); // setNumberOfPlayers() que
+        // com o num de players na partida
+        // List<Player> players = configurator.getListOfPlayers();
+        // assertTrue(
+        // players.size() > belowMinNumberOfPlayers
+        // &&
+        // players.size() < aboveMaxNumberOfPlayers);
+        game = new WarGame();
+        game.start();
+        int numbOfPlayers = configurator.getPlayers().size();
+
+        assertTrue(numbOfPlayers < 7 && numbOfPlayers > 2);
+
+    }
 
     // @Test
-    // public void testEachPlayerHasYourOwnID() {
+    // public void testEachPlayerHasUnicID() {
     // // Neste caso ID é a cor do player, porém ID será String* e pode mudar de
     // acordo
     // // com o modo de jogo
