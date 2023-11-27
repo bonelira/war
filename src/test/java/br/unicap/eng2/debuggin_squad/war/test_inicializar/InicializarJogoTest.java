@@ -278,30 +278,16 @@ public class InicializarJogoTest {
         assertNotNull(players.get(0).getId());
 
     }
-    // Deprecated
 
     // @Test
-    // public void testTerritoryHasAtLeastOneTroop() {
-    // List<Player> players = configurator.createListOfPlayers(6);
-    // int armyInTerritoriesPlayer0 =
-    // players.get(0).getConqueredTerritories().get(0).getArmiesCount();
-    // int armyInTerritoriesPlayer1 =
-    // players.get(1).getConqueredTerritories().get(0).getArmiesCount();
-    // int armyInTerritoriesPlayer2 =
-    // players.get(2).getConqueredTerritories().get(0).getArmiesCount();
-    // int armyInTerritoriesPlayer3 =
-    // players.get(3).getConqueredTerritories().get(0).getArmiesCount();
-    // int armyInTerritoriesPlayer4 =
-    // players.get(4).getConqueredTerritories().get(0).getArmiesCount();
-    // int armyInTerritoriesPlayer5 =
-    // players.get(5).getConqueredTerritories().get(0).getArmiesCount();
+    // public void testTerritoryHasAtLeastOneTroopAtGamesBegin() {
+    //     board = new Board();
+    //     game = new WarGame();
+    //     game.start();
+    //     List<Territory> territories = board.getTerritories();
 
-    // assertNotNull(armyInTerritoriesPlayer0);
-    // assertNotNull(armyInTerritoriesPlayer1);
-    // assertNotNull(armyInTerritoriesPlayer2);
-    // assertNotNull(armyInTerritoriesPlayer3);
-    // assertNotNull(armyInTerritoriesPlayer4);
-    // assertNotNull(armyInTerritoriesPlayer5);
+    //     int actual = territories.get(35).getArmiesCount();
+    //     assertEquals(1, actual);
 
     // }
 
