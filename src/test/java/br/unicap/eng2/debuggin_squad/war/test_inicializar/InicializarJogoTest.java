@@ -269,8 +269,9 @@ public class InicializarJogoTest {
     @Test
 
     public void testAllCurrentPlayersHaveColor() {
-
-        List<Player> players = configurator.createListOfPlayers(3);
+        game = new WarGame();
+        game.start();
+        List<Player> players = configurator.getPlayers();
 
         assertNotNull(players.get(0).getId());
         assertNotNull(players.get(1).getId());
