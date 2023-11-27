@@ -257,7 +257,8 @@ public class InicializarJogoTest {
     @Test
 
     public void testIsPlayerListOrderShuffle() {
-        configurator.createListOfPlayers(3);
+        game = new WarGame();
+        game.start();
         List<Player> actualList = new ArrayList<>(configurator.getPlayers());
         List<Player> expecList = configurator.getShufflePlayersList();
 
