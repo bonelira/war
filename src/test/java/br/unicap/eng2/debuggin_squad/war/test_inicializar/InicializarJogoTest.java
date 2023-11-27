@@ -237,7 +237,9 @@ public class InicializarJogoTest {
 
     @Test
     public void test6playersHas7TerritoriesAtBegin() {
-        List<Player> players = configurator.createListOfPlayers(3);
+        game = new WarGame();
+        game.start();
+        List<Player> players = configurator.getPlayers();
         int territoriesPlayer0 = players.get(0).getConqueredTerritories().size();
         int territoriesPlayer1 = players.get(1).getConqueredTerritories().size();
         int territoriesPlayer2 = players.get(2).getConqueredTerritories().size();
@@ -245,12 +247,12 @@ public class InicializarJogoTest {
         int territoriesPlayer4 = players.get(4).getConqueredTerritories().size();
         int territoriesPlayer5 = players.get(5).getConqueredTerritories().size();
 
-        assertTrue(territoriesPlayer0 == 14);
-        assertTrue(territoriesPlayer1 == 14);
-        assertTrue(territoriesPlayer2 == 14);
-        assertTrue(territoriesPlayer3 == 14);
-        assertTrue(territoriesPlayer4 == 14);
-        assertTrue(territoriesPlayer5 == 14);
+        assertTrue(territoriesPlayer0 == 7);
+        assertTrue(territoriesPlayer1 == 7);
+        assertTrue(territoriesPlayer2 == 7);
+        assertTrue(territoriesPlayer3 == 7);
+        assertTrue(territoriesPlayer4 == 7);
+        assertTrue(territoriesPlayer5 == 7);
 
     }
 
