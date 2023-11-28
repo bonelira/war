@@ -15,11 +15,6 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-
 public class RelocationServiceTest {
     private Player player1;
 
@@ -39,36 +34,7 @@ public class RelocationServiceTest {
         conqueredTerritories = new ArrayList<Territory>();
     }
 
-    private void mockPlayer1Territory() {
-        player1 = mock(Player.class);
-        when(player1.getId()).thenReturn("1");
 
-        conqueredTerritories.add(brasil);
-        conqueredTerritories.add(argentina);
-        conqueredTerritories.add(afeganistao);
-
-        when(player1.getConqueredTerritories()).thenReturn(conqueredTerritories);
-    }
-
-    private void mockTerritoryAndArmy() {
-        brasil = mock(Territory.class);
-        when(brasil.getArmiesCount()).thenReturn(5);
-
-        argentina = mock(Territory.class);
-        when(argentina.getArmiesCount()).thenReturn(5);
-
-        afeganistao = mock(Territory.class);
-        when(afeganistao.getArmiesCount()).thenReturn(5);
-
-        uruguai = mock(Territory.class);
-        when(uruguai.getArmiesCount()).thenReturn(1);
-    }
-
-    private void mockAdjacents() {
-        when(brasil.isAdjacent(argentina)).thenReturn(true);
-        when(brasil.isAdjacent(uruguai)).thenReturn(true);
-        when(brasil.isAdjacent(afeganistao)).thenReturn(false);
-    }
 
     @Test
     public void testValidRelocation() {
