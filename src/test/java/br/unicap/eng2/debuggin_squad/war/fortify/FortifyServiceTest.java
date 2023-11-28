@@ -50,7 +50,7 @@ public class FortifyServiceTest extends Initialization {
     @Test
     public void testCheckWhetherTheArmyIsBeingAllocated() {
         player1 = initializePlayer();
-        territory = initializeTerritory();
+        territory = initializeTerritoryBrasil();
 
         int initialArmies = simulationArmies;
         fortificar.fortificationArmies(player1, simulationArmies, territory);
@@ -62,7 +62,7 @@ public class FortifyServiceTest extends Initialization {
     public void testValidateErrorArmyAllocation() {
         player1 = initializePlayer();
         territory = initializeTerritoryEmpty();
-        adjacent = initializeAdjacents();
+        initializeAdjacents();
         int armyZero = 0;
         fortifyContext.setState(new FortifyAfterConquerState());
 
@@ -76,7 +76,7 @@ public class FortifyServiceTest extends Initialization {
     @Test
     public void testValidateErrorAllocateAllArmies() {
         player1 = initializePlayer();
-        territory = initializeTerritory();
+        territory = initializeTerritoryBrasil();
         int armyZero = 5;
         fortifyContext.setState(new FortifyAfterConquerState());
 
