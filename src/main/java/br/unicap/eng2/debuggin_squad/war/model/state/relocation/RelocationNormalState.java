@@ -4,8 +4,6 @@ package br.unicap.eng2.debuggin_squad.war.model.state.relocation;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
 
-import java.util.List;
-
 public class RelocationNormalState implements RelocationState{
     private RelocationState currentState;
     public static final String MSG_ERROR_RELOCATION = "Relocation failed.";
@@ -17,8 +15,11 @@ public class RelocationNormalState implements RelocationState{
     @Override
     public void relocateTroops(Player player, Territory origin, Territory destination, int armies) {
         if (validateRelocate(player, origin, destination, armies)) {
-            origin.removeArmies(armies);
-            destination.addArmies(armies);
+            while (armies > 0){
+                origin.addArmies(1);
+                origin.removeArmies(1);
+                armies --;
+            }
         }else {
             throw new IllegalArgumentException(MSG_ERROR_RELOCATION);
         }
@@ -26,13 +27,16 @@ public class RelocationNormalState implements RelocationState{
 
     @Override
     public boolean validateRelocate(Player player, Territory origin, Territory destination, int armies) {
-        List<Territory> conqueredTerritories = player.getConqueredTerritories();
-        if (!conqueredTerritories.contains(origin) || !conqueredTerritories.contains(destination)) {
+        Player ownerOfTerritory = origin.getProprietario();
+
+        if (!ownerOfTerritory.equals(player)) {
             throw new IllegalArgumentException(MSG_TERRITORY_NOT_CONQUERED);
         }
-        if (!origin.isAdjacent(destination)) {
+
+        if (origin.isAdjacent(destination)) {
             throw new IllegalArgumentException(MSG_TERRITORY_NOT_ADJACENT);
         }
+
         if (origin.getArmiesCount() <= 1) {
             throw new IllegalArgumentException(MSG_TERRITORY_ONE_ARMY);
         }
