@@ -15,7 +15,8 @@ public class Initialization {
     private List<Territory> conqueredTerritories;
 
     public Initialization() {
-        initializeTerritory();
+        initializeTerritoryBrasil();
+        initializeTerritoryArgentina();
         initializePlayer();
     }
 
@@ -30,11 +31,18 @@ public class Initialization {
         return player1;
     }
 
-    public Territory initializeTerritory() {
+    public Territory initializeTerritoryBrasil() {
         brasil = new Territory("Brasil", 5);
         brasil.setProprietario(player1);
 
         return brasil;
+    }
+
+    public Territory initializeTerritoryArgentina() {
+        argentina = new Territory("Argentina", 5);
+        argentina.setProprietario(player1);
+
+        return argentina;
     }
 
     public Territory initializeTerritoryEmpty() {
@@ -44,9 +52,11 @@ public class Initialization {
         return argentina;
     }
 
-    public Territory initializeAdjacents() {
+    public void initializeAdjacents() {
+        brasil = initializeTerritoryBrasil();
+        argentina = initializeTerritoryArgentina();
+
         brasil.isAdjacent(argentina);
-        return brasil;
     }
 
 }
