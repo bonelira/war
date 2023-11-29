@@ -59,6 +59,4 @@ public class Territory {
     public boolean belongsToPlayer(Player player) {
         return this.proprietario == player;
     }
-
-    
 }

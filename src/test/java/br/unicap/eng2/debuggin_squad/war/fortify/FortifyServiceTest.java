@@ -16,7 +16,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-
 public class FortifyServiceTest extends Initialization {
     private Player player1;
 
@@ -34,7 +33,6 @@ public class FortifyServiceTest extends Initialization {
         fortificar = new FortifyService();
         fortifyContext = new FortifyContext();
     }
-
 
     @Test
     public void testVerifyExerciseAcquisitionAndAllocation() {

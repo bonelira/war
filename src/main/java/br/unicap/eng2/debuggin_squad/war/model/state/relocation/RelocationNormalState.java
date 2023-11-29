@@ -4,7 +4,6 @@
 
 package br.unicap.eng2.debuggin_squad.war.model.state.relocation;
 
-
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
 
@@ -14,7 +13,6 @@ public class RelocationNormalState implements RelocationState{
     public static final String MSG_TERRITORY_NOT_ADJACENT = "This territory is not adjacent";
     public static final String MSG_TERRITORY_NOT_CONQUERED = "This territory does not belong to the player";
     public static final String MSG_TERRITORY_ONE_ARMY = "You cannot relocate armies if there is only 1 army in the home territory";
-
 
     @Override
     public void relocateTroops(Player player, Territory origin, Territory destination, int armies) {
@@ -44,7 +42,6 @@ public class RelocationNormalState implements RelocationState{
         }
         return true;
     }
-
 
     @Override
     public void setState(RelocationState state) {this.currentState = state;}
