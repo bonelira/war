@@ -14,10 +14,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RelocationServiceTest extends Initialization {
     private Player player1;
+    private Player player2;
+
     private Territory territory;
     private Territory territory2;
-    private Territory adjacent;
-    private Territory armies;
 
     private RelocationService realocar;
     private RelocationContext relocationContext;
@@ -46,11 +46,12 @@ public class RelocationServiceTest extends Initialization {
     public void testValidateErrorTerritoryNotAdjacent() {
         player1 = initializePlayer();
         territory = initializeTerritoryBrasil();
+        territory2 = initializeTerritoryEmpty();
         initializeAdjacents();
         int armiesTransferido = 4;
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            realocar.relocationTroops(player1, territory, adjacent, armiesTransferido);
+            realocar.relocationTroops(player1, territory, territory2, armiesTransferido);
         });
 
         assertEquals(RelocationNormalState.MSG_TERRITORY_NOT_ADJACENT, exception.getMessage());
@@ -59,12 +60,14 @@ public class RelocationServiceTest extends Initialization {
     @Test
     public void testValidateErrorTerritoryNotConquered() {
         player1 = initializePlayer();
+        player2 = initializePlayer2();
         territory = initializeTerritoryBrasil();
-        territory2 = initializeTerritoryArgentina();
+        territory2 = initializeTerritoryParaguai();
+        initializeAdjacents();
         int armiesTransferido = 4;
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            realocar.relocationTroops(player1, territory, territory2, armiesTransferido);
+            realocar.relocationTroops(player2, territory, territory2, armiesTransferido);
         });
 
         assertEquals(RelocationNormalState.MSG_TERRITORY_NOT_CONQUERED, exception.getMessage());
