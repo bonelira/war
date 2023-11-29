@@ -35,6 +35,11 @@ public class Territory {
         return army = newArmies;
     }
 
+    public void addAdjacentTerritory(Territory adjacentTerritory) {
+        adjacentTerritories.add(adjacentTerritory);
+        adjacentTerritory.adjacentTerritories.add(this);
+    }
+
     public boolean isAdjacent(Territory territoryDestination) {
         return adjacentTerritories.contains(territoryDestination);
     }
