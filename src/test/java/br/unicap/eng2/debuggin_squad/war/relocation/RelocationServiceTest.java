@@ -63,12 +63,12 @@ public class RelocationServiceTest extends Initialization {
     @Test
     public void testValidateErrorTerritoryNotConquered() {
         player1 = initializePlayer();
-        territory = initializeTerritoryBrasil();
-        initializeAdjacents();
+        territory = initializeTerritoryArgentina();
+        territory2 = initializeTerritoryParaguai();
         int armiesTransferido = 4;
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            realocar.relocationTroops(player2, territory, territory2, armiesTransferido);
+            realocar.relocationTroops(player1, territory, territory2, armiesTransferido);
         });
 
         assertEquals(RelocationNormalState.MSG_TERRITORY_NOT_CONQUERED, exception.getMessage());
