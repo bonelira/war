@@ -1,3 +1,7 @@
+/**
+ * @author Bruno Iraê <brunoirae@gmail.com / @brunoirae>
+ */
+
 package br.unicap.eng2.debuggin_squad.war.relocation;
 
 import br.unicap.eng2.debuggin_squad.war.Initialization;

@@ -1,3 +1,7 @@
+/**
+ * @author Bruno Iraê <brunoirae@gmail.com / @brunoirae>
+ */
+
 package br.unicap.eng2.debuggin_squad.war.model.state.troops;
 
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
