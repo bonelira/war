@@ -49,9 +49,10 @@ public class RelocationServiceTest extends Initialization {
         player1 = initializePlayer();
         territory = initializeTerritoryBrasil();
         territory2 = initializeTerritoryEmpty();
-        initializeAdjacents();
         int armiesTransferido = 4;
 
+        player1.getConqueredTerritories().add(territory);
+        player1.getConqueredTerritories().add(territory2);
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             realocar.relocationTroops(player1, territory, territory2, armiesTransferido);
         });
