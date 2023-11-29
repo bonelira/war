@@ -20,6 +20,8 @@ public class Initialization {
     public Initialization() {
         initializeTerritoryBrasil();
         initializeTerritoryArgentina();
+        initializeTerritoryParaguai();
+        initializeTerritoryEmpty();
         initializePlayer();
         initializeAdjacents();
     }
