@@ -1,16 +1,19 @@
 package br.unicap.eng2.debuggin_squad.war;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Initialization {
     private Player player1;
+    private Player player2;
 
     private Territory brasil;
     private Territory argentina;
+    private Territory paraguai;
+    private Territory emptyTerritory;
 
     private List<Territory> conqueredTerritories;
 
@@ -18,6 +21,7 @@ public class Initialization {
         initializeTerritoryBrasil();
         initializeTerritoryArgentina();
         initializePlayer();
+        initializeAdjacents();
     }
 
     public Player initializePlayer() {
@@ -45,18 +49,22 @@ public class Initialization {
         return argentina;
     }
 
-    public Territory initializeTerritoryEmpty() {
-        argentina = new Territory("Argentina", 0);
-        argentina.setProprietario(player1);
+    public Territory initializeTerritoryParaguai() {
+        paraguai = new Territory("Paraguai", 5);
+        paraguai.setProprietario(player2);
 
-        return argentina;
+
+        return paraguai;
+    }
+
+    public Territory initializeTerritoryEmpty() {
+        emptyTerritory = new Territory("TerritorioVazio", 0);
+        emptyTerritory.setProprietario(player1);
+
+        return emptyTerritory;
     }
 
     public void initializeAdjacents() {
-        brasil = initializeTerritoryBrasil();
-        argentina = initializeTerritoryArgentina();
-
-        brasil.isAdjacent(argentina);
+        brasil.addAdjacentTerritory(argentina);
     }
-
 }
