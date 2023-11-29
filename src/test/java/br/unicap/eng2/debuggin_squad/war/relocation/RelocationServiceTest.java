@@ -31,11 +31,13 @@ public class RelocationServiceTest extends Initialization {
     @Test
     public void testValidRelocation() {
         player1 = initializePlayer();
-        initializeAdjacents();
         territory = initializeTerritoryBrasil();
         territory2 = initializeTerritoryArgentina();
+        initializeAdjacents();
         int armiesTransferido = 4;
 
+        player1.getConqueredTerritories().add(territory);
+        player1.getConqueredTerritories().add(territory2);
         realocar.relocationTroops(player1, territory, territory2, armiesTransferido);
 
         assertEquals(1, territory.getArmiesCount() - armiesTransferido);
@@ -60,9 +62,7 @@ public class RelocationServiceTest extends Initialization {
     @Test
     public void testValidateErrorTerritoryNotConquered() {
         player1 = initializePlayer();
-        player2 = initializePlayer2();
         territory = initializeTerritoryBrasil();
-        territory2 = initializeTerritoryParaguai();
         initializeAdjacents();
         int armiesTransferido = 4;
 
