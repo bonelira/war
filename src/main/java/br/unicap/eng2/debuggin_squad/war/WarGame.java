@@ -16,6 +16,7 @@ public class WarGame {
     private GameConfigurator game = new GameConfigurator(6);
     private List<Player> players;
     private Board board = new Board();
+    private List<GoalCard> goals;
 
     public List<Player> getPlayers() {
         return players;
