@@ -33,7 +33,7 @@ public class RelocationNormalState implements RelocationState{
             throw new IllegalArgumentException(MSG_TERRITORY_NOT_CONQUERED);
         }
 
-        if (origin.isAdjacent(destination)) {
+        if (!origin.isAdjacent(destination)) {
             throw new IllegalArgumentException(MSG_TERRITORY_NOT_ADJACENT);
         }
 
@@ -42,6 +42,7 @@ public class RelocationNormalState implements RelocationState{
         }
         return true;
     }
+
 
     @Override
     public void setState(RelocationState state) {this.currentState = state;}
