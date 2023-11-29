@@ -27,9 +27,7 @@ public class RelocationNormalState implements RelocationState{
 
     @Override
     public boolean validateRelocate(Player player, Territory origin, Territory destination, int armies) {
-        Player ownerOfTerritory = origin.getProprietario();
-
-        if (!ownerOfTerritory.equals(player)) {
+        if (!player.getConqueredTerritories().contains(destination)) {
             throw new IllegalArgumentException(MSG_TERRITORY_NOT_CONQUERED);
         }
 
