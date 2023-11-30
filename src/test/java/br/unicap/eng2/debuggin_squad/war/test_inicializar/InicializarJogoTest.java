@@ -263,15 +263,14 @@ public class InicializarJogoTest {
     public void testAllCurrentPlayersHaveColor() {
         Director director = new Director();
         GameBuilder builder = new GameBuilder();
-
         director.constructDefaultGame(builder);
-
         WarGame game = builder.getResult();
+
         List<Player> players = game.getPlayers();
 
-        assertNotNull(players.get(0).getId());
-        assertNotNull(players.get(1).getId());
-        assertNotNull(players.get(0).getId());
+        for (Player player : players) {
+            assertNotNull(player.getId());
+        }
 
     }
 
@@ -304,10 +303,9 @@ public class InicializarJogoTest {
         // players.size() < aboveMaxNumberOfPlayers);
         Director director = new Director();
         GameBuilder builder = new GameBuilder();
-
         director.constructDefaultGame(builder);
-
         WarGame game = builder.getResult();
+
         int numbOfPlayers = game.getPlayers().size();
 
         assertTrue(numbOfPlayers < 7 && numbOfPlayers > 2);
