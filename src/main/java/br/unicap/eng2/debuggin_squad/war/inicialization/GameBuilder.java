@@ -31,6 +31,8 @@ public class GameBuilder implements Builder {
     @Override
     public void configureBoard(List<Territory> territories) {
         game.setTerritoriesList(territories);
+        board = new Board(territories);
+        game.setBoard(board);
 
         List<Player> playerOwner = new ArrayList();
         game.getPlayers().forEach(player -> playerOwner.add(player));
