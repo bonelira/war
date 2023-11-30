@@ -176,10 +176,9 @@ public class InicializarJogoTest {
     public void testBoardNumberOfTerritories() {
         Director director = new Director();
         GameBuilder builder = new GameBuilder();
-
         director.constructDefaultGame(builder);
-
         WarGame game = builder.getResult();
+
         assertNotNull(game.getTerritoriesList());
         assertEquals(42, game.getTerritoriesList().size());
     }
@@ -188,49 +187,25 @@ public class InicializarJogoTest {
     public void testBoarHasCorrectAdjacency() {
         Director director = new Director();
         GameBuilder builder = new GameBuilder();
-
         director.constructDefaultGame(builder);
-
         WarGame game = builder.getResult();
+
         List<Territory> map = game.getTerritoriesList();
 
         // Suécia --> Inglaterra
         // se n funcionar é pq a contagem do index está errada (considerando que o
         // método está correto)
-        assertTrue(map.get(11).IsAdjacent(map.get(8)));
+        assertTrue(map.get(34).IsAdjacent(map.get(36)));
     }
 
     @Test
     public void testPlayerHasAtLeastOneGoalCard() {
         Director director = new Director();
         GameBuilder builder = new GameBuilder();
-
         director.constructDefaultGame(builder);
-
         WarGame game = builder.getResult();
 
-        List<Player> players = game.getPlayers();
-
-        GoalCard goal1 = new GoalCard("Correr");
-        GoalCard goal2 = new GoalCard("Correr");
-        GoalCard goal3 = new GoalCard("Correr");
-        GoalCard goal4 = new GoalCard("Correr");
-        GoalCard goal5 = new GoalCard("Correr");
-        GoalCard goal6 = new GoalCard("Correr");
-
-        players.get(0).setGoalCard(goal1);
-        players.get(1).setGoalCard(goal2);
-        players.get(2).setGoalCard(goal3);
-        players.get(3).setGoalCard(goal4);
-        players.get(4).setGoalCard(goal5);
-        players.get(5).setGoalCard(goal6);
-
-        assertNotNull(players.get(0).getGoalCard());
-        assertNotNull(players.get(1).getGoalCard());
-        assertNotNull(players.get(2).getGoalCard());
-        assertNotNull(players.get(3).getGoalCard());
-        assertNotNull(players.get(4).getGoalCard());
-        assertNotNull(players.get(5).getGoalCard());
+        assertNotNull(game.getPlayers().get(0).getGoalCard());
 
     }
 
