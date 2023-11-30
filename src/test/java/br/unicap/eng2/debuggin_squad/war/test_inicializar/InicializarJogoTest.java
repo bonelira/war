@@ -67,7 +67,7 @@ public class InicializarJogoTest {
     private Player player;
     private Board board;
     private WarGame game;
-    private GameBuilder gameBuilder = new GameBuilder();
+    private GameBuilder gameBuilder;
     // private GoalCard goalCard;
     // private Dealer dealer;
     // private GameRules gameRules;
@@ -101,7 +101,9 @@ public class InicializarJogoTest {
     @BeforeEach
     public void setup() throws Exception {
         Director director = new Director();
-        director.constructDefaultGame(gameBuilder);
+        GameBuilder builder = new GameBuilder();
+        director.constructDefaultGame(builder);
+        WarGame game = builder.getResult();
 
     }
 
@@ -147,6 +149,10 @@ public class InicializarJogoTest {
          *
          */
 
+        Director director = new Director();
+        GameBuilder builder = new GameBuilder();
+        director.constructDefaultGame(builder);
+        WarGame game = builder.getResult();
         // verificando se os players foram criados
         assertNotNull(game.getPlayers()); // lista de players não está vazia(null)
         // assertNotNull(game.getPlayers().get(0)); // para verificar individualmente se
@@ -156,6 +162,10 @@ public class InicializarJogoTest {
 
     @Test
     public void testBoardInitializationIsNotNull() {
+        Director director = new Director();
+        GameBuilder builder = new GameBuilder();
+        director.constructDefaultGame(builder);
+        WarGame game = builder.getResult();
 
         Board map = game.getBoard();
         assertNotNull(map);
@@ -176,7 +186,7 @@ public class InicializarJogoTest {
 
     @Test
     public void testBoarHasCorrectAdjacency() {
-       Director director = new Director();
+        Director director = new Director();
         GameBuilder builder = new GameBuilder();
 
         director.constructDefaultGame(builder);
@@ -192,9 +202,14 @@ public class InicializarJogoTest {
 
     @Test
     public void testPlayerHasAtLeastOneGoalCard() {
-        game = new WarGame();
+        Director director = new Director();
+        GameBuilder builder = new GameBuilder();
 
-        List<Player> players = configurator.getPlayers();
+        director.constructDefaultGame(builder);
+
+        WarGame game = builder.getResult();
+
+        List<Player> players = game.getPlayers();
 
         GoalCard goal1 = new GoalCard("Correr");
         GoalCard goal2 = new GoalCard("Correr");
@@ -221,9 +236,14 @@ public class InicializarJogoTest {
 
     @Test
     public void test3playersHas14TerritoriesAtBegin() {
-        game = new WarGame();
+        Director director = new Director();
+        GameBuilder builder = new GameBuilder();
 
-        List<Player> players = configurator.getPlayers();
+        director.constructDefaultGame(builder);
+
+        WarGame game = builder.getResult();
+
+        List<Player> players = game.getPlayers();
         int territoriesPlayer0 = players.get(0).getConqueredTerritories().size();
 
         assertTrue(territoriesPlayer0 == 7);
@@ -232,33 +252,47 @@ public class InicializarJogoTest {
 
     @Test
     public void test6playersHas7TerritoriesAtBegin() {
-        game = new WarGame();
+        Director director = new Director();
+        GameBuilder builder = new GameBuilder();
 
-        List<Player> players = configurator.getPlayers();
+        director.constructDefaultGame(builder);
+
+        WarGame game = builder.getResult();
+
+        List<Player> players = game.getPlayers();
         int territoriesPlayer0 = players.get(0).getConqueredTerritories().size();
 
         assertTrue(territoriesPlayer0 == 7);
 
     }
 
-    @Test
+    // @Test
 
-    public void testIsPlayerListOrderShuffle() {
-        game = new WarGame();
+    // // DEPRECATED
+    // public void testIsPlayerListOrderShuffle() {
+    // Director director = new Director();
+    // GameBuilder builder = new GameBuilder();
 
-        List<Player> actualList = new ArrayList<>(configurator.getPlayers());
-        List<Player> expecList = configurator.getShufflePlayersList();
+    // director.constructDefaultGame(builder);
 
-        assertNotEquals(expecList, actualList);
+    // WarGame game = builder.getResult();
+    // List<Player> actualList = new ArrayList<>(game.getPlayers());
+    // List<Player> expecList = configurator.getShufflePlayersList();
 
-    }
+    // assertNotEquals(expecList, actualList);
+
+    // }
 
     @Test
 
     public void testAllCurrentPlayersHaveColor() {
-        game = new WarGame();
+        Director director = new Director();
+        GameBuilder builder = new GameBuilder();
 
-        List<Player> players = configurator.getPlayers();
+        director.constructDefaultGame(builder);
+
+        WarGame game = builder.getResult();
+        List<Player> players = game.getPlayers();
 
         assertNotNull(players.get(0).getId());
         assertNotNull(players.get(1).getId());
@@ -293,9 +327,13 @@ public class InicializarJogoTest {
         // players.size() > belowMinNumberOfPlayers
         // &&
         // players.size() < aboveMaxNumberOfPlayers);
-        game = new WarGame();
+        Director director = new Director();
+        GameBuilder builder = new GameBuilder();
 
-        int numbOfPlayers = configurator.getPlayers().size();
+        director.constructDefaultGame(builder);
+
+        WarGame game = builder.getResult();
+        int numbOfPlayers = game.getPlayers().size();
 
         assertTrue(numbOfPlayers < 7 && numbOfPlayers > 2);
 
