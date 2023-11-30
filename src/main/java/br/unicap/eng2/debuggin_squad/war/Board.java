@@ -17,12 +17,15 @@ public class Board {
         this.territories = new ArrayList<>();
     }
 
+    public Board(List<Territory> territories) {
+        this.territories = territories;
+    }
+
     public void init() {
 
         // Criando territórios
 
         // Europa // territórios: 7
-        
 
     }
 
