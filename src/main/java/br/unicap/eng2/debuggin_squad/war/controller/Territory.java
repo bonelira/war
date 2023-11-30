@@ -24,6 +24,14 @@ public class Territory {
         this.continent = continent;
     }
 
+    public Player getProprietario() {
+        return proprietario;
+    }
+
+    public void setProprietario(Player proprietario) {
+        this.proprietario = proprietario;
+    }
+
     public void addArmies(Armies armies) {
         armiesList.add(armies);
     }
