@@ -77,4 +77,26 @@ public class RelocationServiceTest extends Initialization {
 
         assertEquals(RelocationNormalState.MSG_TERRITORY_NOT_CONQUERED, exception.getMessage());
     }
+
+    @Test
+    public void testValidRelocationAfterCurrentMovement() {
+        player1 = initializePlayer();
+        territory = initializeTerritoryBrasil();
+        territory2 = initializeTerritoryArgentina();
+        initializeAdjacents();
+        int armiesTransferido = 4;
+    
+        player1.getConqueredTerritories().add(territory);
+        player1.getConqueredTerritories().add(territory2);
+    
+        territory.setHasBeenUsedInCurrentMove(true);
+    
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            realocar.relocationTroops(player1, territory, territory2, armiesTransferido);
+        });
+    
+        assertEquals(RelocationNormalState.MSG_TERRITORY_CURRENT_MOVIMENT, exception.getMessage());
+    }
+    
+
 }

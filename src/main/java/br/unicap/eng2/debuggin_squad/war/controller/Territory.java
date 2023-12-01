@@ -12,6 +12,7 @@ public class Territory {
     private Player proprietario;
     private int army;
     private Set<Territory> adjacentTerritories;
+    private boolean hasBeenUsedInCurrentMove = false;
 
     public Territory(String nome, int army) {
         this.nome = nome;
@@ -58,5 +59,13 @@ public class Territory {
 
     public boolean belongsToPlayer(Player player) {
         return this.proprietario == player;
+    }
+
+    public boolean hasBeenUsedInCurrentMove() {
+        return hasBeenUsedInCurrentMove;
+    }
+
+    public void setHasBeenUsedInCurrentMove(boolean used) {
+        hasBeenUsedInCurrentMove = used;
     }
 }
