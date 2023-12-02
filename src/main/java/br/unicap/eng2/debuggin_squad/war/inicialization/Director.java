@@ -15,12 +15,12 @@ import java.util.ArrayList;
 public class Director {
 
     public void constructDefaultGame(Builder builder) {
-        builder.configurePlayers(playersList());
         builder.configureBoard(getBoard());
-        builder.configureCards(goalCardsList());
+        builder.configureCards(getGoalCardsList());
+        builder.configurePlayers(getPlayersList());
     }
 
-    private List<Player> playersList() {
+    private List<Player> getPlayersList() {
         List<Player> playersListComplete = new ArrayList<>();
         Player player1 = new Player("Bone", "Preto");
         Player player2 = new Player("Roosevelt", "azul");
@@ -38,15 +38,16 @@ public class Director {
         return playersListComplete;
     }
 
-    private List<GoalCard> goalCardsList() {
+    // Default goal Card: Conquistar 24 territórios ou continente
+    private List<GoalCard> getGoalCardsList() {
         List<GoalCard> goalCards = new ArrayList<>();
-        GoalCard goalCard1 = new GoalCard("Conquistar continente");
-        GoalCard goalCard2 = new GoalCard("Conquistar 24 territórios");
-        GoalCard goalCard3 = new GoalCard("Eliminar jogador");
+        GoalCard goalCard1 = new GoalCard("Conquistar 24 territórios ou continente");
+        // GoalCard goalCard2 = new GoalCard("Conquistar continente");
+        // GoalCard goalCard3 = new GoalCard("Eliminar jogador");
 
         goalCards.add(goalCard1);
-        goalCards.add(goalCard2);
-        goalCards.add(goalCard3);
+        // goalCards.add(goalCard2);
+        // goalCards.add(goalCard3);
 
         return goalCards;
 
