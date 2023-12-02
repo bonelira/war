@@ -29,43 +29,50 @@ public class GameBuilder implements Builder {
     private List<Territory> territories;
 
     @Override
-    public void configureBoard(List<Territory> territories) {
+    // Por enquanto nenhuma config a mais necessária, pois já é passado
+    public void configureBoard(List<Territory> territories) { // o mapa padrão, config só quando lidar com players !=6.
         game.setTerritoriesList(territories);
         board = new Board(territories);
         game.setBoard(board);
+    }
 
-        List<Player> playerOwner = new ArrayList();
-        game.getPlayers().forEach(player -> playerOwner.add(player));
-
-        int i = 0;
-        for (Territory territory : territories) {
-            territory.setProprietario(playerOwner.get(0));
-
-            i++;
-        }
-
+    @Override
+    // Por enquanto nenhuma config a mais é necessária, pois há apenas 1 goal
+    public void configureCards(List<GoalCard> goalCards) { // conquistar 24 territórios ou continente.
+        game.setGoalCards(goalCards);
     }
 
     @Override
     public void configurePlayers(List<Player> players) {
-        GoalCard goalCard = new GoalCard("Correr");
-        int i = 0;
-        for (Player player : players) {
-            // player.setName("Black" + i);
-            // player.setId("Black" + i);
-            player.setGoalCard(goalCard);
-            i++;
-        }
+        giveInitialTerritoriesForEachPlayer(players);
+        giveInitialGoalCardsForEachPlayer(players);
 
         game.setPlayers(players);
     }
 
-    @Override
-    public void configureCards(List<GoalCard> goalCards) {
-        for (GoalCard goalCard : goalCards) {
-            goalCard.setGoal("Correr");
+    private void giveInitialGoalCardsForEachPlayer(List<Player> players) {
+        GoalCard goalCard = game.getGoalCards().get(0);
+        for (Player player : players) {
+            player.setGoalCard(goalCard);
         }
-        game.setGoalCards(goalCards);
+    }
+
+    private void giveInitialTerritoriesForEachPlayer(List<Player> player) {
+        List<Player> totalPlayers = player;
+        List<Territory> totalTerritories = game.getTerritoriesList();
+        int territoriesPerPlayer = 0;
+
+        territoriesPerPlayer = totalTerritories.size() / totalPlayers.size();
+
+        int territoryIndex = 0;
+        for (Player players : totalPlayers) {
+            List<Territory> playerTerritories = new ArrayList<>();
+            players.setConqueredTerritories(playerTerritories);
+            for (int i = 0; i < territoriesPerPlayer; i++) {
+                playerTerritories.add(totalTerritories.get(territoryIndex));
+                territoryIndex++;
+            }
+        }
     }
 
     // métodos para inicialização do Board (Buildar ele)
