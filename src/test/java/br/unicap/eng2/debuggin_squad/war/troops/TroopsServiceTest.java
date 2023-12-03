@@ -2,10 +2,12 @@
  * @author Bruno Iraê <brunoirae@gmail.com / @brunoirae>
  */
 
-package br.unicap.eng2.debuggin_squad.war;
+package br.unicap.eng2.debuggin_squad.war.troops;
 
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
+import br.unicap.eng2.debuggin_squad.war.model.state.troops.DeliveryOfTerritoryState;
+import br.unicap.eng2.debuggin_squad.war.model.state.troops.TroopsContext;
 import br.unicap.eng2.debuggin_squad.war.service.TroopsService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,17 +25,18 @@ public class TroopsServiceTest {
     private Player player3;
     private List<Player> players;
 
-    private Territory territory;
     private List<Territory> conqueredTerritories;
     private Territory brasil;
     private Territory argentina;
     private Territory colombia;
 
     private TroopsService alocar;
+    private TroopsContext troopsContext;
 
     @BeforeEach
     public void setup() {
         alocar = new TroopsService();
+        troopsContext = new TroopsContext();
         conqueredTerritories = new ArrayList<Territory>();
     }
 
@@ -64,12 +67,10 @@ public class TroopsServiceTest {
     public void testValidatesTroopsSentInTheInitialTurn() {
         mockPlayers();
         int totalTerritoriosValue = 42;
-        int exercitosRecebidos = alocar.deliverArmiesInInitialTurn(players);
+        int exercitosRecebidos = alocar.deliverArmiesInTerritory(players);
 
-        // Calcule o número esperado de exércitos para cada jogador
         int expectedExercitosRecebidos = totalTerritoriosValue / players.size();
 
-        // Verifique se a quantidade de exércitos recebidos é igual à quantidade esperada para cada jogador
         assertEquals(expectedExercitosRecebidos, exercitosRecebidos);
 
     }
@@ -77,15 +78,11 @@ public class TroopsServiceTest {
     @Test
     public void testValidatesTroopsSentInTerritorial() {
         mockPlayers();mockPlayer1Territory();
-        conqueredTerritories = player1.getConqueredTerritories();
-
-        // Substituir o mock incorreto do território pelo território real
-        when(player1.getConqueredTerritories()).thenReturn(conqueredTerritories);
-
         int totalTerritoriosValue = conqueredTerritories.size();
         int expectedExercitosRecebidos = totalTerritoriosValue / 2;
+        troopsContext.setState(new DeliveryOfTerritoryState());
 
-        int exercitosRecebidos = alocar.deliverArmiesByAmountOfTerritory(player1);
+        int exercitosRecebidos = troopsContext.deliverArmies(player1);
 
         assertEquals(expectedExercitosRecebidos, exercitosRecebidos);
     }
