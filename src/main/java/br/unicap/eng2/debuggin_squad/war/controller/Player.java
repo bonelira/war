@@ -52,8 +52,4 @@ public class Player {
     public List<Territory> getConqueredTerritories() {
         return conqueredTerritories;
     }
-
-    public void setConqueredTerritories(List<Territory> newConqueredTerritories) {
-        this.conqueredTerritories = newConqueredTerritories;
-    }
 }

@@ -4,6 +4,7 @@
 
 package br.unicap.eng2.debuggin_squad.war.controller;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,6 +14,11 @@ public class Territory {
     private int army;
     private Set<Territory> adjacentTerritories;
     private boolean hasBeenUsedInCurrentMove = false;
+    private String continent;
+
+    public void setContinent(String continent) {
+        this.continent = continent;
+    }
 
     public Territory(String nome, int army) {
         this.nome = nome;
@@ -21,11 +27,11 @@ public class Territory {
     }
 
     public void addArmies(int armies) {
-        army+= armies;
+        army += armies;
     }
 
     public void removeArmies(int armies) {
-        army-= armies;
+        army -= armies;
     }
 
     public int getArmiesCount() {
@@ -67,5 +73,9 @@ public class Territory {
 
     public void setHasBeenUsedInCurrentMove(boolean used) {
         hasBeenUsedInCurrentMove = used;
+    }
+
+    public String getContinent() {
+        return continent;
     }
 }
