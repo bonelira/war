@@ -195,7 +195,7 @@ public class InicializarJogoTest {
         // Suécia --> Inglaterra
         // se n funcionar é pq a contagem do index está errada (considerando que o
         // método está correto)
-        assertTrue(map.get(34).IsAdjacent(map.get(36)));
+        assertTrue(map.get(34).isAdjacent(map.get(36)));
     }
 
     @Test
