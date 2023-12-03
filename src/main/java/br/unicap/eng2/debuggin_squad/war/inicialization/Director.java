@@ -55,58 +55,106 @@ public class Director {
 
     private List<Territory> getBoard() {
         List<Territory> territories = new ArrayList<>();
-        Territory sweden = new Territory("Suécia", "Europe", null);
-        Territory germany = new Territory("Alemanha", "Europe", null);
-        Territory poland = new Territory("Polônia", "Europe", null);
-        Territory moscow = new Territory("Moscou", "Europe", null);
-        Territory france = new Territory("França", "Europe", null);
-        Territory england = new Territory("Inglaterra", "Europe", null);
-        Territory iceland = new Territory("Islândia", "Europe", null);
-        Territory greenland = new Territory("Groelândia", "Europe", null);
+        Territory sweden = new Territory("Suécia", 1);
+        Territory germany = new Territory("Alemanha", 1);
+        Territory poland = new Territory("Polônia", 1);
+        Territory moscow = new Territory("Moscou", 1);
+        Territory france = new Territory("França", 1);
+        Territory england = new Territory("Inglaterra", 1);
+        Territory iceland = new Territory("Islândia", 1);
+        Territory greenland = new Territory("Groelândia", 1);
+
+        sweden.setContinent("Europe");
+        germany.setContinent("Europe");
+        poland.setContinent("Europe");
+        moscow.setContinent("Europe");
+        france.setContinent("Europe");
+        england.setContinent("Europe");
+        iceland.setContinent("Europe");
+        greenland.setContinent("Europe");
 
         // África // territórios: 6
-        Territory algeria = new Territory("Argéria", "Africa", null);
-        Territory egypt = new Territory("Egito", "Africa", null);
-        Territory sudan = new Territory("Sudão", "Africa", null);
-        Territory congo = new Territory("Congo", "Africa", null);
-        Territory madagascar = new Territory("Madagascar", "Africa", null);
-        Territory south_africa = new Territory("África do Sul", "Africa", null);
+        Territory algeria = new Territory("Argéria", 1);
+        Territory egypt = new Territory("Egito", 1);
+        Territory sudan = new Territory("Sudão", 1);
+        Territory congo = new Territory("Congo", 1);
+        Territory madagascar = new Territory("Madagascar", 1);
+        Territory south_africa = new Territory("África do Sul", 1);
+
+        algeria.setContinent("Africa");
+        egypt.setContinent("Africa");
+        sudan.setContinent("Africa");
+        congo.setContinent("Africa");
+        madagascar.setContinent("Africa");
+        south_africa.setContinent("Africa");
 
         // Ásia // territórios: 12
-        Territory japan = new Territory("Japão", "Asia", null);
-        Territory vietnan = new Territory("Vietnã", "Asia", null);
-        Territory india = new Territory("Índia", "Asia", null);
-        Territory middle_east = new Territory("Oriente Médio", "Asia", null);
-        Territory aral = new Territory("Aral", "Asia", null);
-        Territory omsk = new Territory("Omsk", "Asia", null);
-        Territory china = new Territory("China", "Asia", null);
-        Territory dudinka = new Territory("Dudinka", "Asia", null);
-        Territory tchita = new Territory("Tchita", "Asia", null);
-        Territory mongolia = new Territory("Mongólia", "Asia", null);
-        Territory siberia = new Territory("Sibéria", "Asia", null);
-        Territory vladvostok = new Territory("Vladvostok", "Asia", null);
+        Territory japan = new Territory("Japão", 1);
+        Territory vietnan = new Territory("Vietnã", 1);
+        Territory india = new Territory("Índia", 1);
+        Territory middle_east = new Territory("Oriente Médio", 1);
+        Territory aral = new Territory("Aral", 1);
+        Territory omsk = new Territory("Omsk", 1);
+        Territory china = new Territory("China", 1);
+        Territory dudinka = new Territory("Dudinka", 1);
+        Territory tchita = new Territory("Tchita", 1);
+        Territory mongolia = new Territory("Mongólia", 1);
+        Territory siberia = new Territory("Sibéria", 1);
+        Territory vladvostok = new Territory("Vladvostok", 1);
+
+        japan.setContinent("Asia");
+        vietnan.setContinent("Asia");
+        india.setContinent("Asia");
+        middle_east.setContinent("Asia");
+        aral.setContinent("Asia");
+        omsk.setContinent("Asia");
+        china.setContinent("Asia");
+        dudinka.setContinent("Asia");
+        tchita.setContinent("Asia");
+        mongolia.setContinent("Asia");
+        siberia.setContinent("Asia");
+        vladvostok.setContinent("Asia");
 
         // América do Norte // territórios: 8
-        Territory alaska = new Territory("Alasca", "North America", null);
-        Territory mackenzie = new Territory("Mackenzie", "North America", null);
-        Territory vancouver = new Territory("Vancouver", "North America", null);
-        Territory ottawa = new Territory("Otawwa", "North America", null);
-        Territory new_york = new Territory("Nova York", "North America", null);
-        Territory labrador = new Territory("Labrador", "North America", null);
-        Territory mexico = new Territory("México", "North America", null);
-        Territory california = new Territory("Califórnia", "North America", null);
+        Territory alaska = new Territory("Alasca", 1);
+        Territory mackenzie = new Territory("Mackenzie", 1);
+        Territory vancouver = new Territory("Vancouver", 1);
+        Territory ottawa = new Territory("Otawwa", 1);
+        Territory new_york = new Territory("Nova York", 1);
+        Territory labrador = new Territory("Labrador", 1);
+        Territory mexico = new Territory("México", 1);
+        Territory california = new Territory("Califórnia", 1);
+
+        alaska.setContinent("North America");
+        mackenzie.setContinent("North America");
+        vancouver.setContinent("North America");
+        ottawa.setContinent("North America");
+        new_york.setContinent("North America");
+        labrador.setContinent("North America");
+        mexico.setContinent("North America");
+        california.setContinent("North America");
 
         // América do Sul // territórios: 4
-        Territory brasil = new Territory("Brasil", "South America", null);
-        Territory peru = new Territory("Peru", "South America", null);
-        Territory argentina = new Territory("Argentina", "South America", null);
-        Territory venezuela = new Territory("Venezuela", "South America", null);
+        Territory brasil = new Territory("Brasil", 1);
+        Territory peru = new Territory("Peru", 1);
+        Territory argentina = new Territory("Argentina", 1);
+        Territory venezuela = new Territory("Venezuela", 1);
+
+        brasil.setContinent("South America");
+        peru.setContinent("South America");
+        argentina.setContinent("South America");
+        venezuela.setContinent("South America");
 
         // Oceania // territórios: 4
-        Territory australia = new Territory("Austrália", "Oceania", null);
-        Territory sumatra = new Territory("Sumatra", "Oceania", null);
-        Territory borneo = new Territory("Borneo", "Oceania", null);
-        Territory new_guinea = new Territory("Nova Guiné", "Oceania", null);
+        Territory australia = new Territory("Austrália", 1);
+        Territory sumatra = new Territory("Sumatra", 1);
+        Territory borneo = new Territory("Borneo", 1);
+        Territory new_guinea = new Territory("Nova Guiné", 1);
+
+        australia.setContinent("Oceania");
+        sumatra.setContinent("Oceania");
+        borneo.setContinent("Oceania");
+        new_guinea.setContinent("Oceania");
 
         // Europa
         territories.add(sweden); // 0
