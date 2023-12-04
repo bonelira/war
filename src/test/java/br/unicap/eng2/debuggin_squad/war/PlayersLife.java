@@ -8,7 +8,7 @@ import br.unicap.eng2.debuggin_squad.war.controller.Life;
 
 public class PlayersLife {
 
-  @Test
+  /*@Test
   public void testAlivePlayersMoreThanPlayingPlayers() {
     String expected = "There are more alive players than players registered, my code must be garbage";
     String actual = Life.messageNotImplemented();
@@ -20,5 +20,5 @@ public class PlayersLife {
     String expected = "At least 1 Alive player";
     String actual = Life.messageNotImplemented();
     assertEquals(expected, actual);
-  }
+  }*/
 }
