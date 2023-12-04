@@ -10,6 +10,15 @@ import java.util.Set;
 
 public class Territory {
     private String nome;
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     private Player proprietario;
     private int army;
     private Set<Territory> adjacentTerritories;
