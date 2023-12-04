@@ -23,9 +23,9 @@ public class Board {
 
     public void init() {
 
-        // Criando territórios
+        // Criando territorios
 
-        // Europa // territórios: 7
+        // Europa // territorios: 7
 
     }
 
