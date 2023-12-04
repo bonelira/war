@@ -21,11 +21,9 @@ public class Board {
         this.territories = territories;
     }
 
-    public void init() {
+    public int size() {
 
-        // Criando territórios
-
-        // Europa // territórios: 7
+        return this.getTerritories().size();
 
     }
 
