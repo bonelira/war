@@ -135,12 +135,12 @@ public class Director {
         california.setContinent("North America");
 
         // América do Sul // territórios: 4
-        Territory brasil = new Territory("Brasil", 1);
+        Territory brazil = new Territory("Brasil", 1);
         Territory peru = new Territory("Peru", 1);
         Territory argentina = new Territory("Argentina", 1);
         Territory venezuela = new Territory("Venezuela", 1);
 
-        brasil.setContinent("South America");
+        brazil.setContinent("South America");
         peru.setContinent("South America");
         argentina.setContinent("South America");
         venezuela.setContinent("South America");
@@ -195,10 +195,11 @@ public class Director {
         territories.add(mexico); // 32
         territories.add(california); // 33
         // América do Sul
-        territories.add(brasil); // 34
+        territories.add(brazil); // 34
         territories.add(peru); // 35
         territories.add(argentina); // 36
         territories.add(venezuela); // 37
+        // Oceania
         territories.add(australia); // 38
         territories.add(sumatra); // 39
         territories.add(borneo); // 40
@@ -242,7 +243,7 @@ public class Director {
 
         // Africa adjacências
 
-        algeria.addAdjacentTerritory(brasil);
+        algeria.addAdjacentTerritory(brazil);
         algeria.addAdjacentTerritory(egypt);
         algeria.addAdjacentTerritory(france);
         algeria.addAdjacentTerritory(sudan);
@@ -378,20 +379,20 @@ public class Director {
 
         // América do Sul adjacências
 
-        brasil.addAdjacentTerritory(algeria);
-        brasil.addAdjacentTerritory(venezuela);
-        brasil.addAdjacentTerritory(peru);
-        brasil.addAdjacentTerritory(argentina);
+        brazil.addAdjacentTerritory(algeria);
+        brazil.addAdjacentTerritory(venezuela);
+        brazil.addAdjacentTerritory(peru);
+        brazil.addAdjacentTerritory(argentina);
 
-        peru.addAdjacentTerritory(brasil);
+        peru.addAdjacentTerritory(brazil);
         peru.addAdjacentTerritory(venezuela);
         peru.addAdjacentTerritory(argentina);
 
-        argentina.addAdjacentTerritory(brasil);
+        argentina.addAdjacentTerritory(brazil);
         argentina.addAdjacentTerritory(peru);
 
         venezuela.addAdjacentTerritory(mexico);
-        venezuela.addAdjacentTerritory(brasil);
+        venezuela.addAdjacentTerritory(brazil);
         venezuela.addAdjacentTerritory(peru);
 
         // Oceania adjacências
