@@ -1,43 +1,38 @@
 package br.unicap.eng2.debuggin_squad.war.card;
 
+import br.unicap.eng2.debuggin_squad.war.objectives.Conquering24Territories;
+
 public class CardObjective extends Card {
 
     private String name;
     private String description;
-    private int number;
-    private String objective;
-    private String shape;
+    private int id;
+    private Boolean objective = null;
 
-    public CardObjective() {
-        this.name = "Objective";
-        this.description = "Objective card";
-        this.number = 2;
-        this.objective = "Objective";
-        this.shape = "Square";
+    public CardObjective(String name, String description, int id, Boolean objective) {
+        this.name = name;
+        this.description = description;
+        this.id = id;
+        this.objective = objective;
     }
 
+    @Override
     public String getName() {
-        return this.name;
-    }
-
-    public String getDescription() {
-        return this.description;
-    }
-
-    public int getNumber() {
-        return this.number;
-    }
-
-    public String getObjective() {
-        return this.objective;
-    }
-
-    public String getShape() {
-        return this.shape;
-    }
-
-    public Object getType() {
         return null;
     }
 
+    @Override
+    public String getDescription() {
+        return null;
+    }
+
+    @Override
+    public int getId() {
+        return 0;
+    }
+
+    @Override
+    public Boolean getObjective() {
+        return null;
+    }
 }
