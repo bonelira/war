@@ -215,6 +215,25 @@ public class InicializarJogoTest {
 
     }
 
+    // @Test
+    // public void testEachTerritoryHasOwner() {
+    // Director director = new Director();
+    // GameBuilder builder = new GameBuilder();
+    // director.constructDefaultGame(builder);
+    // WarGame game = builder.getResult();
+    // List<Territory> territories = game.getTerritoriesList();
+    // boolean territoryHasOwner = true;
+
+    // for (Territory territory : territories) {
+    // if (territory.getProprietario().equals(null)) {
+    // territoryHasOwner = false;
+    // return;
+    // }
+    // }
+
+    // assertTrue(territoryHasOwner);
+    // }
+
     @Test
     public void testBoardTotalCountriesInOceaniaContinent() {
         Director director = new Director();
