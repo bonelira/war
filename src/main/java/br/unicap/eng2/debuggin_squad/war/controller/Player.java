@@ -50,11 +50,8 @@ public class Player {
     public List<Territory> getConqueredTerritories() {
         return conqueredTerritories;
     }
-}
-=======
 
     public boolean getLife(){
         this.life = life;
         }
     }
-}
