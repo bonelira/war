@@ -1,6 +1,6 @@
 package br.unicap.eng2.debuggin_squad.war;
 
-// Classe temporária
+// Classe temporaria
 public class Armies {
     private int armies;
 
