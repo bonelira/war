@@ -1,3 +1,8 @@
+/**
+ * @author Bruno Vicente <brunohiperbole@gmail.com>
+ */
+
+
 package br.unicap.eng2.debuggin_squad.war.povoar;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

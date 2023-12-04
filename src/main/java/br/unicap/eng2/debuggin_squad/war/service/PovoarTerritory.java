@@ -1,3 +1,7 @@
+/**
+ * @author Bruno Vicente <brunohiperbole@gmail.com>
+ */
+
 package br.unicap.eng2.debuggin_squad.war.service;
 
 import java.util.ArrayList;
