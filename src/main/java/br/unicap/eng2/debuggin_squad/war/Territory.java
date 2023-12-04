@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-// Classe temporária
+// Classe temporaria
 public class Territory {
     private String nome;
     private Player proprietario;
