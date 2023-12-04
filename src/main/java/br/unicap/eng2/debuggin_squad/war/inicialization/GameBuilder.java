@@ -70,6 +70,7 @@ public class GameBuilder implements Builder {
             players.setConqueredTerritories(playerTerritories);
             for (int i = 0; i < territoriesPerPlayer; i++) {
                 playerTerritories.add(totalTerritories.get(territoryIndex));
+                totalTerritories.get(territoryIndex).setProprietario(players);
                 territoryIndex++;
             }
         }
