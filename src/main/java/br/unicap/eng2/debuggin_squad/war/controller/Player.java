@@ -53,5 +53,6 @@ public class Player {
 
     public boolean getLife(){
         this.life = life;
+        return false;
         }
     }

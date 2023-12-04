@@ -3,24 +3,39 @@ package br.unicap.eng2.debuggin_squad.war.model;
 public class Hello {
 
 	public void skipPlayer(){
-		if (isAlive() == false){
+		/*if (isAlive() == false){
 			skipTurn();
 			skipReceiveCards();
 			skipReceiveTroops();
 	}
 
-    public void skipTurn() {
-		this.id = id;
+	public void skipTurn() {
+		return;
 	}
 
 	public void skipReceiveTroops(){
 		
-        id;
+        //id;
 
     }
 
     public void skipReceiveCards(){
-        id;
+        //id;
 
     }
 }
+
+	private boolean isAlive() {
+		return false;
+	}
+
+	private void skipReceiveTroops() {
+	}
+
+	private void skipReceiveCards() {
+	}
+
+	private void skipTurn() {
+	}*/
+
+}}

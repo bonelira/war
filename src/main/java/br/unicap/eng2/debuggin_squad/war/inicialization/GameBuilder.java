@@ -17,9 +17,9 @@ public class GameBuilder implements Builder {
         this.game = new WarGame();
     }
 
-    // implementar métodos para configurar alguns aspectos do jogo
-    // durante a inicialização (tabuleiro, jogadores, cartas, regras etc)
-    // métodos para inicialização das Rules (Buildar ele)
+    // implementar metodos para configurar alguns aspectos do jogo
+    // durante a inicializacao (tabuleiro, jogadores, cartas, regras etc)
+    // metodos para inicializacao das Rules (Buildar ele)
 
     private WarGame game;
     private Board board;
@@ -29,16 +29,16 @@ public class GameBuilder implements Builder {
     private List<Territory> territories;
 
     @Override
-    // Por enquanto nenhuma config a mais necessária, pois já é passado
-    public void configureBoard(List<Territory> territories) { // o mapa padrão, config só quando lidar com players !=6.
+    // Por enquanto nenhuma config a mais necessaria, pois ja e passado
+    public void configureBoard(List<Territory> territories) { // o mapa padrao, config so quando lidar com players !=6.
         game.setTerritoriesList(territories);
         board = new Board(territories);
         game.setBoard(board);
     }
 
     @Override
-    // Por enquanto nenhuma config a mais é necessária, pois há apenas 1 goal
-    public void configureCards(List<GoalCard> goalCards) { // conquistar 24 territórios ou continente.
+    // Por enquanto nenhuma config a mais e necessaria, pois ha apenas 1 goal
+    public void configureCards(List<GoalCard> goalCards) { // conquistar 24 territorios ou continente.
         game.setGoalCards(goalCards);
     }
 
@@ -75,7 +75,7 @@ public class GameBuilder implements Builder {
         }
     }
 
-    // métodos para inicialização do Board (Buildar ele)
+    // metodos para inicializacao do Board (Buildar ele)
 
     public WarGame getResult() {
         return this.game;
