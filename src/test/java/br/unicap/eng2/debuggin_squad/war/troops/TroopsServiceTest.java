@@ -71,10 +71,7 @@ public class TroopsServiceTest {
     public void testValidatesTroopsSentInTheInitialTurn() {
         mockPlayers();
         int totalTerritoriosValue = 42;
-
-        // Crie uma instância de DeliveryInitialState diretamente ou usando CompositeTroop se necessário
         DeliveryInitialState initialState = new DeliveryInitialState();
-
         int exercitosRecebidos = initialState.deliverArmies(players);
 
         int expectedExercitosRecebidos = totalTerritoriosValue / players.size();
@@ -87,10 +84,7 @@ public class TroopsServiceTest {
         mockPlayers();
         mockPlayer1Territory();
         int totalTerritoriosValue = conqueredTerritories.size();
-
-        // Crie uma instância de DeliveryOfTerritoryState diretamente ou usando CompositeTroop se necessário
         DeliveryOfTerritoryState territoryState = new DeliveryOfTerritoryState();
-
         int exercitosRecebidos = territoryState.deliverArmies(players);
 
         int expectedExercitosRecebidos = totalTerritoriosValue / 2;
