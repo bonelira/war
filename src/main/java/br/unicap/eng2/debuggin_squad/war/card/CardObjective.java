@@ -1,6 +1,6 @@
 package br.unicap.eng2.debuggin_squad.war.card;
 
-import br.unicap.eng2.debuggin_squad.war.objectives.Conquering24Territories;
+import br.unicap.eng2.debuggin_squad.war.controller.Player;
 
 public class CardObjective extends Card {
 
@@ -9,30 +9,25 @@ public class CardObjective extends Card {
     private int id;
     private Boolean objective = null;
 
-    public CardObjective(String name, String description, int id, Boolean objective) {
+    public CardObjective(String name, String description, int id) {
         this.name = name;
         this.description = description;
         this.id = id;
-        this.objective = objective;
     }
 
     @Override
     public String getName() {
-        return null;
+        return this.name;
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return this.description;
     }
 
     @Override
     public int getId() {
-        return 0;
+        return this.id;
     }
 
-    @Override
-    public Boolean getObjective() {
-        return null;
-    }
 }
