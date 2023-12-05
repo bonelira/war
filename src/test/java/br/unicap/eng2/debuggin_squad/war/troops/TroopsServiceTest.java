@@ -6,8 +6,8 @@ package br.unicap.eng2.debuggin_squad.war.troops;
 
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
-import br.unicap.eng2.debuggin_squad.war.model.state.troops.DeliveryOfTerritoryState;
-import br.unicap.eng2.debuggin_squad.war.model.state.troops.TroopsContext;
+import br.unicap.eng2.debuggin_squad.war.model.composite.troops.DeliveryInitialState;
+import br.unicap.eng2.debuggin_squad.war.model.composite.troops.DeliveryOfTerritoryState;
 import br.unicap.eng2.debuggin_squad.war.service.TroopsService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,12 +31,16 @@ public class TroopsServiceTest {
     private Territory colombia;
 
     private TroopsService alocar;
-    private TroopsContext troopsContext;
+    private DeliveryInitialState troopsContext;
 
     @BeforeEach
     public void setup() {
-        alocar = new TroopsService();
-        troopsContext = new TroopsContext();
+        alocar = new TroopsService() {
+            @Override
+            public int deliverArmies(List<Player> players) {
+                return 0;
+            }
+        };
         conqueredTerritories = new ArrayList<Territory>();
     }
 
@@ -67,22 +71,29 @@ public class TroopsServiceTest {
     public void testValidatesTroopsSentInTheInitialTurn() {
         mockPlayers();
         int totalTerritoriosValue = 42;
-        int exercitosRecebidos = alocar.deliverArmiesInTerritory(players);
+
+        // Crie uma instância de DeliveryInitialState diretamente ou usando CompositeTroop se necessário
+        DeliveryInitialState initialState = new DeliveryInitialState();
+
+        int exercitosRecebidos = initialState.deliverArmies(players);
 
         int expectedExercitosRecebidos = totalTerritoriosValue / players.size();
 
         assertEquals(expectedExercitosRecebidos, exercitosRecebidos);
-
     }
 
     @Test
     public void testValidatesTroopsSentInTerritorial() {
-        mockPlayers();mockPlayer1Territory();
+        mockPlayers();
+        mockPlayer1Territory();
         int totalTerritoriosValue = conqueredTerritories.size();
-        int expectedExercitosRecebidos = totalTerritoriosValue / 2;
-        troopsContext.setState(new DeliveryOfTerritoryState());
 
-        int exercitosRecebidos = troopsContext.deliverArmies(player1);
+        // Crie uma instância de DeliveryOfTerritoryState diretamente ou usando CompositeTroop se necessário
+        DeliveryOfTerritoryState territoryState = new DeliveryOfTerritoryState();
+
+        int exercitosRecebidos = territoryState.deliverArmies(players);
+
+        int expectedExercitosRecebidos = totalTerritoriosValue / 2;
 
         assertEquals(expectedExercitosRecebidos, exercitosRecebidos);
     }
