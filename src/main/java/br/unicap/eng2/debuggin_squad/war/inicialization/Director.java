@@ -38,10 +38,10 @@ public class Director {
         return playersListComplete;
     }
 
-    // Default goal Card: Conquistar 24 territórios ou continente
+    // Default goal Card: Conquistar 24 territorios ou continente
     private List<GoalCard> getGoalCardsList() {
         List<GoalCard> goalCards = new ArrayList<>();
-        GoalCard goalCard1 = new GoalCard("Conquistar 24 territórios ou continente");
+        GoalCard goalCard1 = new GoalCard("Conquistar 24 territorios ou continente");
         // GoalCard goalCard2 = new GoalCard("Conquistar continente");
         // GoalCard goalCard3 = new GoalCard("Eliminar jogador");
 
@@ -55,14 +55,14 @@ public class Director {
 
     private List<Territory> getBoard() {
         List<Territory> territories = new ArrayList<>();
-        Territory sweden = new Territory("Suécia", 1);
+        Territory sweden = new Territory("Suecia", 1);
         Territory germany = new Territory("Alemanha", 1);
-        Territory poland = new Territory("Polônia", 1);
+        Territory poland = new Territory("Polonia", 1);
         Territory moscow = new Territory("Moscou", 1);
-        Territory france = new Territory("França", 1);
+        Territory france = new Territory("Franca", 1);
         Territory england = new Territory("Inglaterra", 1);
-        Territory iceland = new Territory("Islândia", 1);
-        Territory greenland = new Territory("Groelândia", 1);
+        Territory iceland = new Territory("Islandia", 1);
+        Territory greenland = new Territory("Groelandia", 1);
 
         sweden.setContinent("Europe");
         germany.setContinent("Europe");
@@ -73,13 +73,13 @@ public class Director {
         iceland.setContinent("Europe");
         greenland.setContinent("Europe");
 
-        // África // territórios: 6
-        Territory algeria = new Territory("Argéria", 1);
+        // Africa // territorios: 6
+        Territory algeria = new Territory("Argeria", 1);
         Territory egypt = new Territory("Egito", 1);
-        Territory sudan = new Territory("Sudão", 1);
+        Territory sudan = new Territory("Sudao", 1);
         Territory congo = new Territory("Congo", 1);
         Territory madagascar = new Territory("Madagascar", 1);
-        Territory south_africa = new Territory("África do Sul", 1);
+        Territory south_africa = new Territory("Africa do Sul", 1);
 
         algeria.setContinent("Africa");
         egypt.setContinent("Africa");
@@ -88,18 +88,18 @@ public class Director {
         madagascar.setContinent("Africa");
         south_africa.setContinent("Africa");
 
-        // Ásia // territórios: 12
-        Territory japan = new Territory("Japão", 1);
-        Territory vietnan = new Territory("Vietnã", 1);
-        Territory india = new Territory("Índia", 1);
-        Territory middle_east = new Territory("Oriente Médio", 1);
+        // Asia // territorios: 12
+        Territory japan = new Territory("Japao", 1);
+        Territory vietnan = new Territory("Vietna", 1);
+        Territory india = new Territory("India", 1);
+        Territory middle_east = new Territory("Oriente Medio", 1);
         Territory aral = new Territory("Aral", 1);
         Territory omsk = new Territory("Omsk", 1);
         Territory china = new Territory("China", 1);
         Territory dudinka = new Territory("Dudinka", 1);
         Territory tchita = new Territory("Tchita", 1);
-        Territory mongolia = new Territory("Mongólia", 1);
-        Territory siberia = new Territory("Sibéria", 1);
+        Territory mongolia = new Territory("Mongolia", 1);
+        Territory siberia = new Territory("Siberia", 1);
         Territory vladvostok = new Territory("Vladvostok", 1);
 
         japan.setContinent("Asia");
@@ -115,15 +115,15 @@ public class Director {
         siberia.setContinent("Asia");
         vladvostok.setContinent("Asia");
 
-        // América do Norte // territórios: 8
+        // America do Norte // territorios: 8
         Territory alaska = new Territory("Alasca", 1);
         Territory mackenzie = new Territory("Mackenzie", 1);
         Territory vancouver = new Territory("Vancouver", 1);
         Territory ottawa = new Territory("Otawwa", 1);
         Territory new_york = new Territory("Nova York", 1);
         Territory labrador = new Territory("Labrador", 1);
-        Territory mexico = new Territory("México", 1);
-        Territory california = new Territory("Califórnia", 1);
+        Territory mexico = new Territory("Mexico", 1);
+        Territory california = new Territory("California", 1);
 
         alaska.setContinent("North America");
         mackenzie.setContinent("North America");
@@ -134,7 +134,7 @@ public class Director {
         mexico.setContinent("North America");
         california.setContinent("North America");
 
-        // América do Sul // territórios: 4
+        // America do Sul // territorios: 4
         Territory brazil = new Territory("Brasil", 1);
         Territory peru = new Territory("Peru", 1);
         Territory argentina = new Territory("Argentina", 1);
@@ -145,11 +145,11 @@ public class Director {
         argentina.setContinent("South America");
         venezuela.setContinent("South America");
 
-        // Oceania // territórios: 4
-        Territory australia = new Territory("Austrália", 1);
+        // Oceania // territorios: 4
+        Territory australia = new Territory("Australia", 1);
         Territory sumatra = new Territory("Sumatra", 1);
         Territory borneo = new Territory("Borneo", 1);
-        Territory new_guinea = new Territory("Nova Guiné", 1);
+        Territory new_guinea = new Territory("Nova Guine", 1);
 
         australia.setContinent("Oceania");
         sumatra.setContinent("Oceania");
@@ -185,7 +185,7 @@ public class Director {
         territories.add(mongolia); // 23
         territories.add(siberia); // 24
         territories.add(vladvostok); // 25
-        // América do Norte
+        // America do Norte
         territories.add(alaska); // 26
         territories.add(mackenzie); // 27
         territories.add(vancouver); // 28
@@ -194,18 +194,17 @@ public class Director {
         territories.add(labrador); // 31
         territories.add(mexico); // 32
         territories.add(california); // 33
-        // América do Sul
+        // America do Sul
         territories.add(brazil); // 34
         territories.add(peru); // 35
         territories.add(argentina); // 36
         territories.add(venezuela); // 37
-        // Oceania
         territories.add(australia); // 38
         territories.add(sumatra); // 39
         territories.add(borneo); // 40
         territories.add(new_guinea); // 41
 
-        // Europa adjacências
+        // Europa adjacencias
         sweden.addAdjacentTerritory(moscow);
         sweden.addAdjacentTerritory(england);
 
@@ -241,7 +240,7 @@ public class Director {
         greenland.addAdjacentTerritory(labrador);
         greenland.addAdjacentTerritory(mackenzie);
 
-        // Africa adjacências
+        // Africa adjacencias
 
         algeria.addAdjacentTerritory(brazil);
         algeria.addAdjacentTerritory(egypt);
@@ -271,7 +270,7 @@ public class Director {
         south_africa.addAdjacentTerritory(congo);
         south_africa.addAdjacentTerritory(sudan);
 
-        // Asia adjacências
+        // Asia adjacencias
         japan.addAdjacentTerritory(vladvostok);
         japan.addAdjacentTerritory(china);
 
@@ -337,7 +336,7 @@ public class Director {
         vladvostok.addAdjacentTerritory(china);
         vladvostok.addAdjacentTerritory(tchita);
 
-        // América do Norte Adjancências
+        // America do Norte Adjancencias
 
         alaska.addAdjacentTerritory(mackenzie);
         alaska.addAdjacentTerritory(vancouver);
@@ -377,7 +376,7 @@ public class Director {
         mexico.addAdjacentTerritory(california);
         mexico.addAdjacentTerritory(new_york);
 
-        // América do Sul adjacências
+        // America do Sul adjacencias
 
         brazil.addAdjacentTerritory(algeria);
         brazil.addAdjacentTerritory(venezuela);
@@ -395,7 +394,7 @@ public class Director {
         venezuela.addAdjacentTerritory(brazil);
         venezuela.addAdjacentTerritory(peru);
 
-        // Oceania adjacências
+        // Oceania adjacencias
 
         australia.addAdjacentTerritory(new_guinea);
         australia.addAdjacentTerritory(borneo);
@@ -412,9 +411,9 @@ public class Director {
         new_guinea.addAdjacentTerritory(borneo);
 
         // TODO
-        // [x] criar os continentes e add os países.
-        // [x] criar um método para pegar a lista de países de cada continente
-        // [x] criar as subjacências de cada país
+        // [x] criar os continentes e add os paises.
+        // [x] criar um metodo para pegar a lista de paises de cada continente
+        // [x] criar as subjacencias de cada pais
         // [ ] refatorar 'pertencimento a continente'
 
         return territories;

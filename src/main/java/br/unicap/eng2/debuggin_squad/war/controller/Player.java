@@ -1,7 +1,3 @@
-/**
- * @author Bruno Iraê <brunoirae@gmail.com / @brunoirae>
- */
-
 package br.unicap.eng2.debuggin_squad.war.controller;
 
 import java.util.ArrayList;
@@ -14,6 +10,8 @@ public class Player {
     private String name;
     private GoalCard goalCard;
     private List<Territory> conqueredTerritories;
+  
+    private Life life;
 
     public String getName() {
         return name;
@@ -52,4 +50,9 @@ public class Player {
     public List<Territory> getConqueredTerritories() {
         return conqueredTerritories;
     }
-}
+
+    public boolean getLife(){
+        this.life = life;
+        return false;
+        }
+    }

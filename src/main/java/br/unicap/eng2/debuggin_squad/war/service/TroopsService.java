@@ -1,5 +1,5 @@
 /**
- * @author Bruno Iraê <brunoirae@gmail.com / @brunoirae>
+ * @author Bruno Irae <brunoirae@gmail.com / @brunoirae>
  */
 
 package br.unicap.eng2.debuggin_squad.war.service;
@@ -20,8 +20,8 @@ public class TroopsService {
     }
 
     //Falta alocar o recebimento de carta por {CONTINENTE}
-    /* Função: Recebe um determinado número de exercitos de acordo com a tabela*/
+    /* Funcao: Recebe um determinado numero de exercitos de acordo com a tabela*/
 
     //Falta alocar o recebimento de carta por {TROCA DE CARTAS}
-    /* Recebe um determinado número de exercitos de acordo as figuras*/
+    /* Recebe um determinado numero de exercitos de acordo as figuras*/
 }
