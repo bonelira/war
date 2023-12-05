@@ -1,9 +1,13 @@
+/**
+ * @author Bruno Irae <brunoirae@gmail.com / @brunoirae>
+ */
+
 package br.unicap.eng2.debuggin_squad.war.controller;
+
+import br.unicap.eng2.debuggin_squad.war.GoalCard;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import br.unicap.eng2.debuggin_squad.war.GoalCard;
 
 public class Player {
     private String id;
