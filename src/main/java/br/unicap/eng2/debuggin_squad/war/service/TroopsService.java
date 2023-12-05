@@ -7,6 +7,7 @@ package br.unicap.eng2.debuggin_squad.war.service;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.model.composite.troops.TroopsComponent;
 
+
 import java.util.List;
 
 public class TroopsService {
