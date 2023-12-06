@@ -6,19 +6,11 @@ package br.unicap.eng2.debuggin_squad.war.controller;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Territory {
     private String nome;
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     private Player proprietario;
     private int army;
     private Set<Territory> adjacentTerritories;
@@ -37,6 +29,10 @@ public class Territory {
 
     public void addArmies(int armies) {
         army += armies;
+    }
+
+    public String getNome() {
+        return nome;
     }
 
     public void removeArmies(int armies) {
@@ -87,4 +83,5 @@ public class Territory {
     public String getContinent() {
         return continent;
     }
+
 }
