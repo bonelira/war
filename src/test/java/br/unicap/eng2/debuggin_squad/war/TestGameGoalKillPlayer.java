@@ -9,8 +9,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import br.unicap.eng2.debuggin_squad.war.Player;
-import br.unicap.eng2.debuggin_squad.war.Territory;
+import br.unicap.eng2.debuggin_squad.war.controller.Player;
+import br.unicap.eng2.debuggin_squad.war.controller.Territory;
 
 public class TestGameGoalKillPlayer {
     private Stack<GoalCard> goalCardsMock;
