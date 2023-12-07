@@ -9,9 +9,6 @@ import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
 
 public class Conquering24Territories extends CardObjective implements IObjective {
-    private final String NAME = "Conquistar 24 territorio";
-    private final String DESCRIPTION = "Conquistar 24 territorio da sua escolha";
-    private CardObjective cardObjective = new CardObjective(NAME, DESCRIPTION, 0);
 
     public Conquering24Territories(String name, String description, int id) {
         super(name, description, id);
