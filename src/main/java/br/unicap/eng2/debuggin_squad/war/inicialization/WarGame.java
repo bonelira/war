@@ -16,6 +16,8 @@ import java.util.List;
 public class WarGame {
 
     private Board board;
+    private List<Player> players;
+    private List<GoalCard> goalCards;
     List<Territory> territoriesList;
 
     public List<Territory> getTerritoriesList() {
@@ -25,9 +27,6 @@ public class WarGame {
     public void setTerritoriesList(List<Territory> territoriesList) {
         this.territoriesList = territoriesList;
     }
-
-    private List<Player> players;
-    private List<GoalCard> goalCards;
 
     public WarGame(List<Territory> board, List<Player> players, List<GoalCard> goalCards, int playersQuantity) {
         this.territoriesList = board;
