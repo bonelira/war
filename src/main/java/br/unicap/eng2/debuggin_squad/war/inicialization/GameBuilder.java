@@ -29,8 +29,8 @@ public class GameBuilder implements Builder {
     private List<Territory> territories;
 
     @Override
-    // Por enquanto nenhuma config a mais necessaria, pois ja e passado
-    public void configureBoard(List<Territory> territories) { // o mapa padrao, config so quando lidar com players !=6.
+    // passo a classe board, não precisa de configurações, porém
+    public void configureBoard(List<Territory> territories) { // esse método precisa dar territórios aos players
         game.setTerritoriesList(territories);
         board = new Board(territories);
         game.setBoard(board);
