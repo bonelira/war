@@ -52,4 +52,18 @@ public class Conquering24TerritoriesTest {
         boolean objective = conquering24Territories.objectiveAchieved(player);
         assertFalse(objective);
     }
+
+    @Test
+    public void testPlayerWith24ConqueredTerritories() {
+        Arrays.stream(countriesArray)
+                .forEach(country -> {
+                    territory = new Territory(country, 1);
+                    territory.setProprietario(player);
+                    countries.add(territory);
+                });
+
+        player.setConqueredTerritories(countries);
+        boolean objective = conquering24Territories.objectiveAchieved(player);
+        assertTrue(objective);
+    }
 }
