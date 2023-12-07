@@ -16,7 +16,13 @@ public class Conquering24Territories extends CardObjective implements IObjective
 
     @Override
     public boolean objectiveAchieved(Player player) {
-        int conqueredTerritory = 0;
+        long conqueredTerritor = player.getConqueredTerritories().stream()
+                .filter(t -> t.getProprietario().equals(player))
+                .count();
+
+        return conqueredTerritor == 24;
+
+        /*int conqueredTerritory = 0;
         for (Territory t : player.getConqueredTerritories()) {
             if (t.getProprietario().equals(player)) {
                 conqueredTerritory++;
@@ -25,6 +31,6 @@ public class Conquering24Territories extends CardObjective implements IObjective
         if (conqueredTerritory == 24) {
             return true;
         }
-        return false;
+        return false;*/
     }
 }
