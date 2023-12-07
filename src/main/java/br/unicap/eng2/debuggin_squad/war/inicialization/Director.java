@@ -21,21 +21,21 @@ public class Director {
     }
 
     private List<Player> getPlayersList() {
-        List<Player> playersListComplete = new ArrayList<>();
+        List<Player> playersCompleteList = new ArrayList<>();
         Player player1 = new Player("Bone", "Preto");
         Player player2 = new Player("Roosevelt", "azul");
         Player player3 = new Player("Bruno", "amarelo");
         Player player4 = new Player("Vicente", "vermelho");
         Player player5 = new Player("Igor", "verde");
         Player player6 = new Player("Leonardo", "roxo");
-        playersListComplete.add(player1);
-        playersListComplete.add(player2);
-        playersListComplete.add(player3);
-        playersListComplete.add(player4);
-        playersListComplete.add(player5);
-        playersListComplete.add(player6);
+        playersCompleteList.add(player1);
+        playersCompleteList.add(player2);
+        playersCompleteList.add(player3);
+        playersCompleteList.add(player4);
+        playersCompleteList.add(player5);
+        playersCompleteList.add(player6);
 
-        return playersListComplete;
+        return playersCompleteList;
     }
 
     // Default goal Card: Conquistar 24 territorios ou continente
