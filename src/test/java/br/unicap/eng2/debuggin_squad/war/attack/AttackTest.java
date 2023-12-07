@@ -1,0 +1,314 @@
+package br.unicap.eng2.debuggin_squad.war.attack;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+
+import br.unicap.eng2.debuggin_squad.war.controller.Territory;
+import br.unicap.eng2.debuggin_squad.war.model.state.attack.G;
+
+public class AttackTest {
+    static AttackState attackState;
+    static GameState phase;
+    Territory territorySource;
+    Territory territoryTarget;
+
+    @BeforeEach
+    void setUp() throws Exception {
+        this.territorySource = new Territory(new Player(), 10);
+        this.territoryTarget = new Territory(new Player(), 0);
+        this.territorySource.addNeighbor(territoryTarget);
+        this.territoryTarget.addNeighbor(territorySource);
+
+        gamePhase = new Phase();
+        // only fortifying territories (round 1)
+        gamePhase.runPhase();
+        gamePhase.transitionToNextState();
+
+        // fortifying territories
+        gamePhase.runPhase();
+        gamePhase.transitionToNextState();
+
+    }
+
+    @Test
+    public void test01AttackPhaseIsCorrectlyTransitioned() throws Exception {
+
+        try {
+            // attack phase
+            GameState attack = gamePhase.getCurrentState();
+            Assertions.assertTrue(attack instanceof AttackState);
+        } catch (Exception e) {
+            Assertions.fail();
+        }
+    }
+
+    @Test
+    public void test02PerformAttackIsNotPossibleWhenTerritorySourceIsNotSelected() {
+        try {
+            // attack phase
+            gamePhase.prepareAttack(null, null);
+            gamePhase.runPhase();
+            Assertions.fail();
+
+        } catch (Exception e) {
+            Assertions.assertEquals(AttackState.MSG_ERROR_TERRITORY_SOURCE_NOT_SELECTED, e.getMessage());
+        }
+    }
+
+    @Test
+    public void test03PerformAttackIsNotPossibleWhenTerritoryDestinationIsNotSelected() {
+        try {
+            // attack phase
+            Territory territorySource = new Territory();
+            gamePhase.prepareAttack(territorySource, null);
+            gamePhase.runPhase();
+            Assertions.fail();
+
+        } catch (Exception e) {
+            Assertions.assertEquals(AttackState.MSG_ERROR_TERRITORY_DESTINATION_NOT_SELECTED, e.getMessage());
+        }
+    }
+
+    @Test
+    public void test04PerformAttackIsPossibleWhenTerritoriesAreSelected() {
+        try {
+            // attack phase
+            Territory territorySource = new Territory();
+            Territory territoryDestination = new Territory();
+            gamePhase.prepareAttack(territorySource, territoryDestination);
+            gamePhase.transitionToNextState();
+
+            GameState actualPhase = gamePhase.getCurrentState();
+            Assertions.assertTrue(actualPhase instanceof PerformingAttackState);
+
+        } catch (Exception e) {
+            Assertions.fail();
+        }
+    }
+
+    @Test
+    public void test05PrepareAttackIsNotPossibleWhenStateIsNotAttackState() {
+
+        try {
+            // only fortifying territories (round 1)
+            gamePhase = new Phase();
+            gamePhase.runPhase();
+
+            // trying to prepare attack in fortifying phase
+            gamePhase.prepareAttack(this.territorySource, this.territoryTarget);
+            Assertions.fail();
+
+        } catch (Exception e) {
+            Assertions.assertEquals(Phase.MSG_ERROR_INCORRECT_STATE, e.getMessage());
+        }
+    }
+
+    @Test
+    public void test06AttackStateIsPreparingAttackWhenPerformAttackIsSuccessful() {
+
+        try {
+            // attack phase
+            gamePhase.prepareAttack(this.territorySource, this.territoryTarget);
+            gamePhase.transitionToNextState();
+
+            TerritoryConfront confront = Mockito.mock(TerritoryConfront.class);
+            Territory tSource = Mockito.mock(Territory.class);
+            Territory tTarget = Mockito.mock(Territory.class);
+
+            Mockito.when(confront.getArmyLossDestination()).thenReturn(1);
+            Mockito.when(confront.getTerritorySource()).thenReturn(tSource);
+            Mockito.when(confront.getTerritoryTarget()).thenReturn(tTarget);
+            Mockito.when(tSource.getArmy()).thenReturn(2);
+            Mockito.when(tTarget.getArmy()).thenReturn(5);
+
+            gamePhase.performAttack(confront);
+            gamePhase.transitionToNextState();
+
+            GameState actualPhase = gamePhase.getCurrentState();
+            Assertions.assertTrue(actualPhase instanceof PreparingAttackState);
+
+        } catch (Exception e) {
+            Assertions.fail();
+        }
+    }
+
+    @Test
+    public void test07StateIsArmyInvadeStateWhenPlayerConquerTerritoryTargetAfterConfront() {
+        try {
+            // attack phase
+            gamePhase.prepareAttack(this.territorySource, this.territoryTarget);
+            gamePhase.transitionToNextState();
+
+            TerritoryConfront confront = Mockito.mock(TerritoryConfront.class);
+            Territory tSource = Mockito.mock(Territory.class);
+            Territory tTarget = Mockito.mock(Territory.class);
+
+            Mockito.when(confront.getArmyLossDestination()).thenReturn(1);
+            Mockito.when(confront.getTerritorySource()).thenReturn(tSource);
+            Mockito.when(confront.getTerritoryTarget()).thenReturn(tTarget);
+            Mockito.when(tSource.getArmy()).thenReturn(2);
+            Mockito.when(tTarget.getArmy()).thenReturn(0);
+
+            gamePhase.performAttack(confront);
+            gamePhase.transitionToNextState();
+
+            GameState actualPhase = gamePhase.getCurrentState();
+            Assertions.assertTrue(actualPhase instanceof ArmyInvadeState);
+
+        } catch (Exception e) {
+            Assertions.fail();
+        }
+    }
+
+    @Test
+    public void test08PrepareAttackIsNotPossibleUntilPlayerAllocateArmyToTerritoryTarget() {
+        try {
+            // attack phase
+            gamePhase.prepareAttack(this.territorySource, this.territoryTarget);
+            gamePhase.transitionToNextState();
+
+            TerritoryConfront confront = Mockito.mock(TerritoryConfront.class);
+            Territory tSource = Mockito.mock(Territory.class);
+            Territory tTarget = Mockito.mock(Territory.class);
+
+            Mockito.when(confront.getArmyLossDestination()).thenReturn(1);
+            Mockito.when(confront.getTerritorySource()).thenReturn(tSource);
+            Mockito.when(confront.getTerritoryTarget()).thenReturn(tTarget);
+            Mockito.when(tSource.getArmy()).thenReturn(2);
+            Mockito.when(tTarget.getArmy()).thenReturn(0);
+
+            gamePhase.performAttack(confront);
+            gamePhase.transitionToNextState();
+
+            // occupation army of territoryTarget has been eliminated
+            // player must allocate army to territoryTarget but decided to prepareAttack
+            gamePhase.prepareAttack(territorySource, territoryTarget);
+            Assertions.fail();
+        } catch (Exception e) {
+            Assertions.assertEquals(Phase.MSG_ERROR_INCORRECT_STATE, e.getMessage());
+        }
+    }
+
+    @Test
+    public void test09GameStateIsPreparingAttackWhenPlayerSuccessfullyInvadesTerritoryTargetAfterPerformAttack() {
+        try {
+            // attack phase
+            gamePhase.prepareAttack(this.territorySource, this.territoryTarget);
+            gamePhase.transitionToNextState();
+
+            TerritoryConfront confront = Mockito.mock(TerritoryConfront.class);
+            Territory tSource = Mockito.mock(Territory.class);
+            Territory tTarget = Mockito.mock(Territory.class);
+            Player player = Mockito.mock(Player.class);
+
+            Mockito.when(confront.getArmyLossDestination()).thenReturn(1);
+            Mockito.when(confront.getTerritorySource()).thenReturn(tSource);
+            Mockito.when(confront.getTerritoryTarget()).thenReturn(tTarget);
+            Mockito.when(tSource.getArmy()).thenReturn(3);
+            Mockito.when(tTarget.getArmy()).thenReturn(0);
+            Mockito.when(tSource.getOwner()).thenReturn(player);
+            Mockito.when(tTarget.getOwner()).thenReturn(player);
+
+            gamePhase.performAttack(confront);
+            gamePhase.transitionToNextState();
+
+            // occupation army of territoryTarget has been eliminated
+            int invadeArmy = 2;
+            gamePhase.invadeTerritory(tSource, tTarget, invadeArmy);
+            gamePhase.transitionToNextState();
+
+            // invade successful
+            GameState actualPhase = gamePhase.getCurrentState();
+            Assertions.assertTrue(actualPhase instanceof PreparingAttackState);
+
+        } catch (Exception e) {
+            Assertions.fail();
+        }
+    }
+
+    @Test
+    public void test10PrepareAttackIsNotPossibleWhenArmyNotAllocatedCorrectly() {
+        try {
+            // attack phase
+            gamePhase.prepareAttack(this.territorySource, this.territoryTarget);
+            gamePhase.transitionToNextState();
+
+            TerritoryConfront confront = Mockito.mock(TerritoryConfront.class);
+            Territory tSource = Mockito.mock(Territory.class);
+            Territory tTarget = Mockito.mock(Territory.class);
+            Player player = Mockito.mock(Player.class);
+
+            Mockito.when(confront.getArmyLossDestination()).thenReturn(1);
+            Mockito.when(confront.getTerritorySource()).thenReturn(tSource);
+            Mockito.when(confront.getTerritoryTarget()).thenReturn(tTarget);
+            Mockito.when(tSource.getArmy()).thenReturn(3);
+            Mockito.when(tTarget.getArmy()).thenReturn(0);
+            Mockito.when(tSource.getOwner()).thenReturn(player);
+            Mockito.when(tTarget.getOwner()).thenReturn(player);
+
+            gamePhase.performAttack(confront);
+            gamePhase.transitionToNextState();
+
+            // occupation army of territoryTarget has been eliminated
+            int invadeArmy = 0;
+            gamePhase.invadeTerritory(tSource, tTarget, invadeArmy);
+            gamePhase.transitionToNextState();
+
+            // invade not successful
+            Assertions.fail();
+
+        } catch (Exception e) {
+            Assertions.assertEquals(ArmyInvadeState.MSG_ERROR_ARMY_NOT_ALLOCATED_CORRECTLY, e.getMessage());
+        }
+
+    }
+
+    @Test
+    public void test11GameStateIsCorrectlyTransitionedWhenPlayerChoosesToEndAttackWithoutAttacking() {
+        try {
+            // attack phase
+            // player not call prepareAttack
+            gamePhase.endPhase();
+            gamePhase.transitionToNextState();
+
+            GameState actualPhase = gamePhase.getCurrentState();
+            Assertions.assertTrue(actualPhase instanceof ArmyAllocationState);
+
+        } catch (Exception e) {
+            Assertions.fail();
+        }
+
+    }
+
+    @Test
+    void test12TransitionToNextStateIsNotPossibleWhenAttackStateIsWaitingArmyAllocation() {
+        try {
+            // attack phase
+            gamePhase.prepareAttack(this.territorySource, this.territoryTarget);
+            gamePhase.transitionToNextState();
+
+            TerritoryConfront confront = Mockito.mock(TerritoryConfront.class);
+            Territory tSource = Mockito.mock(Territory.class);
+            Territory tTarget = Mockito.mock(Territory.class);
+
+            Mockito.when(confront.getArmyLossDestination()).thenReturn(1);
+            Mockito.when(confront.getTerritorySource()).thenReturn(tSource);
+            Mockito.when(confront.getTerritoryTarget()).thenReturn(tTarget);
+            Mockito.when(tSource.getArmy()).thenReturn(2);
+            Mockito.when(tTarget.getArmy()).thenReturn(0);
+
+            gamePhase.performAttack(confront);
+            gamePhase.transitionToNextState();
+
+            // GameState is 'Army Invade State' but Player try to end Phase without invade
+            gamePhase.endPhase();
+            gamePhase.transitionToNextState();
+            Assertions.fail();
+        } catch (Exception e) {
+            Assertions.assertEquals(AttackState.MSG_ERROR_CANNOT_CHANGE_STATE, e.getMessage());
+        }
+    }
+
+}

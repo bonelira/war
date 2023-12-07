@@ -84,4 +84,16 @@ public class Territory {
         return continent;
     }
 
+    public int getArmy(){
+        return this.army;
+    }
+
+    public boolean isAdjancent(Territory territory){
+        return true;
+    }
+
+    public void setArmy (int value){
+        this.army = value;
+    }
+
 }
