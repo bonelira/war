@@ -50,6 +50,7 @@ public class GameBuilder implements Builder {
         game.setPlayers(players);
     }
 
+    // TODO [ ] mudar esse método utilizando 'lista circular para os players'
     private void giveInitialGoalCardsForEachPlayer(List<Player> players) {
         GoalCard goalCard = game.getGoalCards().get(0);
         for (Player player : players) {
