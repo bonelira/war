@@ -4,19 +4,24 @@
 
 package br.unicap.eng2.debuggin_squad.war.fortify;
 
-import br.unicap.eng2.debuggin_squad.war.Initialization;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
+import br.unicap.eng2.debuggin_squad.war.inicialization.Director;
+import br.unicap.eng2.debuggin_squad.war.inicialization.GameBuilder;
+import br.unicap.eng2.debuggin_squad.war.inicialization.WarGame;
 import br.unicap.eng2.debuggin_squad.war.model.state.fortify.FortifyAfterConquerState;
 import br.unicap.eng2.debuggin_squad.war.model.state.fortify.FortifyContext;
 import br.unicap.eng2.debuggin_squad.war.service.FortifyService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collections;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class FortifyServiceTest extends Initialization {
+public class FortifyServiceTest  {
     private Player player1;
 
     private Territory territory;
@@ -28,18 +33,30 @@ public class FortifyServiceTest extends Initialization {
 
     private FortifyContext fortifyContext;
 
+    private Director director;
+
+    private GameBuilder builder;
+
+    private WarGame game;
+
     @BeforeEach
     public void setup() {
         fortificar = new FortifyService();
         fortifyContext = new FortifyContext();
+        director = new Director();
+        builder = new GameBuilder();
+        game = builder.getResult();
     }
 
     @Test
     public void testVerifyExerciseAcquisitionAndAllocation() {
-        player1 = initializePlayer();
-        territory = initializeTerritoryEmpty();
+        director.constructDefaultGame(builder);
+        player1 = game.getPlayers().get(0) ;
+        territory = player1.getConqueredTerritories().get(0);
+        territory.setProprietario(player1); territory.setArmiesCount(0);
 
-        fortificar.fortificationArmies(player1, simulationArmies, territory);
+        List<Player> listPlayers = Collections.singletonList(player1);
+        fortificar.fortificationArmies(listPlayers, simulationArmies, territory);
         int totalArmies = territory.getArmiesCount();
 
         assertEquals(simulationArmies, totalArmies);
@@ -47,25 +64,29 @@ public class FortifyServiceTest extends Initialization {
 
     @Test
     public void testCheckWhetherTheArmyIsBeingAllocated() {
-        player1 = initializePlayer();
-        territory = initializeTerritoryBrasil();
+        director.constructDefaultGame(builder);
+        player1 = game.getPlayers().get(0);
+        territory = player1.getConqueredTerritories().get(0);
+        territory.setProprietario(player1);territory.setArmiesCount(0);
 
         int initialArmies = simulationArmies;
-        fortificar.fortificationArmies(player1, simulationArmies, territory);
+        List<Player> listPlayers = Collections.singletonList(player1);
+        fortificar.fortificationArmies(listPlayers, simulationArmies, territory);
 
         assertEquals(0, initialArmies - simulationArmies);
     }
 
     @Test
     public void testValidateErrorArmyAllocation() {
-        player1 = initializePlayer();
-        territory = initializeTerritoryEmpty();
-        initializeAdjacents();
-        int armyZero = 0;
         fortifyContext.setState(new FortifyAfterConquerState());
+        director.constructDefaultGame(builder);
+        player1 = game.getPlayers().get(0);
+        territory = player1.getConqueredTerritories().get(0);
+        territory.setProprietario(player1);territory.setArmiesCount(0);
 
+        List<Player> allPlayers = game.getPlayers();
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            fortifyContext.fortifyArmies(player1, armyZero, territory);
+            fortifyContext.fortifyArmies(allPlayers, 0, territory);
         });
 
         assertEquals(FortifyAfterConquerState.MSG_ALLOCATE_MORE_ARMY, exception.getMessage());
@@ -73,13 +94,15 @@ public class FortifyServiceTest extends Initialization {
 
     @Test
     public void testValidateErrorAllocateAllArmies() {
-        player1 = initializePlayer();
-        territory = initializeTerritoryBrasil();
-        int armyZero = 5;
         fortifyContext.setState(new FortifyAfterConquerState());
+        director.constructDefaultGame(builder);
+        player1 = game.getPlayers().get(4) ;
+        territory = player1.getConqueredTerritories().get(0);
+        territory.setProprietario(player1); territory.setArmiesCount(1);
 
+        List<Player> listPlayers = Collections.singletonList(player1);
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            fortifyContext.fortifyArmies(player1, armyZero, territory);
+            fortifyContext.fortifyArmies(listPlayers, 1, territory);
         });
 
         assertEquals(FortifyAfterConquerState.ALLOCATE_ALL_ARMIES, exception.getMessage());
