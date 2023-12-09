@@ -5,6 +5,7 @@
 package br.unicap.eng2.debuggin_squad.war.controller;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Territory {
@@ -31,6 +32,10 @@ public class Territory {
 
     public void addArmies(int armies) {
         army += armies;
+    }
+
+    public String getNome() {
+        return nome;
     }
 
     public void removeArmies(int armies) {
@@ -81,4 +86,5 @@ public class Territory {
     public String getContinent() {
         return continent;
     }
+
 }
