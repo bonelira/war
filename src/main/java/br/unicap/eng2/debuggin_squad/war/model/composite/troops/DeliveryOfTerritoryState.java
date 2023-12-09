@@ -13,6 +13,7 @@ import java.util.List;
 public class DeliveryOfTerritoryState implements TroopsComponent {
     private TroopsComponent currentState;
     private List<Observer> observers = new ArrayList<>();
+    private int troopCount;
 
     public static final String MSG_ERROR_TROOPS = "Delivery troops failed.";
     public static final String MSG_TERRITORY_DID_NOT_CONQUER = "The player did not conquer territories";
@@ -24,9 +25,9 @@ public class DeliveryOfTerritoryState implements TroopsComponent {
 
         if (validateTroops(player)) {
             int totalTerritories = conqueredTerritories.size();
-            int armiesReceived = totalTerritories / 2;
+            int troopCount = totalTerritories / 2;
             notifyObservers();
-            return armiesReceived;
+            return troopCount;
         } else {
             throw new IllegalArgumentException(MSG_ERROR_TROOPS);
         }
@@ -57,7 +58,7 @@ public class DeliveryOfTerritoryState implements TroopsComponent {
 
     @Override
     public int getTroopCount() {
-        return 0;
+        return troopCount;
     }
 
     public boolean validateTroops(Player player) {
@@ -70,6 +71,7 @@ public class DeliveryOfTerritoryState implements TroopsComponent {
 
     @Override
     public void update(int newTroopCount) {
-
+        this.troopCount = newTroopCount;
+        notifyObservers();
     }
 }

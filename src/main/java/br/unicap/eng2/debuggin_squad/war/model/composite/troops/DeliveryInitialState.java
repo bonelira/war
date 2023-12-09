@@ -15,13 +15,14 @@ public class DeliveryInitialState implements TroopsComponent {
 
     public static final String MSG_ERROR_TROOPS = "Delivery troops failed.";
     public static final String MSG_TERRITORY_EMPTY = "The territory cannot be empty";
+    private int troopCount;
 
     @Override
     public int deliverArmies(List<Player> players) {
         if (validateTroopsInitial(players)) {
-            int armiesReceived = 42 / players.size();
+            int troopCount = 42 / players.size();
             notifyObservers();
-            return armiesReceived;
+            return troopCount;
         } else {
             throw new IllegalArgumentException(MSG_ERROR_TROOPS);
         }
@@ -47,7 +48,7 @@ public class DeliveryInitialState implements TroopsComponent {
 
     @Override
     public int getTroopCount() {
-        return 0;
+        return troopCount;
     }
 
     public boolean validateTroopsInitial(List<Player> players) {
@@ -58,5 +59,8 @@ public class DeliveryInitialState implements TroopsComponent {
     }
 
     @Override
-    public void update(int newTroopCount) {}
+    public void update(int newTroopCount) {
+        this.troopCount = newTroopCount;
+        notifyObservers();
+    }
 }
