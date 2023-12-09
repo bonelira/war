@@ -262,6 +262,32 @@ public class TroopsServiceTest {
         when(player1.getConqueredTerritories()).thenReturn(northAmericanTerritories);
     }
 
+    private void mockSouthAmericanTerritories() {
+        Territory brazil = mock(Territory.class);
+        when(brazil.getName()).thenReturn("Brazil");
+        when(brazil.getContinent()).thenReturn("South America");
+
+        Territory peru = mock(Territory.class);
+        when(peru.getName()).thenReturn("Peru");
+        when(peru.getContinent()).thenReturn("South America");
+
+        Territory argentina = mock(Territory.class);
+        when(argentina.getName()).thenReturn("Argentina");
+        when(argentina.getContinent()).thenReturn("South America");
+
+        Territory venezuela = mock(Territory.class);
+        when(venezuela.getName()).thenReturn("Venezuela");
+        when(venezuela.getContinent()).thenReturn("South America");
+
+        List<Territory> southAmericanTerritories = new ArrayList<>();
+        southAmericanTerritories.add(brazil);
+        southAmericanTerritories.add(peru);
+        southAmericanTerritories.add(argentina);
+        southAmericanTerritories.add(venezuela);
+
+        when(player1.getConqueredTerritories()).thenReturn(southAmericanTerritories);
+    }
+
     @Test
     public void testValidatesTroopsSentInTheInitialTurn() {
         mockPlayers();
@@ -331,6 +357,18 @@ public class TroopsServiceTest {
 
         int armiesReceived = continentTroopDelivery.deliverArmies(players);
         int expectedArmiesReceived = 5;
+
+        assertEquals(expectedArmiesReceived, armiesReceived);
+    }
+
+    @Test
+    public void testValidatesTroopsSentInContinentSouthAmerica() {
+        mockPlayers();
+        mockSouthAmericanTerritories();
+        ContinentTroopDelivery continentTroopDelivery = new ContinentTroopDelivery();
+
+        int armiesReceived = continentTroopDelivery.deliverArmies(players);
+        int expectedArmiesReceived = 2;
 
         assertEquals(expectedArmiesReceived, armiesReceived);
     }
