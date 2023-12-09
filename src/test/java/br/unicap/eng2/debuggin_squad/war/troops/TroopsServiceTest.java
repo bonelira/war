@@ -104,6 +104,72 @@ public class TroopsServiceTest {
         when(player1.getConqueredTerritories()).thenReturn(africanTerritories);
     }
 
+    private void mockAsianTerritories() {
+        Territory japan = mock(Territory.class);
+        when(japan.getName()).thenReturn("Japan");
+        when(japan.getContinent()).thenReturn("Asia");
+
+        Territory vietnam = mock(Territory.class);
+        when(vietnam.getName()).thenReturn("Vietnam");
+        when(vietnam.getContinent()).thenReturn("Asia");
+
+        Territory india = mock(Territory.class);
+        when(india.getName()).thenReturn("India");
+        when(india.getContinent()).thenReturn("Asia");
+
+        Territory middleEast = mock(Territory.class);
+        when(middleEast.getName()).thenReturn("Middle East");
+        when(middleEast.getContinent()).thenReturn("Asia");
+
+        Territory aral = mock(Territory.class);
+        when(aral.getName()).thenReturn("Aral");
+        when(aral.getContinent()).thenReturn("Asia");
+
+        Territory omsk = mock(Territory.class);
+        when(omsk.getName()).thenReturn("Omsk");
+        when(omsk.getContinent()).thenReturn("Asia");
+
+        Territory china = mock(Territory.class);
+        when(china.getName()).thenReturn("China");
+        when(china.getContinent()).thenReturn("Asia");
+
+        Territory dudinka = mock(Territory.class);
+        when(dudinka.getName()).thenReturn("Dudinka");
+        when(dudinka.getContinent()).thenReturn("Asia");
+
+        Territory tchita = mock(Territory.class);
+        when(tchita.getName()).thenReturn("Tchita");
+        when(tchita.getContinent()).thenReturn("Asia");
+
+        Territory mongolia = mock(Territory.class);
+        when(mongolia.getName()).thenReturn("Mongolia");
+        when(mongolia.getContinent()).thenReturn("Asia");
+
+        Territory siberia = mock(Territory.class);
+        when(siberia.getName()).thenReturn("Siberia");
+        when(siberia.getContinent()).thenReturn("Asia");
+
+        Territory vladvostok = mock(Territory.class);
+        when(vladvostok.getName()).thenReturn("Vladvostok");
+        when(vladvostok.getContinent()).thenReturn("Asia");
+
+        List<Territory> asianTerritories = new ArrayList<>();
+        asianTerritories.add(japan);
+        asianTerritories.add(vietnam);
+        asianTerritories.add(india);
+        asianTerritories.add(middleEast);
+        asianTerritories.add(aral);
+        asianTerritories.add(omsk);
+        asianTerritories.add(china);
+        asianTerritories.add(dudinka);
+        asianTerritories.add(tchita);
+        asianTerritories.add(mongolia);
+        asianTerritories.add(siberia);
+        asianTerritories.add(vladvostok);
+
+        when(player1.getConqueredTerritories()).thenReturn(asianTerritories);
+    }
+
     @Test
     public void testValidatesTroopsSentInTheInitialTurn() {
         mockPlayers();
@@ -137,6 +203,18 @@ public class TroopsServiceTest {
 
         int armiesReceived = continentTroopDelivery.deliverArmies(players);
         int expectedArmiesReceived = 3;
+
+        assertEquals(expectedArmiesReceived, armiesReceived);
+    }
+
+    @Test
+    public void testValidatesTroopsSentInContinentAsia() {
+        mockPlayers();
+        mockAsianTerritories();
+        ContinentTroopDelivery continentTroopDelivery = new ContinentTroopDelivery();
+
+        int armiesReceived = continentTroopDelivery.deliverArmies(players);
+        int expectedArmiesReceived = 7;
 
         assertEquals(expectedArmiesReceived, armiesReceived);
     }
