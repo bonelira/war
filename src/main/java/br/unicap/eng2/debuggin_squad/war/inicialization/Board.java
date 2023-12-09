@@ -57,7 +57,7 @@ public class Board {
         return allTerritories;
     }
 
-    public Board getBoard() {
+    public List<Territory> getBoard() { // precisa retornar a si mesmo.
         List<Territory> territories = new ArrayList<>();
         Territory sweden = new Territory("Suecia", 1);
         Territory germany = new Territory("Alemanha", 1);
@@ -420,6 +420,6 @@ public class Board {
         // [x] criar as subjacencias de cada pais
         // [ ] refatorar 'pertencimento a continente'
 
-        return this;
+        return territories;
     }
 }
