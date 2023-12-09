@@ -20,10 +20,14 @@ public class ContinentTroopDelivery implements TroopsComponent {
 
         for (Player player : players) {
             boolean conqueredAllAfrica = conqueredAllAfrica(player);
-
+            boolean conqueredAllAsia = conqueredAllAsia(player);
 
             if (conqueredAllAfrica) {
                 troopCount += 3;
+            }
+
+            if (conqueredAllAsia) {
+                troopCount += 7;
             }
 
         }
@@ -63,6 +67,13 @@ public class ContinentTroopDelivery implements TroopsComponent {
                 .containsAll(africanTerritories);
     }
 
+    private boolean conqueredAllAsia(Player player) {
+        List<String> asianTerritories = Arrays.asList("Japan", "Vietnam", "India", "Middle East", "Aral", "Omsk", "China", "Dudinka", "Tchita", "Mongolia", "Siberia", "Vladvostok");
+        return player.getConqueredTerritories().stream()
+                .map(Territory::getName)
+                .collect(Collectors.toList())
+                .containsAll(asianTerritories);
+    }
 
     @Override
     public void update(int newTroopCount) {
