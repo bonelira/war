@@ -170,6 +170,52 @@ public class TroopsServiceTest {
         when(player1.getConqueredTerritories()).thenReturn(asianTerritories);
     }
 
+    private void mockEuropeanTerritories() {
+        Territory sweden = mock(Territory.class);
+        when(sweden.getName()).thenReturn("Sweden");
+        when(sweden.getContinent()).thenReturn("Europe");
+
+        Territory germany = mock(Territory.class);
+        when(germany.getName()).thenReturn("Germany");
+        when(germany.getContinent()).thenReturn("Europe");
+
+        Territory poland = mock(Territory.class);
+        when(poland.getName()).thenReturn("Poland");
+        when(poland.getContinent()).thenReturn("Europe");
+
+        Territory moscow = mock(Territory.class);
+        when(moscow.getName()).thenReturn("Moscow");
+        when(moscow.getContinent()).thenReturn("Europe");
+
+        Territory france = mock(Territory.class);
+        when(france.getName()).thenReturn("France");
+        when(france.getContinent()).thenReturn("Europe");
+
+        Territory england = mock(Territory.class);
+        when(england.getName()).thenReturn("England");
+        when(england.getContinent()).thenReturn("Europe");
+
+        Territory iceland = mock(Territory.class);
+        when(iceland.getName()).thenReturn("Iceland");
+        when(iceland.getContinent()).thenReturn("Europe");
+
+        Territory greenland = mock(Territory.class);
+        when(greenland.getName()).thenReturn("Greenland");
+        when(greenland.getContinent()).thenReturn("Europe");
+
+        List<Territory> europeanTerritories = new ArrayList<>();
+        europeanTerritories.add(sweden);
+        europeanTerritories.add(germany);
+        europeanTerritories.add(poland);
+        europeanTerritories.add(moscow);
+        europeanTerritories.add(france);
+        europeanTerritories.add(england);
+        europeanTerritories.add(iceland);
+        europeanTerritories.add(greenland);
+
+        when(player1.getConqueredTerritories()).thenReturn(europeanTerritories);
+    }
+
     @Test
     public void testValidatesTroopsSentInTheInitialTurn() {
         mockPlayers();
@@ -219,6 +265,17 @@ public class TroopsServiceTest {
         assertEquals(expectedArmiesReceived, armiesReceived);
     }
 
+    @Test
+    public void testValidatesTroopsSentInContinentEuropean() {
+        mockPlayers();
+        mockEuropeanTerritories();
+        ContinentTroopDelivery continentTroopDelivery = new ContinentTroopDelivery();
+
+        int armiesReceived = continentTroopDelivery.deliverArmies(players);
+        int expectedArmiesReceived = 5;
+
+        assertEquals(expectedArmiesReceived, armiesReceived);
+    }
 
     //Criar teste para alocação de exercitos através da troca de carta
     /*Criar um método mock para alocar as cartas*/
