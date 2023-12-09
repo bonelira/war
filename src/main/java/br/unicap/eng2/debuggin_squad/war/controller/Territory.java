@@ -4,26 +4,29 @@
 
 package br.unicap.eng2.debuggin_squad.war.controller;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
 public class Territory {
-    private String nome;
+    private String name;
     private Player proprietario;
     private int army;
     private Set<Territory> adjacentTerritories;
     private boolean hasBeenUsedInCurrentMove = false;
     private String continent;
-
+    
     public void setContinent(String continent) {
         this.continent = continent;
     }
 
-    public Territory(String nome, int army) {
-        this.nome = nome;
+    public Territory(String name, int army) {
+        this.name = name;
         this.army = army;
         adjacentTerritories = new HashSet<>();
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void addArmies(int armies) {
