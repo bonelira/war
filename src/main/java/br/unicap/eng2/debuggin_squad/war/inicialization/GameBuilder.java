@@ -7,7 +7,7 @@ package br.unicap.eng2.debuggin_squad.war.inicialization;
 import java.util.List;
 import java.util.ArrayList;
 
-import br.unicap.eng2.debuggin_squad.war.Board;
+import br.unicap.eng2.debuggin_squad.war.inicialization.Board;
 import br.unicap.eng2.debuggin_squad.war.GoalCard;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
