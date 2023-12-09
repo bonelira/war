@@ -24,6 +24,7 @@ public class ContinentTroopDelivery implements TroopsComponent {
             boolean conqueredAllEurope = conqueredAllEurope(player);
             boolean conqueredAllNorthAmerica = conqueredAllNorthAmerica(player);
             boolean conqueredAllSouthAmerica = conqueredAllSouthAmerica(player);
+            boolean conqueredAllOceania = conqueredAllOceania(player);
 
             if (conqueredAllAfrica) {
                 troopCount += 3;
@@ -45,6 +46,9 @@ public class ContinentTroopDelivery implements TroopsComponent {
                 troopCount += 2;
             }
 
+            if (conqueredAllOceania) {
+                troopCount += 2;
+            }
         }
 
         return troopCount;
@@ -112,6 +116,14 @@ public class ContinentTroopDelivery implements TroopsComponent {
                 .map(Territory::getName)
                 .collect(Collectors.toList())
                 .containsAll(southAmericanTerritories);
+    }
+
+    private boolean conqueredAllOceania(Player player) {
+        List<String> oceanianTerritories = Arrays.asList("Australia", "Sumatra", "Borneo", "Nova Guine");
+        return player.getConqueredTerritories().stream()
+                .map(Territory::getName)
+                .collect(Collectors.toList())
+                .containsAll(oceanianTerritories);
     }
 
     @Override
