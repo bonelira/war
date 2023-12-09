@@ -18,7 +18,9 @@ public class WarGame {
     private Board board;
     private List<Player> players;
     private List<GoalCard> goalCards;
-    List<Territory> territoriesList;
+    private List<Territory> territoriesList;
+    // private CircularPlayerList playersOrder;
+    private int playersQuantity;
 
     public List<Territory> getTerritoriesList() {
         return territoriesList;
@@ -62,8 +64,6 @@ public class WarGame {
     public int getPlayersQuantity() {
         return playersQuantity;
     }
-
-    private int playersQuantity;
 
     public List<Player> getPlayers() {
         return players;
