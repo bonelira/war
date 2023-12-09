@@ -216,6 +216,52 @@ public class TroopsServiceTest {
         when(player1.getConqueredTerritories()).thenReturn(europeanTerritories);
     }
 
+    private void mockNorthAmericanTerritories() {
+        Territory alaska = mock(Territory.class);
+        when(alaska.getName()).thenReturn("Alaska");
+        when(alaska.getContinent()).thenReturn("North America");
+
+        Territory mackenzie = mock(Territory.class);
+        when(mackenzie.getName()).thenReturn("Mackenzie");
+        when(mackenzie.getContinent()).thenReturn("North America");
+
+        Territory vancouver = mock(Territory.class);
+        when(vancouver.getName()).thenReturn("Vancouver");
+        when(vancouver.getContinent()).thenReturn("North America");
+
+        Territory ottawa = mock(Territory.class);
+        when(ottawa.getName()).thenReturn("Ottawa");
+        when(ottawa.getContinent()).thenReturn("North America");
+
+        Territory newYork = mock(Territory.class);
+        when(newYork.getName()).thenReturn("New York");
+        when(newYork.getContinent()).thenReturn("North America");
+
+        Territory labrador = mock(Territory.class);
+        when(labrador.getName()).thenReturn("Labrador");
+        when(labrador.getContinent()).thenReturn("North America");
+
+        Territory mexico = mock(Territory.class);
+        when(mexico.getName()).thenReturn("Mexico");
+        when(mexico.getContinent()).thenReturn("North America");
+
+        Territory california = mock(Territory.class);
+        when(california.getName()).thenReturn("California");
+        when(california.getContinent()).thenReturn("North America");
+
+        List<Territory> northAmericanTerritories = new ArrayList<>();
+        northAmericanTerritories.add(alaska);
+        northAmericanTerritories.add(mackenzie);
+        northAmericanTerritories.add(vancouver);
+        northAmericanTerritories.add(ottawa);
+        northAmericanTerritories.add(newYork);
+        northAmericanTerritories.add(labrador);
+        northAmericanTerritories.add(mexico);
+        northAmericanTerritories.add(california);
+
+        when(player1.getConqueredTerritories()).thenReturn(northAmericanTerritories);
+    }
+
     @Test
     public void testValidatesTroopsSentInTheInitialTurn() {
         mockPlayers();
@@ -269,6 +315,18 @@ public class TroopsServiceTest {
     public void testValidatesTroopsSentInContinentEuropean() {
         mockPlayers();
         mockEuropeanTerritories();
+        ContinentTroopDelivery continentTroopDelivery = new ContinentTroopDelivery();
+
+        int armiesReceived = continentTroopDelivery.deliverArmies(players);
+        int expectedArmiesReceived = 5;
+
+        assertEquals(expectedArmiesReceived, armiesReceived);
+    }
+
+    @Test
+    public void testValidatesTroopsSentInContinentNorthAmerica() {
+        mockPlayers();
+        mockNorthAmericanTerritories();
         ContinentTroopDelivery continentTroopDelivery = new ContinentTroopDelivery();
 
         int armiesReceived = continentTroopDelivery.deliverArmies(players);
