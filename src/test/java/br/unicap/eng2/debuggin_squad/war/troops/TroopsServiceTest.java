@@ -288,6 +288,32 @@ public class TroopsServiceTest {
         when(player1.getConqueredTerritories()).thenReturn(southAmericanTerritories);
     }
 
+    private void mockOceanianTerritories() {
+        Territory australia = mock(Territory.class);
+        when(australia.getName()).thenReturn("Australia");
+        when(australia.getContinent()).thenReturn("Oceania");
+
+        Territory sumatra = mock(Territory.class);
+        when(sumatra.getName()).thenReturn("Sumatra");
+        when(sumatra.getContinent()).thenReturn("Oceania");
+
+        Territory borneo = mock(Territory.class);
+        when(borneo.getName()).thenReturn("Borneo");
+        when(borneo.getContinent()).thenReturn("Oceania");
+
+        Territory novaGuine = mock(Territory.class);
+        when(novaGuine.getName()).thenReturn("Nova Guine");
+        when(novaGuine.getContinent()).thenReturn("Oceania");
+
+        List<Territory> oceanianTerritories = new ArrayList<>();
+        oceanianTerritories.add(australia);
+        oceanianTerritories.add(sumatra);
+        oceanianTerritories.add(borneo);
+        oceanianTerritories.add(novaGuine);
+
+        when(player1.getConqueredTerritories()).thenReturn(oceanianTerritories);
+    }
+
     @Test
     public void testValidatesTroopsSentInTheInitialTurn() {
         mockPlayers();
@@ -365,6 +391,18 @@ public class TroopsServiceTest {
     public void testValidatesTroopsSentInContinentSouthAmerica() {
         mockPlayers();
         mockSouthAmericanTerritories();
+        ContinentTroopDelivery continentTroopDelivery = new ContinentTroopDelivery();
+
+        int armiesReceived = continentTroopDelivery.deliverArmies(players);
+        int expectedArmiesReceived = 2;
+
+        assertEquals(expectedArmiesReceived, armiesReceived);
+    }
+
+    @Test
+    public void testValidatesTroopsSentInContinentOceania() {
+        mockPlayers();
+        mockOceanianTerritories();
         ContinentTroopDelivery continentTroopDelivery = new ContinentTroopDelivery();
 
         int armiesReceived = continentTroopDelivery.deliverArmies(players);
