@@ -29,7 +29,7 @@ import org.junit.jupiter.api.Test;
  */
 
 // import br.unicap.eng2.debuggin_squad.war.GameWar;
-import br.unicap.eng2.debuggin_squad.war.Board;
+import br.unicap.eng2.debuggin_squad.war.inicialization.Board;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
 import br.unicap.eng2.debuggin_squad.war.inicialization.Director;
