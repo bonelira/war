@@ -34,10 +34,6 @@ public class Territory {
         army += armies;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
     public void removeArmies(int armies) {
         army -= armies;
     }
