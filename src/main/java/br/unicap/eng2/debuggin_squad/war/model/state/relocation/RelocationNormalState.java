@@ -1,3 +1,7 @@
+/**
+ * @author Bruno Irae <brunoirae@gmail.com / @brunoirae>
+ */
+
 package br.unicap.eng2.debuggin_squad.war.model.state.relocation;
 
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
