@@ -45,6 +45,10 @@ public class Player {
         this.conqueredTerritories = conqueredTerritories;
     }
 
+    public void setTerritory(Territory territory) {
+        this.conqueredTerritories.add(territory);
+    }
+
     public GoalCard getGoalCard() {
         return goalCard;
     }
