@@ -25,6 +25,8 @@ public class AttackState implements GameState {
             throw new Exception(MSG_ERROR_TERRITORY_SOURCE_NOT_SELECTED);
         } else if (tDestination == null) {
             throw new Exception(MSG_ERROR_TERRITORY_DESTINATION_NOT_SELECTED);
+        } else {
+            throw new Exception(MSG_ERROR_CANNOT_CHANGE_STATE);
         }
     }
 
