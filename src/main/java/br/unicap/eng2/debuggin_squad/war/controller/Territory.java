@@ -24,6 +24,7 @@ public class Territory {
     public Territory(String nome, int army) {
         this.nome = nome;
         this.army = army;
+        this.proprietario = new Player(nome, nome);
         adjacentTerritories = new HashSet<>();
     }
 

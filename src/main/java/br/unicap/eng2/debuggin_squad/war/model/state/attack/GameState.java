@@ -1,7 +1,7 @@
 package br.unicap.eng2.debuggin_squad.war.model.state.attack;
 
 import br.unicap.eng2.debuggin_squad.war.controller.TerritoryConfront;
-import br.unicap.eng2.war.entities.controller.Territory;
+import br.unicap.eng2.debuggin_squad.war.controller.Territory;
 
 public interface GameState {
     void runPhase() throws Exception;

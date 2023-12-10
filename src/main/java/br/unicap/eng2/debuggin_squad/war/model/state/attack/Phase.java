@@ -1,7 +1,6 @@
 package br.unicap.eng2.debuggin_squad.war.model.state.attack;
 
 import br.unicap.eng2.debuggin_squad.war.controller.TerritoryConfront;
-import br.unicap.eng2.debuggin_squad.war.controller.dice.DicesFactory;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
 

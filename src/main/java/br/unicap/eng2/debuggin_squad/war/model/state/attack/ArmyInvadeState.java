@@ -24,7 +24,7 @@ public class ArmyInvadeState extends ArmyAllocationState {
     @Override
     public void invadeTerritory(Territory territorySource, Territory territoryDestination, int invadeArmy) throws Exception {
 
-        if (territorySource.getOwner() != territoryDestination.getOwner()) throw new Exception(MSG_ERROR_ALLOCATE_TO_TERRITORY_ENEMY);
+        if (territorySource.getProprietario() != territoryDestination.getProprietario()) throw new Exception(MSG_ERROR_ALLOCATE_TO_TERRITORY_ENEMY);
         if (invadeArmy <= 0 || invadeArmy > 3) throw new Exception(MSG_ERROR_ARMY_NOT_ALLOCATED_CORRECTLY);
         if (territoryDestination.getArmy() > 0) throw new Exception(MSG_ERROR_ALLOCATION_ARMY_WITH_ARMY_IN_TERRITORY_TARGET);
         if (territorySource.getArmy() < invadeArmy) throw new Exception(MSG_ERROR_QUANTITY_ARMY_TO_INVASION_INVALID);

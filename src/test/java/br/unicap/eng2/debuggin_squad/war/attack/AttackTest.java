@@ -6,7 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
-import br.unicap.eng2.debuggin_squad.war.model.state.attack.G;
+import br.unicap.eng2.debuggin_squad.war.model.state.attack.GameState;
+import br.unicap.eng2.debuggin_squad.war.controller.player.Player;
 
 public class AttackTest {
     static AttackState attackState;
@@ -16,10 +17,10 @@ public class AttackTest {
 
     @BeforeEach
     void setUp() throws Exception {
-        this.territorySource = new Territory(new Player(), 10);
-        this.territoryTarget = new Territory(new Player(), 0);
-        this.territorySource.addNeighbor(territoryTarget);
-        this.territoryTarget.addNeighbor(territorySource);
+        this.territorySource = new Territory("test", 0);
+        this.territoryTarget = new Territory("test", 0);
+        this.territorySource.addAdjacentTerritory(territorySource);
+        this.territoryTarget.addAdjacentTerritory(territorySource);
 
         gamePhase = new Phase();
         // only fortifying territories (round 1)

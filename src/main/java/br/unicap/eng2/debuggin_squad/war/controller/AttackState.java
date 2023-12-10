@@ -1,12 +1,12 @@
-package br.unicap.eng2.debuggin_squad.war.attack;
+package br.unicap.eng2.debuggin_squad.war.controller;
 
-import br.unicap.eng2.debuggin_squad.war.controller.TerritoryConfront;
-import br.unicap.eng2.debuggin_squad.war.controller.states.GameState;
-import br.unicap.eng2.debuggin_squad.war.controller.Territory;
+import br.unicap.eng2.debuggin_squad.war.model.state.attack.GameState;
+import br.unicap.eng2.debuggin_squad.war.model.state.attack.Phase;
+import br.unicap.eng2.debuggin_squad.war.model.state.attack.ArmyAllocationState;
 
 public class AttackState implements GameState {
 
-
+  
     public static final String MSG_ERROR_TERRITORY_SOURCE_NOT_SELECTED = "You must select a source territory to attack";
     public static final String MSG_ERROR_TERRITORY_DESTINATION_NOT_SELECTED = "You must select a destination territory to attack";
     public static final String MSG_ERROR_CANNOT_CHANGE_STATE = "You cannot change state in actual situation";
@@ -18,7 +18,7 @@ public class AttackState implements GameState {
 
     @Override
     public void transitionToNextState() throws Exception {
-        // Phase.setNextState(new ArmyAllocationState());
+        Phase.setNextState(new ArmyAllocationState());
     }
 
     @Override
@@ -28,7 +28,7 @@ public class AttackState implements GameState {
 
     @Override
     public void performAttack(TerritoryConfront territoryConfront) throws Exception {
-
+ 
     }
 
     @Override
