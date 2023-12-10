@@ -7,19 +7,28 @@ package br.unicap.eng2.debuggin_squad.war.objectives;
 import br.unicap.eng2.debuggin_squad.war.card.CardObjective;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 
+import java.util.Arrays;
+
 public class ConqueringEuropeAndOceania extends CardObjective implements IObjective{
+    private String[] europe = {"Islandia", "Inglaterra", "Suecia", "Alemanha", "Espanha", 
+            "Portugal", "Franca", "Italia", "Polonia", "Iugoslavia", "Moscou"};
 
-    private final String NAME = "Conquistar Europa e Oceania";
-    private final String DESCRIPTION = "Conquiste totalmente o continente da Europe e Oceania";
-
-    private CardObjective cardObjective = new CardObjective(NAME, DESCRIPTION, 2);
+    private String[] oceania = {"Borneu", "Sumatra", "Nova Guine", "Australia"};
 
     public ConqueringEuropeAndOceania(String name, String description, int id) {
         super(name, description, id);
     }
 
     @Override
-    public boolean objectiveAchieved(Player Player) {
-        return false;
+    public boolean objectiveAchieved(Player player) {
+        long europeConquered = player.getConqueredTerritories().stream()
+                .filter(t -> Arrays.asList(europe).contains(t.getNome()))
+                .count();
+
+        long oceaniaConquered = player.getConqueredTerritories().stream()
+                .filter(t -> Arrays.asList(oceania).contains(t.getNome()))
+                .count();
+
+        return europeConquered == europe.length && oceaniaConquered == oceania.length;
     }
 }
