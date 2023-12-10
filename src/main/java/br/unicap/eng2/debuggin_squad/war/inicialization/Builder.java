@@ -21,5 +21,7 @@ public interface Builder {
 
     public void configureCards(List<GoalCard> goalCards); // Preciso de um nome melhor?
 
+    public void configureInitialTerritoriesOwner(List<Player> players, Board board);
+
     public WarGame getResult();
 }
