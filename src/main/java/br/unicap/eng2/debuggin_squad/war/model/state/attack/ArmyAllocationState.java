@@ -2,10 +2,10 @@ package br.unicap.eng2.debuggin_squad.war.model.state.attack;
 
 import br.unicap.eng2.debuggin_squad.war.controller.TerritoryConfront;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
-
 public class ArmyAllocationState implements GameState {
 
     protected TerritoryConfront confront;
+    private GameState phase;
 
     @Override
     public void runPhase() throws Exception {
@@ -15,7 +15,7 @@ public class ArmyAllocationState implements GameState {
     @Override
     public void transitionToNextState() throws Exception {
         // assuming everything is fine...
-        Phase.setNextState(new FortifyTerritoriesState());
+        Phase.setNextState(phase);
     }
 
     @Override
