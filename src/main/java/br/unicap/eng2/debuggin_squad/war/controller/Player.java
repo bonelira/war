@@ -10,14 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
-    private String id;
+    private ID id;
     private String name;
     private GoalCard goalCard;
     private List<Territory> conqueredTerritories;
     private List<String> cards;
     private Life life;
 
-    public Player(String name, String id) {
+    public Player(String name, ID id) {
         this.name = name;
         this.id = id;
         this.conqueredTerritories = new ArrayList<>();
@@ -28,7 +28,7 @@ public class Player {
         return name;
     }
 
-    public void setId(String id) {
+    public void setId(ID id) {
         this.id = id;
     }
 
@@ -48,7 +48,7 @@ public class Player {
         return goalCard;
     }
 
-    public String getId() {
+    public ID getId() {
         return id;
     }
 
@@ -56,10 +56,10 @@ public class Player {
         return conqueredTerritories;
     }
 
-    public boolean getLife(){
+    public boolean getLife() {
         this.life = life;
         return false;
-        }
+    }
 
     public void addCard(String card) {
         this.cards.add(card);

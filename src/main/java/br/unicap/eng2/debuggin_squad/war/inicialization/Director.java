@@ -6,6 +6,7 @@ package br.unicap.eng2.debuggin_squad.war.inicialization;
 
 import br.unicap.eng2.debuggin_squad.war.inicialization.Board;
 import br.unicap.eng2.debuggin_squad.war.GoalCard;
+import br.unicap.eng2.debuggin_squad.war.controller.ID;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
 
@@ -24,12 +25,12 @@ public class Director {
 
     private List<Player> getPlayersList() {
         List<Player> playersCompleteList = new ArrayList<>();
-        Player player1 = new Player("Bone", "Preto");
-        Player player2 = new Player("Roosevelt", "azul");
-        Player player3 = new Player("Bruno", "amarelo");
-        Player player4 = new Player("Vicente", "vermelho");
-        Player player5 = new Player("Igor", "verde");
-        Player player6 = new Player("Leonardo", "roxo");
+        Player player1 = new Player("Bone", ID.BLACK);
+        Player player2 = new Player("Roosevelt", ID.BLUE);
+        Player player3 = new Player("Bruno", ID.YELLOW);
+        Player player4 = new Player("Vicente", ID.RED);
+        Player player5 = new Player("Igor", ID.GREEN);
+        Player player6 = new Player("Leonardo", ID.WHITE);
         playersCompleteList.add(player1);
         playersCompleteList.add(player2);
         playersCompleteList.add(player3);

@@ -9,6 +9,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
+
+import br.unicap.eng2.debuggin_squad.war.controller.ID;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
 
@@ -67,7 +69,7 @@ public class TestTerritory {
     @Test
     public void test07SetAndGetProprietario() {
         Territory territory = new Territory("NomeTerritorio", 5);
-        Player player = new Player("Jogador1", "01");
+        Player player = new Player("Jogador1", ID.BLACK);
         territory.setProprietario(player);
         assertEquals(player, territory.getProprietario());
     }
