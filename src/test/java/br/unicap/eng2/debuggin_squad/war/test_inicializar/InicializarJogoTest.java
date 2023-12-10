@@ -33,7 +33,7 @@ import br.unicap.eng2.debuggin_squad.war.inicialization.Board;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
 import br.unicap.eng2.debuggin_squad.war.inicialization.Director;
-import br.unicap.eng2.debuggin_squad.war.inicialization.GameBuilder;
+import br.unicap.eng2.debuggin_squad.war.inicialization.DefaultGameBuilder;
 import br.unicap.eng2.debuggin_squad.war.inicialization.WarGame;
 import br.unicap.eng2.debuggin_squad.war.GoalCard;
 //import br.unicap.eng2.debuggin_squad.war.Dealer;
@@ -68,7 +68,7 @@ public class InicializarJogoTest {
     private Player player;
     private Board board;
     private WarGame game;
-    private GameBuilder gameBuilder;
+    private DefaultGameBuilder gameBuilder;
     // private GoalCard goalCard;
     // private Dealer dealer;
     // private GameRules gameRules;
@@ -102,7 +102,7 @@ public class InicializarJogoTest {
     @BeforeEach
     public void setup() throws Exception {
         Director director = new Director();
-        GameBuilder builder = new GameBuilder();
+        DefaultGameBuilder builder = new DefaultGameBuilder();
         director.constructDefaultGame(builder);
         WarGame game = builder.getResult();
 
@@ -181,7 +181,7 @@ public class InicializarJogoTest {
     @Test
     public void testBoardInitializationIsNotNull() {
         Director director = new Director();
-        GameBuilder builder = new GameBuilder();
+        DefaultGameBuilder builder = new DefaultGameBuilder();
         director.constructDefaultGame(builder);
         WarGame game = builder.getResult();
 
@@ -193,7 +193,7 @@ public class InicializarJogoTest {
     @Test
     public void testBoardEachTerritoryHasNameAndContinentNotNullValues() {
         Director director = new Director();
-        GameBuilder builder = new GameBuilder();
+        DefaultGameBuilder builder = new DefaultGameBuilder();
         director.constructDefaultGame(builder);
         WarGame game = builder.getResult();
 
@@ -237,7 +237,7 @@ public class InicializarJogoTest {
     @Test
     public void testBoardTotalCountriesInOceaniaContinent() {
         Director director = new Director();
-        GameBuilder builder = new GameBuilder();
+        DefaultGameBuilder builder = new DefaultGameBuilder();
         director.constructDefaultGame(builder);
         WarGame game = builder.getResult();
 
@@ -252,7 +252,7 @@ public class InicializarJogoTest {
     @Test
     public void testBoardNumberOfTerritories() {
         Director director = new Director();
-        GameBuilder builder = new GameBuilder();
+        DefaultGameBuilder builder = new DefaultGameBuilder();
         director.constructDefaultGame(builder);
         WarGame game = builder.getResult();
 
@@ -265,7 +265,7 @@ public class InicializarJogoTest {
     @Test
     public void testBoarHasCorrectAdjacency() {
         Director director = new Director();
-        GameBuilder builder = new GameBuilder();
+        DefaultGameBuilder builder = new DefaultGameBuilder();
         director.constructDefaultGame(builder);
         WarGame game = builder.getResult();
 
@@ -300,7 +300,7 @@ public class InicializarJogoTest {
          */
 
         Director director = new Director();
-        GameBuilder builder = new GameBuilder();
+        DefaultGameBuilder builder = new DefaultGameBuilder();
         director.constructDefaultGame(builder);
         WarGame game = builder.getResult();
         // verificando se os players foram criados
@@ -313,7 +313,7 @@ public class InicializarJogoTest {
     @Test
     public void testPlayerHasAtLeastOneGoalCard() {
         Director director = new Director();
-        GameBuilder builder = new GameBuilder();
+        DefaultGameBuilder builder = new DefaultGameBuilder();
         director.constructDefaultGame(builder);
         WarGame game = builder.getResult();
 
@@ -324,7 +324,7 @@ public class InicializarJogoTest {
     @Test
     public void test3playersHas14TerritoriesAtBegin() {
         Director director = new Director();
-        GameBuilder builder = new GameBuilder();
+        DefaultGameBuilder builder = new DefaultGameBuilder();
 
         director.constructDefaultGame(builder);
 
@@ -340,7 +340,7 @@ public class InicializarJogoTest {
     @Test
     public void test6playersHas7TerritoriesAtBegin() {
         Director director = new Director();
-        GameBuilder builder = new GameBuilder();
+        DefaultGameBuilder builder = new DefaultGameBuilder();
 
         director.constructDefaultGame(builder);
 
@@ -374,7 +374,7 @@ public class InicializarJogoTest {
 
     public void testAllCurrentPlayersHaveColor() {
         Director director = new Director();
-        GameBuilder builder = new GameBuilder();
+        DefaultGameBuilder builder = new DefaultGameBuilder();
         director.constructDefaultGame(builder);
         WarGame game = builder.getResult();
 
@@ -414,7 +414,7 @@ public class InicializarJogoTest {
         // &&
         // players.size() < aboveMaxNumberOfPlayers);
         Director director = new Director();
-        GameBuilder builder = new GameBuilder();
+        DefaultGameBuilder builder = new DefaultGameBuilder();
         director.constructDefaultGame(builder);
         WarGame game = builder.getResult();
 

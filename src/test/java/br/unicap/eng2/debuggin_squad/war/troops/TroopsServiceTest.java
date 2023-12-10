@@ -8,7 +8,7 @@ import br.unicap.eng2.debuggin_squad.war.enumWar.ID;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
 import br.unicap.eng2.debuggin_squad.war.inicialization.Director;
-import br.unicap.eng2.debuggin_squad.war.inicialization.GameBuilder;
+import br.unicap.eng2.debuggin_squad.war.inicialization.DefaultGameBuilder;
 import br.unicap.eng2.debuggin_squad.war.inicialization.WarGame;
 import br.unicap.eng2.debuggin_squad.war.model.composite.troops.ContinentTroopDelivery;
 import br.unicap.eng2.debuggin_squad.war.model.composite.troops.DeliveryByCard;
@@ -432,7 +432,7 @@ public class TroopsServiceTest {
     void testReceiveExerciseThreeDifferentCards() {
         DeliveryByCard deliveryByCard = new DeliveryByCard();
         Director director = new Director();
-        GameBuilder builder = new GameBuilder();
+        DefaultGameBuilder builder = new DefaultGameBuilder();
         WarGame game = builder.getResult();
         director.constructDefaultGame(builder);
 
@@ -453,7 +453,7 @@ public class TroopsServiceTest {
     void testReceiveExerciseThroughThreeEqualCards() {
         DeliveryByCard deliveryByCard = new DeliveryByCard();
         Director director = new Director();
-        GameBuilder builder = new GameBuilder();
+        DefaultGameBuilder builder = new DefaultGameBuilder();
         WarGame game = builder.getResult();
         director.constructDefaultGame(builder);
 
