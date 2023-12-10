@@ -12,6 +12,8 @@ import br.unicap.eng2.debuggin_squad.war.controller.player.Player;
 import br.unicap.eng2.debuggin_squad.war.model.state.attack.Phase;
 import br.unicap.eng2.debuggin_squad.war.model.state.attack.PerformingAttackState;
 import br.unicap.eng2.debuggin_squad.war.model.state.attack.PreparingAttackState;
+import br.unicap.eng2.debuggin_squad.war.model.state.attack.ArmyInvadeState;
+import br.unicap.eng2.debuggin_squad.war.model.state.attack.ArmyAllocationState;
 
 public class AttackTest {
     static AttackState attackState;
