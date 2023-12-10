@@ -15,7 +15,7 @@ public class Territory {
     private Set<Territory> adjacentTerritories;
     private boolean hasBeenUsedInCurrentMove = false;
     private String continent;
-    
+
     public void setContinent(String continent) {
         this.continent = continent;
     }
@@ -23,7 +23,7 @@ public class Territory {
     public Territory(String name, int army) {
         this.name = name;
         this.army = army;
-        this.proprietario = new Player(nome, nome);
+        this.proprietario = new Player(name, name);
         adjacentTerritories = new HashSet<>();
     }
 
@@ -84,15 +84,15 @@ public class Territory {
         return continent;
     }
 
-    public int getArmy(){
+    public int getArmy() {
         return this.army;
     }
 
-    public boolean isAdjancent(Territory territory){
+    public boolean isAdjancent(Territory territory) {
         return true;
     }
 
-    public void setArmy (int value){
+    public void setArmy(int value) {
         this.army = value;
     }
 
