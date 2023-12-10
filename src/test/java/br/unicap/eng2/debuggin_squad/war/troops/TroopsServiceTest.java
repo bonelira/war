@@ -6,7 +6,11 @@ package br.unicap.eng2.debuggin_squad.war.troops;
 
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
+import br.unicap.eng2.debuggin_squad.war.inicialization.Director;
+import br.unicap.eng2.debuggin_squad.war.inicialization.GameBuilder;
+import br.unicap.eng2.debuggin_squad.war.inicialization.WarGame;
 import br.unicap.eng2.debuggin_squad.war.model.composite.troops.ContinentTroopDelivery;
+import br.unicap.eng2.debuggin_squad.war.model.composite.troops.DeliveryByCard;
 import br.unicap.eng2.debuggin_squad.war.model.composite.troops.DeliveryInitialState;
 import br.unicap.eng2.debuggin_squad.war.model.composite.troops.DeliveryOfTerritoryState;
 import br.unicap.eng2.debuggin_squad.war.service.TroopsService;
@@ -14,6 +18,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -411,7 +416,57 @@ public class TroopsServiceTest {
         assertEquals(expectedArmiesReceived, armiesReceived);
     }
 
-    //Criar teste para alocação de exercitos através da troca de carta
-    /*Criar um método mock para alocar as cartas*/
+    @Test
+    void testValidateReceiveExerciseInitialTurn() {
+        DeliveryByCard deliveryByCard = new DeliveryByCard();
+        mockPlayers();
+
+        int initialTroopCount = deliveryByCard.getTroopCount();
+        int newTroopCount = deliveryByCard.deliverArmies(players);
+
+        assertEquals(initialTroopCount, newTroopCount);
+    }
+
+    @Test
+    void testReceiveExerciseThreeDifferentCards() {
+        DeliveryByCard deliveryByCard = new DeliveryByCard();
+        Director director = new Director();
+        GameBuilder builder = new GameBuilder();
+        WarGame game = builder.getResult();
+        director.constructDefaultGame(builder);
+
+        player1 = game.getPlayers().get(0) ;
+        player1.addCard("triangulo");
+        player1.addCard("quadrado");
+        player1.addCard("bola");
+
+        int initialTroopCount = deliveryByCard.getTroopCount();
+
+        List<Player> listPlayers = Collections.singletonList(player1);
+        int newTroopCount = deliveryByCard.deliverArmies(listPlayers);
+
+        assertEquals(initialTroopCount + 4, newTroopCount);
+    }
+
+    @Test
+    void testReceiveExerciseThroughThreeEqualCards() {
+        DeliveryByCard deliveryByCard = new DeliveryByCard();
+        Director director = new Director();
+        GameBuilder builder = new GameBuilder();
+        WarGame game = builder.getResult();
+        director.constructDefaultGame(builder);
+
+        player1 = game.getPlayers().get(0) ;
+        player1.addCard("quadrado");
+        player1.addCard("quadrado");
+        player1.addCard("quadrado");
+
+        int initialTroopCount = deliveryByCard.getTroopCount();
+
+        List<Player> listPlayers = Collections.singletonList(player1);
+        int newTroopCount = deliveryByCard.deliverArmies(listPlayers);
+
+        assertEquals(initialTroopCount + 4, newTroopCount);
+    }
 
 }
