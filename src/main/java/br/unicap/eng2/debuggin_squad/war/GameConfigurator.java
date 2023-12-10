@@ -52,30 +52,30 @@ public class GameConfigurator {
         return players;
     }
 
-    public void setPlayerID() {
-        EnumColor[] cores = color.values();
-        int i = 0;
-        for (Player player : players) {
-            player.setId(cores[i].getColorName());
-            i++;
-        }
-    }
+    // public void setPlayerID() {
+    // EnumColor[] cores = color.values();
+    // int i = 0;
+    // for (Player player : players) {
+    // player.setId(cores[i].getColorName());
+    // i++;
+    // }
+    // }
 
     // deveria ser void:
-    public List<Player> createListOfPlayers(int numberOfPlayers) {
-        players = new ArrayList<>(); // Inicialize a lista de jogadores
+    // public List<Player> createListOfPlayers(int numberOfPlayers) {
+    // players = new ArrayList<>(); // Inicialize a lista de jogadores
 
-        for (int i = 0; i < getNumbOfPlayers(); i++) {
-            // Crie instâncias de jogadores e adicione à lista
-            Player player = new Player(null, null);
-            players.add(player);
-        }
+    // for (int i = 0; i < getNumbOfPlayers(); i++) {
+    // // Crie instâncias de jogadores e adicione à lista
+    // Player player = new Player(null, null);
+    // players.add(player);
+    // }
 
-        getShufflePlayersList();
-        setInitialTerritoriesForEachPlayer(numberOfPlayers);
-        setPlayerID();
-        return players;
-    }
+    // getShufflePlayersList();
+    // setInitialTerritoriesForEachPlayer(numberOfPlayers);
+    // setPlayerID();
+    // return players;
+    // }
 
     private void setInitialTerritoriesForEachPlayer(int numberOfPlayers) {
         List<Territory> nullTerritories = new ArrayList<>();
