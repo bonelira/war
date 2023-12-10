@@ -9,6 +9,7 @@ public class Phase {
     public static GameState phase;
     public static Player player;
     public static final String MSG_ERROR_INCORRECT_STATE = "Cannot do this action in actual state";
+    public static final String MSG_ERROR_TERRITORY_DESTINATION_NOT_SELECTED = "You must select a destination territory to attack";
 
     public Phase() {
         // Phase.phase = new RoundOneFortifyTerritoriesState();
@@ -31,7 +32,11 @@ public class Phase {
     }
 
     public void prepareAttack(Territory tSource, Territory tDestination) throws Exception {
-        phase.prepareAttack(tSource, tDestination);
+        if (tSource == null || tDestination == null) {
+            throw new Exception(MSG_ERROR_TERRITORY_DESTINATION_NOT_SELECTED);
+        } else {
+            phase.prepareAttack(tSource, tDestination);
+        }
     }
 
     public void performAttack(TerritoryConfront territoryConfront) throws Exception {
@@ -40,7 +45,11 @@ public class Phase {
 
     public void invadeTerritory(Territory territorySource, Territory territoryDestination, int invadeArmy)
             throws Exception {
-        phase.invadeTerritory(territorySource, territoryDestination, invadeArmy);
+        if (invadeArmy == 0) {
+            throw new Exception("You must invade the target territory with 1, 2 or 3 armies only");
+        } else {
+            phase.invadeTerritory(territorySource, territoryDestination, invadeArmy);
+        }
     }
 
     public void endPhase() throws Exception {

@@ -216,8 +216,8 @@ public class AttackTest {
             Mockito.when(confront.getTerritoryTarget()).thenReturn(tTarget);
             Mockito.when(tSource.getArmy()).thenReturn(3);
             Mockito.when(tTarget.getArmy()).thenReturn(0);
-            Mockito.when(tSource.getProprietario()).thenReturn(player);
-            Mockito.when(tTarget.getProprietario()).thenReturn(player);
+            // Mockito.when(tSource.getProprietario()).thenReturn(player);
+            // Mockito.when(tTarget.getProprietario()).thenReturn(player);
 
             gamePhase.performAttack(confront);
             gamePhase.transitionToNextState();
@@ -253,8 +253,8 @@ public class AttackTest {
             Mockito.when(confront.getTerritoryTarget()).thenReturn(tTarget);
             Mockito.when(tSource.getArmy()).thenReturn(3);
             Mockito.when(tTarget.getArmy()).thenReturn(0);
-            Mockito.when(tSource.getProprietario()).thenReturn(player);
-            Mockito.when(tTarget.getProprietario()).thenReturn(player);
+            // Mockito.when(tSource.getProprietario()).thenReturn(player);
+            // Mockito.when(tTarget.getProprietario()).thenReturn(player);
 
             gamePhase.performAttack(confront);
             gamePhase.transitionToNextState();
