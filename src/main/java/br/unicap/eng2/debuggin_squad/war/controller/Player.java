@@ -1,17 +1,28 @@
+/**
+ * @author Bruno Irae <brunoirae@gmail.com / @brunoirae>
+ */
+
 package br.unicap.eng2.debuggin_squad.war.controller;
+
+import br.unicap.eng2.debuggin_squad.war.GoalCard;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import br.unicap.eng2.debuggin_squad.war.GoalCard;
 
 public class Player {
     private String id;
     private String name;
     private GoalCard goalCard;
     private List<Territory> conqueredTerritories;
-  
+    private List<String> cards;
     private Life life;
+
+    public Player(String name, String id) {
+        this.name = name;
+        this.id = id;
+        this.conqueredTerritories = new ArrayList<>();
+        this.cards = new ArrayList<>();
+    }
 
     public String getName() {
         return name;
@@ -37,12 +48,6 @@ public class Player {
         return goalCard;
     }
 
-    public Player(String name, String id) {
-        this.name = name;
-        this.id = id;
-        this.conqueredTerritories = new ArrayList<>();
-    }
-
     public String getId() {
         return id;
     }
@@ -55,4 +60,12 @@ public class Player {
         this.life = life;
         return false;
         }
+
+    public void addCard(String card) {
+        this.cards.add(card);
     }
+
+    public List<String> getCards() {
+        return new ArrayList<>(cards);
+    }
+}
