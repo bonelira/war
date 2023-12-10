@@ -6,30 +6,35 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
+import br.unicap.eng2.debuggin_squad.war.controller.TerritoryConfront;
 import br.unicap.eng2.debuggin_squad.war.model.state.attack.GameState;
 import br.unicap.eng2.debuggin_squad.war.controller.player.Player;
+import br.unicap.eng2.debuggin_squad.war.model.state.attack.Phase;
+import br.unicap.eng2.debuggin_squad.war.model.state.attack.PerformingAttackState;
+import br.unicap.eng2.debuggin_squad.war.model.state.attack.PreparingAttackState;
 
 public class AttackTest {
     static AttackState attackState;
     static GameState phase;
     Territory territorySource;
     Territory territoryTarget;
+    Phase gamePhase;
 
     @BeforeEach
     void setUp() throws Exception {
-        this.territorySource = new Territory("test", 0);
-        this.territoryTarget = new Territory("test", 0);
+        this.territorySource = new Territory("test1", 0);
+        this.territoryTarget = new Territory("test2", 0);
         this.territorySource.addAdjacentTerritory(territorySource);
         this.territoryTarget.addAdjacentTerritory(territorySource);
 
-        gamePhase = new Phase();
+        this.gamePhase = new Phase();
         // only fortifying territories (round 1)
-        gamePhase.runPhase();
-        gamePhase.transitionToNextState();
+        this.gamePhase.runPhase();
+        this.gamePhase.transitionToNextState();
 
         // fortifying territories
-        gamePhase.runPhase();
-        gamePhase.transitionToNextState();
+        this.gamePhase.runPhase();
+        this.gamePhase.transitionToNextState();
 
     }
 
@@ -62,7 +67,7 @@ public class AttackTest {
     public void test03PerformAttackIsNotPossibleWhenTerritoryDestinationIsNotSelected() {
         try {
             // attack phase
-            Territory territorySource = new Territory();
+            Territory territorySource = new Territory("test3", 0);
             gamePhase.prepareAttack(territorySource, null);
             gamePhase.runPhase();
             Assertions.fail();
@@ -76,8 +81,8 @@ public class AttackTest {
     public void test04PerformAttackIsPossibleWhenTerritoriesAreSelected() {
         try {
             // attack phase
-            Territory territorySource = new Territory();
-            Territory territoryDestination = new Territory();
+            Territory territorySource = new Territory("test4", 0);
+            Territory territoryDestination = new Territory("test5", 0);
             gamePhase.prepareAttack(territorySource, territoryDestination);
             gamePhase.transitionToNextState();
 
@@ -209,8 +214,8 @@ public class AttackTest {
             Mockito.when(confront.getTerritoryTarget()).thenReturn(tTarget);
             Mockito.when(tSource.getArmy()).thenReturn(3);
             Mockito.when(tTarget.getArmy()).thenReturn(0);
-            Mockito.when(tSource.getOwner()).thenReturn(player);
-            Mockito.when(tTarget.getOwner()).thenReturn(player);
+            Mockito.when(tSource.getProprietario()).thenReturn(player);
+            Mockito.when(tTarget.getProprietario()).thenReturn(player);
 
             gamePhase.performAttack(confront);
             gamePhase.transitionToNextState();
@@ -246,8 +251,8 @@ public class AttackTest {
             Mockito.when(confront.getTerritoryTarget()).thenReturn(tTarget);
             Mockito.when(tSource.getArmy()).thenReturn(3);
             Mockito.when(tTarget.getArmy()).thenReturn(0);
-            Mockito.when(tSource.getOwner()).thenReturn(player);
-            Mockito.when(tTarget.getOwner()).thenReturn(player);
+            Mockito.when(tSource.getProprietario()).thenReturn(player);
+            Mockito.when(tTarget.getProprietario()).thenReturn(player);
 
             gamePhase.performAttack(confront);
             gamePhase.transitionToNextState();
