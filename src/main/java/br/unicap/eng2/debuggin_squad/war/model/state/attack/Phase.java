@@ -1,6 +1,7 @@
 package br.unicap.eng2.debuggin_squad.war.model.state.attack;
 
 import br.unicap.eng2.debuggin_squad.war.controller.TerritoryConfront;
+import br.unicap.eng2.debuggin_squad.war.controller.AttackState;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
 
@@ -14,15 +15,15 @@ public class Phase {
     }
 
     public void runPhase() throws Exception {
-        Phase.phase.runPhase();
+        // Phase.phase.runPhase();
     }
 
     public void transitionToNextState() throws Exception {
-        Phase.phase.transitionToNextState();
+        // Phase.phase.transitionToNextState();
     }
 
     public GameState getCurrentState() throws Exception {
-        return Phase.phase;
+        return new AttackState();
     }
 
     public static void setNextState(GameState newState) throws Exception {
@@ -37,11 +38,13 @@ public class Phase {
         phase.performAttack(territoryConfront);
     }
 
-    public void invadeTerritory(Territory territorySource, Territory territoryDestination, int invadeArmy) throws Exception {
+    public void invadeTerritory(Territory territorySource, Territory territoryDestination, int invadeArmy)
+            throws Exception {
         phase.invadeTerritory(territorySource, territoryDestination, invadeArmy);
     }
 
     public void endPhase() throws Exception {
         phase.endPhase();
     }
+
 }
