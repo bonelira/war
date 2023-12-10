@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import br.unicap.eng2.debuggin_squad.war.controller.ID;
+import br.unicap.eng2.debuggin_squad.war.enumWar.ID;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
 

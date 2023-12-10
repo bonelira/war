@@ -6,7 +6,7 @@ package br.unicap.eng2.debuggin_squad.war.inicialization;
 
 import br.unicap.eng2.debuggin_squad.war.inicialization.Board;
 import br.unicap.eng2.debuggin_squad.war.GoalCard;
-import br.unicap.eng2.debuggin_squad.war.controller.ID;
+import br.unicap.eng2.debuggin_squad.war.enumWar.ID;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
 

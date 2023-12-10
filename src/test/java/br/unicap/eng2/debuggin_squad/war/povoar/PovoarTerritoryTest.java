@@ -13,7 +13,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import br.unicap.eng2.debuggin_squad.war.controller.ID;
+import br.unicap.eng2.debuggin_squad.war.enumWar.ID;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
 import br.unicap.eng2.debuggin_squad.war.service.PovoarTerritory;

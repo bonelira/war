@@ -4,7 +4,7 @@
 
 package br.unicap.eng2.debuggin_squad.war.troops;
 
-import br.unicap.eng2.debuggin_squad.war.controller.ID;
+import br.unicap.eng2.debuggin_squad.war.enumWar.ID;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
 import br.unicap.eng2.debuggin_squad.war.inicialization.Director;

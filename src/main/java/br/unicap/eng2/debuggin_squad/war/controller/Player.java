@@ -5,6 +5,7 @@
 package br.unicap.eng2.debuggin_squad.war.controller;
 
 import br.unicap.eng2.debuggin_squad.war.GoalCard;
+import br.unicap.eng2.debuggin_squad.war.enumWar.ID;
 
 import java.util.ArrayList;
 import java.util.List;

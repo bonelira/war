@@ -16,12 +16,12 @@ import java.util.List;
 
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
-import br.unicap.eng2.debuggin_squad.war.enumWar.EnumColor;
+import br.unicap.eng2.debuggin_squad.war.enumWar.ID;
 
 public class GameConfigurator {
     private static List<Player> players;
     private int numberOfPlayers;
-    private EnumColor color;
+    private ID color;
 
     public List<Player> getShufflePlayersList() {
         Collections.shuffle(players); // toda as variáveis que apontam para Players irão apontar para o objeto da
