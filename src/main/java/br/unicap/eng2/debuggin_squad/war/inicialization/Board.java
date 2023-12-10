@@ -14,14 +14,14 @@ public class Board {
     private List<Territory> territories;
 
     public Board() {
-        this.territories = new ArrayList<>();
+        this.territories = getBoardsTerritoriesList();
     }
 
     public Board(List<Territory> territories) {
         this.territories = territories;
     }
 
-    public List<Territory> getBoardsTerritoriesList() { // precisa retornar a si mesmo.
+    public List<Territory> getBoardsTerritoriesList() { // private e criar todos os métodos necessários?
         List<Territory> territories = new ArrayList<>();
         Territory sweden = new Territory("Suecia", 1);
         Territory germany = new Territory("Alemanha", 1);
@@ -386,7 +386,6 @@ public class Board {
 
         return territories;
     }
-
 
     // public List<Territory> getTerritories() {
     // return this.territories;
