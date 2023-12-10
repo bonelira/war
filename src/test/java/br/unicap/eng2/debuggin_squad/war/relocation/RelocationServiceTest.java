@@ -4,19 +4,24 @@
 
 package br.unicap.eng2.debuggin_squad.war.relocation;
 
-import br.unicap.eng2.debuggin_squad.war.Initialization;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
+import br.unicap.eng2.debuggin_squad.war.inicialization.Director;
+import br.unicap.eng2.debuggin_squad.war.inicialization.GameBuilder;
+import br.unicap.eng2.debuggin_squad.war.inicialization.WarGame;
 import br.unicap.eng2.debuggin_squad.war.model.state.relocation.RelocationContext;
 import br.unicap.eng2.debuggin_squad.war.model.state.relocation.RelocationNormalState;
 import br.unicap.eng2.debuggin_squad.war.service.RelocationService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collections;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class RelocationServiceTest extends Initialization {
+public class RelocationServiceTest {
     private Player player1;
     private Player player2;
 
@@ -26,39 +31,46 @@ public class RelocationServiceTest extends Initialization {
     private RelocationService realocar;
     private RelocationContext relocationContext;
 
+    private Director director;
+
+    private GameBuilder builder;
+
+    private WarGame game;
+
     @BeforeEach
-    public void setup() {
+    public void setUp() {
         realocar = new RelocationService();
         relocationContext = new RelocationContext();
+        director = new Director();
+        builder = new GameBuilder();
+        game = builder.getResult();
     }
 
     @Test
     public void testValidRelocation() {
-        player1 = initializePlayer();
-        territory = initializeTerritoryBrasil();
-        territory2 = initializeTerritoryArgentina();
-        initializeAdjacents();
-        int armiesTransferido = 4;
+        director.constructDefaultGame(builder);
+        player1 = game.getPlayers().get(0) ;
+        territory = player1.getConqueredTerritories().get(0);territory.setArmiesCount(5);
+        territory2 = player1.getConqueredTerritories().get(1);territory2.setArmiesCount(5);
+        territory.addAdjacentTerritory(territory2);
 
-        player1.getConqueredTerritories().add(territory);
-        player1.getConqueredTerritories().add(territory2);
-        realocar.relocationTroops(player1, territory, territory2, armiesTransferido);
+        List<Player> listPlayers = Collections.singletonList(player1);
+        realocar.relocationTroops(listPlayers, territory, territory2, 4);
 
-        assertEquals(1, territory.getArmiesCount() - armiesTransferido);
-        assertEquals(9, territory2.getArmiesCount() + armiesTransferido);
+        assertEquals(1, territory.getArmiesCount() - 4);
+        assertEquals(9, territory2.getArmiesCount() + 4);
     }
 
     @Test
     public void testValidateErrorTerritoryNotAdjacent() {
-        player1 = initializePlayer();
-        territory = initializeTerritoryBrasil();
-        territory2 = initializeTerritoryEmpty();
-        int armiesTransferido = 4;
+        director.constructDefaultGame(builder);
+        player1 = game.getPlayers().get(0) ;
+        territory = player1.getConqueredTerritories().get(0);territory.setArmiesCount(5);
+        territory2 = player1.getConqueredTerritories().get(1);territory2.setArmiesCount(5);
 
-        player1.getConqueredTerritories().add(territory);
-        player1.getConqueredTerritories().add(territory2);
+        List<Player> listPlayers = Collections.singletonList(player1);
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            realocar.relocationTroops(player1, territory, territory2, armiesTransferido);
+            realocar.relocationTroops(listPlayers, territory, territory2, 4);
         });
 
         assertEquals(RelocationNormalState.MSG_TERRITORY_NOT_ADJACENT, exception.getMessage());
@@ -66,13 +78,16 @@ public class RelocationServiceTest extends Initialization {
 
     @Test
     public void testValidateErrorTerritoryNotConquered() {
-        player1 = initializePlayer();
-        territory = initializeTerritoryArgentina();
-        territory2 = initializeTerritoryParaguai();
-        int armiesTransferido = 4;
+        director.constructDefaultGame(builder);
+        player1 = game.getPlayers().get(0);
+        player2 = game.getPlayers().get(1);
+        territory = player1.getConqueredTerritories().get(0);territory.setArmiesCount(5);
+        territory2 = player2.getConqueredTerritories().get(1);territory2.setArmiesCount(5);
+        territory.addAdjacentTerritory(territory2);
 
+        List<Player> listPlayers = Collections.singletonList(player1);
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            realocar.relocationTroops(player1, territory, territory2, armiesTransferido);
+            realocar.relocationTroops(listPlayers, territory, territory2, 4);
         });
 
         assertEquals(RelocationNormalState.MSG_TERRITORY_NOT_CONQUERED, exception.getMessage());
@@ -80,23 +95,18 @@ public class RelocationServiceTest extends Initialization {
 
     @Test
     public void testValidRelocationAfterCurrentMovement() {
-        player1 = initializePlayer();
-        territory = initializeTerritoryBrasil();
-        territory2 = initializeTerritoryArgentina();
-        initializeAdjacents();
-        int armiesTransferido = 4;
-    
-        player1.getConqueredTerritories().add(territory);
-        player1.getConqueredTerritories().add(territory2);
-    
+        director.constructDefaultGame(builder);
+        player1 = game.getPlayers().get(0) ;
+        territory = player1.getConqueredTerritories().get(0);territory.setArmiesCount(5);
+        territory2 = player1.getConqueredTerritories().get(1);territory2.setArmiesCount(5);
+        territory.addAdjacentTerritory(territory2);
+
+        List<Player> listPlayers = Collections.singletonList(player1);
         territory.setHasBeenUsedInCurrentMove(true);
-    
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            realocar.relocationTroops(player1, territory, territory2, armiesTransferido);
+            realocar.relocationTroops(listPlayers, territory, territory2, 4);
         });
-    
+
         assertEquals(RelocationNormalState.MSG_TERRITORY_CURRENT_MOVIMENT, exception.getMessage());
     }
-    
-
 }

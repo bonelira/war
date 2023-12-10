@@ -8,5 +8,5 @@ import br.unicap.eng2.debuggin_squad.war.controller.Player;
 
 public interface IObjective {
 
-    public boolean objectiveAchieved(Player Player);
+    public boolean objectiveAchieved(Player player);
 }
