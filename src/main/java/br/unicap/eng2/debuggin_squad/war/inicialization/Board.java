@@ -11,7 +11,7 @@ import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
 
 public class Board {
-    private static List<Territory> territories;
+    private List<Territory> territories;
 
     public Board() {
         this.territories = new ArrayList<>();
@@ -21,43 +21,7 @@ public class Board {
         this.territories = territories;
     }
 
-    public int size() {
-
-        return this.getTerritories().size();
-
-    }
-
-    public List<Territory> getTerritories() {
-        return this.territories;
-    }
-
-    public List<Territory> getContinentCountriesList(String continentName) {
-        List<Territory> allCountries = new ArrayList<>();
-
-        for (Territory territory : territories) {
-            String actualContinent = territory.getContinent();
-            if (actualContinent.equals(continentName)) {
-                allCountries.add(territory);
-            }
-
-        }
-        return allCountries;
-    }
-
-    public List<Territory> getPlayersTerritories(Player player) {
-        List<Territory> allTerritories = new ArrayList<>();
-
-        for (Territory territory : territories) {
-            String actualOwner = territory.getProprietario().getName();
-            if (actualOwner.equals(player.getName())) {
-                allTerritories.add(territory);
-            }
-
-        }
-        return allTerritories;
-    }
-
-    public List<Territory> getBoard() { // precisa retornar a si mesmo.
+    public List<Territory> getBoardsTerritoriesList() { // precisa retornar a si mesmo.
         List<Territory> territories = new ArrayList<>();
         Territory sweden = new Territory("Suecia", 1);
         Territory germany = new Territory("Alemanha", 1);
@@ -422,4 +386,36 @@ public class Board {
 
         return territories;
     }
+
+
+    // public List<Territory> getTerritories() {
+    // return this.territories;
+    // }
+
+    public List<Territory> getContinentCountriesList(String continentName) {
+        List<Territory> allCountries = new ArrayList<>();
+
+        for (Territory territory : territories) {
+            String actualContinent = territory.getContinent();
+            if (actualContinent.equals(continentName)) {
+                allCountries.add(territory);
+            }
+
+        }
+        return allCountries;
+    }
+
+    public List<Territory> getPlayersTerritories(Player player) {
+        List<Territory> allTerritories = new ArrayList<>();
+
+        for (Territory territory : territories) {
+            String actualOwner = territory.getProprietario().getName();
+            if (actualOwner.equals(player.getName())) {
+                allTerritories.add(territory);
+            }
+
+        }
+        return allTerritories;
+    }
+
 }

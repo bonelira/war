@@ -30,9 +30,9 @@ public class GameBuilder implements Builder {
 
     @Override
     // passo a classe board, não precisa de configurações, porém
-    public void configureBoard(List<Territory> territories) { // esse método precisa dar territórios aos players
-        game.setTerritoriesList(territories);
-        board = new Board(territories);
+    public void configureBoard(Board board) { // esse método precisa dar territórios aos players
+        // game.setTerritoriesList(territories);
+        // board = new Board(territories);
         game.setBoard(board);
     }
 
@@ -60,7 +60,7 @@ public class GameBuilder implements Builder {
 
     private void giveInitialTerritoriesForEachPlayer(List<Player> player) {
         List<Player> totalPlayers = player;
-        List<Territory> totalTerritories = game.getTerritoriesList();
+        List<Territory> totalTerritories = new Board().getBoardsTerritoriesList();
         int territoriesPerPlayer = 0;
 
         territoriesPerPlayer = totalTerritories.size() / totalPlayers.size();

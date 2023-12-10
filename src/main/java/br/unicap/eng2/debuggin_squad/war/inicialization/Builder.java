@@ -15,7 +15,7 @@ public interface Builder {
 
     public void reset();
 
-    public void configureBoard(List<Territory> territories); // mudar para Board
+    public void configureBoard(Board board); // mudar para Board
 
     public void configurePlayers(List<Player> players);
 

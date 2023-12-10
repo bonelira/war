@@ -197,7 +197,7 @@ public class InicializarJogoTest {
         director.constructDefaultGame(builder);
         WarGame game = builder.getResult();
 
-        List<Territory> territories = game.getTerritoriesList();
+        List<Territory> territories = game.getBoard().getBoardsTerritoriesList();
         boolean nameIsInitialized = true;
         boolean continentIsInitialized = true;
 
@@ -257,7 +257,7 @@ public class InicializarJogoTest {
         WarGame game = builder.getResult();
 
         int expected = 42;
-        int actual = game.getTerritoriesList().size();
+        int actual = game.getBoard().getBoardsTerritoriesList().size();
 
         assertEquals(expected, actual);
     }
@@ -269,7 +269,7 @@ public class InicializarJogoTest {
         director.constructDefaultGame(builder);
         WarGame game = builder.getResult();
 
-        List<Territory> map = game.getTerritoriesList();
+        List<Territory> map = game.getBoard().getBoardsTerritoriesList();
 
         // Suécia --> Inglaterra
         // se n funcionar é pq a contagem do index está errada (considerando que o

@@ -30,8 +30,8 @@ public class WarGame {
         this.territoriesList = territoriesList;
     }
 
-    public WarGame(List<Territory> board, List<Player> players, List<GoalCard> goalCards, int playersQuantity) {
-        this.territoriesList = board;
+    public WarGame(Board board, List<Player> players, List<GoalCard> goalCards, int playersQuantity) {
+        this.board = board;
         this.players = players;
         this.goalCards = goalCards;
         this.playersQuantity = playersQuantity;

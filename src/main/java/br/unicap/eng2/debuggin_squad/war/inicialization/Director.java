@@ -14,8 +14,10 @@ import java.util.ArrayList;
 
 public class Director {
 
+    private Board board = new Board();
+
     public void constructDefaultGame(Builder builder) {
-        builder.configureBoard(getBoard());
+        builder.configureBoard(board);
         builder.configureCards(getGoalCardsList());
         builder.configurePlayers(getPlayersList());
     }
