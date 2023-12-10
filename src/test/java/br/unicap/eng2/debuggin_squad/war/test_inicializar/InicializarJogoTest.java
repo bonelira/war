@@ -202,7 +202,7 @@ public class InicializarJogoTest {
         boolean continentIsInitialized = true;
 
         for (Territory territory : territories) {
-            if (territory.getNome().isEmpty()) {
+            if (territory.getName().isEmpty()) {
                 nameIsInitialized = false;
                 return;
             } else if (territory.getContinent().isEmpty()) {
