@@ -24,11 +24,11 @@ public class ConqueringAsiaAndSouthAmerica extends CardObjective implements IObj
     @Override
     public boolean objectiveAchieved(Player player) {
         long asiaConquered = player.getConqueredTerritories().stream()
-                .filter(t -> Arrays.asList(asia).contains(t.getNome()))
+                .filter(t -> Arrays.asList(asia).contains(t.getName()))
                 .count();
 
         long southAmericaConquered = player.getConqueredTerritories().stream()
-                .filter(t -> Arrays.asList(southAmerica).contains(t.getNome()))
+                .filter(t -> Arrays.asList(southAmerica).contains(t.getName()))
                 .count();
 
         return asiaConquered == asia.length && southAmericaConquered == southAmerica.length;

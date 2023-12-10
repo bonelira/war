@@ -22,11 +22,11 @@ public class ConqueringNorthAmericaAndAfrica extends CardObjective implements IO
     @Override
     public boolean objectiveAchieved(Player player) {
         long northAmericaConquered = player.getConqueredTerritories().stream()
-                .filter(t -> Arrays.asList(northAmerica).contains(t.getNome()))
+                .filter(t -> Arrays.asList(northAmerica).contains(t.getName()))
                 .count();
 
         long africaConquered = player.getConqueredTerritories().stream()
-                .filter(t -> Arrays.asList(africa).contains(t.getNome()))
+                .filter(t -> Arrays.asList(africa).contains(t.getName()))
                 .count();
 
         return northAmericaConquered == northAmerica.length && africaConquered == africa.length;

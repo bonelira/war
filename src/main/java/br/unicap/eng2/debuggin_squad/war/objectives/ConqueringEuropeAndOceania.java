@@ -22,11 +22,11 @@ public class ConqueringEuropeAndOceania extends CardObjective implements IObject
     @Override
     public boolean objectiveAchieved(Player player) {
         long europeConquered = player.getConqueredTerritories().stream()
-                .filter(t -> Arrays.asList(europe).contains(t.getNome()))
+                .filter(t -> Arrays.asList(europe).contains(t.getName()))
                 .count();
 
         long oceaniaConquered = player.getConqueredTerritories().stream()
-                .filter(t -> Arrays.asList(oceania).contains(t.getNome()))
+                .filter(t -> Arrays.asList(oceania).contains(t.getName()))
                 .count();
 
         return europeConquered == europe.length && oceaniaConquered == oceania.length;
