@@ -21,8 +21,10 @@ public class AttackState implements GameState {
 
     @Override
     public void prepareAttack(Territory tSource, Territory tDestination) throws Exception {
-        if (tSource == null || tDestination == null) {
-            throw new Exception(MSG_ERROR_CANNOT_CHANGE_STATE);
+        if (tSource == null && tDestination == null) {
+            throw new Exception(MSG_ERROR_TERRITORY_SOURCE_NOT_SELECTED);
+        } else if (tDestination == null) {
+            throw new Exception(MSG_ERROR_TERRITORY_DESTINATION_NOT_SELECTED);
         }
     }
 

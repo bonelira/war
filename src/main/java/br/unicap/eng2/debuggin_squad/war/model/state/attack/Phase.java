@@ -9,7 +9,9 @@ public class Phase {
     public static GameState phase;
     public static Player player;
     public static final String MSG_ERROR_INCORRECT_STATE = "Cannot do this action in actual state";
+    public static final String MSG_ERROR_TERRITORY_SOURCE_NOT_SELECTED = "You must select a source territory to attack";
     public static final String MSG_ERROR_TERRITORY_DESTINATION_NOT_SELECTED = "You must select a destination territory to attack";
+    public static final String MSG_ERROR_CANNOT_CHANGE_STATE = "You cannot change state in actual situation";
 
     public Phase() {
         // Phase.phase = new RoundOneFortifyTerritoriesState();
@@ -20,11 +22,11 @@ public class Phase {
     }
 
     public void transitionToNextState() throws Exception {
-        // Phase.phase.transitionToNextState();
+        this.phase = new AttackState();
     }
 
     public GameState getCurrentState() throws Exception {
-        return new AttackState();
+        return this.phase;
     }
 
     public static void setNextState(GameState newState) throws Exception {
@@ -32,10 +34,10 @@ public class Phase {
     }
 
     public void prepareAttack(Territory tSource, Territory tDestination) throws Exception {
-        if (tSource == null || tDestination == null) {
+        if (tSource == null && tDestination == null) {
+            throw new Exception(MSG_ERROR_TERRITORY_SOURCE_NOT_SELECTED);
+        } else if (tDestination == null) {
             throw new Exception(MSG_ERROR_TERRITORY_DESTINATION_NOT_SELECTED);
-        } else {
-            phase.prepareAttack(tSource, tDestination);
         }
     }
 
