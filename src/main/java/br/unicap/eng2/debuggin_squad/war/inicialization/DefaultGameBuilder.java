@@ -47,37 +47,6 @@ public class DefaultGameBuilder implements Builder { // Forma padrão do jogo: (
         game.setPlayers(players);
     }
 
-    // // TODO [X] mudar esse método utilizando 'lista circular para os players'
-    // // Depreciado: Quem fará a distribuição de territórios será o método comum da
-    // // interface: configureInitialTerritoriesOwner
-    // private void giveInitialGoalCardsForEachPlayer(List<Player> players) {
-    // GoalCard goalCard = game.getGoalCards().get(0);
-    // for (Player player : players) {
-    // player.setGoalCard(goalCard);
-    // }
-    // }
-
-    // private void giveInitialTerritoriesForEachPlayer(List<Player> player) {
-    // List<Player> totalPlayers = player;
-    // List<Territory> totalTerritories = new Board().getBoardsTerritoriesList();
-    // int territoriesPerPlayer = 0;
-
-    // territoriesPerPlayer = totalTerritories.size() / totalPlayers.size();
-
-    // int territoryIndex = 0;
-    // for (Player players : totalPlayers) {
-    // List<Territory> playerTerritories = new ArrayList<>();
-    // players.setConqueredTerritories(playerTerritories);
-    // for (int i = 0; i < territoriesPerPlayer; i++) {
-    // playerTerritories.add(totalTerritories.get(territoryIndex));
-    // totalTerritories.get(territoryIndex).setProprietario(players);
-    // territoryIndex++;
-    // }
-    // }
-    // }
-
-    // metodos para inicializacao do Board (Buildar ele)
-
     public WarGame getResult() {
         return this.game;
     }
