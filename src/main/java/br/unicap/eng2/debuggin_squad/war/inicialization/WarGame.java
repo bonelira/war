@@ -17,6 +17,7 @@ public class WarGame {
 
     private Board board;
     private PlayerCircularLinkedList players;
+    private List<Player> playersList;
     private List<GoalCard> goalCards;
     private List<Territory> territoriesList;
     // private CircularPlayerList playersOrder;
@@ -69,4 +70,22 @@ public class WarGame {
         return players;
     }
 
+    public List<Player> getPlayersList() {
+
+        List<Player> playerList = new ArrayList<>();
+
+        if (players.isEmpty()) {
+            return playerList;
+        }
+
+        PlayerCircularListNode currentNode = players.getHead();
+
+        do {
+            Player currentPlayer = currentNode.getPlayer();
+            playerList.add(currentPlayer);
+            currentNode = players.getSuccessor(currentNode);
+        } while (currentNode != players.getHead());
+
+        return playerList;
+    }
 }
