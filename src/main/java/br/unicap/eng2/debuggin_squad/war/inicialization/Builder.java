@@ -21,7 +21,7 @@ public interface Builder {
 
     public void configureCards(List<GoalCard> goalCards) throws Exception; // Preciso de um nome melhor?
 
-    public void configureInitialTerritoriesOwner(PlayerCircularLinkedList players, Board board);
+    public void configureInitialTerritoriesOwner(PlayerCircularLinkedList players, Board board) throws Exception;
 
     public void configureInitialGoalCards(PlayerCircularLinkedList players, List<GoalCard> goalCards);
 
