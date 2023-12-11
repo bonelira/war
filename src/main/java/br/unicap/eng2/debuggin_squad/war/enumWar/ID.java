@@ -1,16 +1,21 @@
+/**
+ * @author Bruno Irae <brunoirae@gmail.com / @brunoirae>
+ * CO-@author Abi-albom Lira / @bonelira>
+ */
+
 package br.unicap.eng2.debuggin_squad.war.enumWar;
 
-public enum EnumColor {
+public enum ID {
     BLUE("Blue"),
     YELLOW("Yellow"),
     BLACK("Black"),
     GREEN("Green"),
     RED("Red"),
-    ORANGE("Orange");
+    WHITE("White");
 
     private final String name;
 
-    EnumColor(String name) {
+    ID(String name) {
         this.name = name;
     }
 

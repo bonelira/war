@@ -16,12 +16,12 @@ import java.util.List;
 
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
-import br.unicap.eng2.debuggin_squad.war.enumWar.EnumColor;
+import br.unicap.eng2.debuggin_squad.war.enumWar.ID;
 
 public class GameConfigurator {
     private static List<Player> players;
     private int numberOfPlayers;
-    private EnumColor color;
+    private ID color;
 
     public List<Player> getShufflePlayersList() {
         Collections.shuffle(players); // toda as variáveis que apontam para Players irão apontar para o objeto da
@@ -52,30 +52,30 @@ public class GameConfigurator {
         return players;
     }
 
-    public void setPlayerID() {
-        EnumColor[] cores = color.values();
-        int i = 0;
-        for (Player player : players) {
-            player.setId(cores[i].getColorName());
-            i++;
-        }
-    }
+    // public void setPlayerID() {
+    // EnumColor[] cores = color.values();
+    // int i = 0;
+    // for (Player player : players) {
+    // player.setId(cores[i].getColorName());
+    // i++;
+    // }
+    // }
 
     // deveria ser void:
-    public List<Player> createListOfPlayers(int numberOfPlayers) {
-        players = new ArrayList<>(); // Inicialize a lista de jogadores
+    // public List<Player> createListOfPlayers(int numberOfPlayers) {
+    // players = new ArrayList<>(); // Inicialize a lista de jogadores
 
-        for (int i = 0; i < getNumbOfPlayers(); i++) {
-            // Crie instâncias de jogadores e adicione à lista
-            Player player = new Player(null, null);
-            players.add(player);
-        }
+    // for (int i = 0; i < getNumbOfPlayers(); i++) {
+    // // Crie instâncias de jogadores e adicione à lista
+    // Player player = new Player(null, null);
+    // players.add(player);
+    // }
 
-        getShufflePlayersList();
-        setInitialTerritoriesForEachPlayer(numberOfPlayers);
-        setPlayerID();
-        return players;
-    }
+    // getShufflePlayersList();
+    // setInitialTerritoriesForEachPlayer(numberOfPlayers);
+    // setPlayerID();
+    // return players;
+    // }
 
     private void setInitialTerritoriesForEachPlayer(int numberOfPlayers) {
         List<Territory> nullTerritories = new ArrayList<>();

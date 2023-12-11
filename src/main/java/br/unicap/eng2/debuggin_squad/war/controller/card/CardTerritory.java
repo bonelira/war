@@ -1,47 +1,44 @@
-package br.unicap.eng2.debuggin_squad.war.card;
+package br.unicap.eng2.debuggin_squad.war.controller.card;
 
-public class CardJoker extends Card {
-
+public class CardTerritory extends Card {
     private String name;
     private String description;
     private int number;
+    private String type;
     private String shape;
+    private String objective;
 
-    public CardJoker() {
-        this.name = "Joker";
-        this.description = "Joker card";
-        this.number = 0;
-        this.shape = "Joker";
+    public CardTerritory() {
+        this.name = "Territory";
+        this.description = "Territory card";
+        this.number = 1;
+        this.type = "Territory";
+        this.shape = "Circle";
+
     }
 
-    @Override
     public String getName() {
         return this.name;
     }
 
-    @Override
     public String getDescription() {
         return this.description;
     }
 
-    @Override
     public int getNumber() {
         return this.number;
     }
 
-    @Override
-    public Object getType() {
-        return this;
+    public String getType() {
+        return this.type;
     }
 
-    @Override
     public String getShape() {
         return this.shape;
     }
 
-    @Override
     public String getObjective() {
+
         return null;
     }
-    
 }

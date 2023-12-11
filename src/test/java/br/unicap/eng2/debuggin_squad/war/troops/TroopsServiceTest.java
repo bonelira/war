@@ -4,15 +4,22 @@
 
 package br.unicap.eng2.debuggin_squad.war.troops;
 
+import br.unicap.eng2.debuggin_squad.war.enumWar.ID;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
-import br.unicap.eng2.debuggin_squad.war.model.state.troops.DeliveryOfTerritoryState;
-import br.unicap.eng2.debuggin_squad.war.model.state.troops.TroopsContext;
+import br.unicap.eng2.debuggin_squad.war.inicialization.Director;
+import br.unicap.eng2.debuggin_squad.war.inicialization.DefaultGameBuilder;
+import br.unicap.eng2.debuggin_squad.war.inicialization.WarGame;
+import br.unicap.eng2.debuggin_squad.war.model.composite.troops.ContinentTroopDelivery;
+import br.unicap.eng2.debuggin_squad.war.model.composite.troops.DeliveryByCard;
+import br.unicap.eng2.debuggin_squad.war.model.composite.troops.DeliveryInitialState;
+import br.unicap.eng2.debuggin_squad.war.model.composite.troops.DeliveryOfTerritoryState;
 import br.unicap.eng2.debuggin_squad.war.service.TroopsService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -31,12 +38,16 @@ public class TroopsServiceTest {
     private Territory colombia;
 
     private TroopsService alocar;
-    private TroopsContext troopsContext;
+    private DeliveryInitialState troopsContext;
 
     @BeforeEach
     public void setup() {
-        alocar = new TroopsService();
-        troopsContext = new TroopsContext();
+        alocar = new TroopsService() {
+            @Override
+            public int deliverArmies(List<Player> players) {
+                return 0;
+            }
+        };
         conqueredTerritories = new ArrayList<Territory>();
     }
 
@@ -45,9 +56,9 @@ public class TroopsServiceTest {
         player2 = mock(Player.class);
         player3 = mock(Player.class);
 
-        when(player1.getId()).thenReturn("1");
-        when(player2.getId()).thenReturn("2");
-        when(player3.getId()).thenReturn("3");
+        when(player1.getId()).thenReturn(ID.BLACK);
+        when(player2.getId()).thenReturn(ID.WHITE);
+        when(player3.getId()).thenReturn(ID.RED);
 
         players = new ArrayList<Player>();
         players.add(player1);
@@ -63,33 +74,400 @@ public class TroopsServiceTest {
         when(player1.getConqueredTerritories()).thenReturn(conqueredTerritories);
     }
 
+    private void mockAfricanTerritories() {
+        Territory algeria = mock(Territory.class);
+        when(algeria.getName()).thenReturn("Algeria");
+        when(algeria.getContinent()).thenReturn("Africa");
+
+        Territory egypt = mock(Territory.class);
+        when(egypt.getName()).thenReturn("Egypt");
+        when(egypt.getContinent()).thenReturn("Africa");
+
+        Territory sudan = mock(Territory.class);
+        when(sudan.getName()).thenReturn("Sudan");
+        when(sudan.getContinent()).thenReturn("Africa");
+
+        Territory congo = mock(Territory.class);
+        when(congo.getName()).thenReturn("Congo");
+        when(congo.getContinent()).thenReturn("Africa");
+
+        Territory madagascar = mock(Territory.class);
+        when(madagascar.getName()).thenReturn("Madagascar");
+        when(madagascar.getContinent()).thenReturn("Africa");
+
+        Territory southAfrica = mock(Territory.class);
+        when(southAfrica.getName()).thenReturn("South Africa");
+        when(southAfrica.getContinent()).thenReturn("Africa");
+
+        List<Territory> africanTerritories = new ArrayList<>();
+        africanTerritories.add(algeria);
+        africanTerritories.add(egypt);
+        africanTerritories.add(sudan);
+        africanTerritories.add(congo);
+        africanTerritories.add(madagascar);
+        africanTerritories.add(southAfrica);
+
+        when(player1.getConqueredTerritories()).thenReturn(africanTerritories);
+    }
+
+    private void mockAsianTerritories() {
+        Territory japan = mock(Territory.class);
+        when(japan.getName()).thenReturn("Japan");
+        when(japan.getContinent()).thenReturn("Asia");
+
+        Territory vietnam = mock(Territory.class);
+        when(vietnam.getName()).thenReturn("Vietnam");
+        when(vietnam.getContinent()).thenReturn("Asia");
+
+        Territory india = mock(Territory.class);
+        when(india.getName()).thenReturn("India");
+        when(india.getContinent()).thenReturn("Asia");
+
+        Territory middleEast = mock(Territory.class);
+        when(middleEast.getName()).thenReturn("Middle East");
+        when(middleEast.getContinent()).thenReturn("Asia");
+
+        Territory aral = mock(Territory.class);
+        when(aral.getName()).thenReturn("Aral");
+        when(aral.getContinent()).thenReturn("Asia");
+
+        Territory omsk = mock(Territory.class);
+        when(omsk.getName()).thenReturn("Omsk");
+        when(omsk.getContinent()).thenReturn("Asia");
+
+        Territory china = mock(Territory.class);
+        when(china.getName()).thenReturn("China");
+        when(china.getContinent()).thenReturn("Asia");
+
+        Territory dudinka = mock(Territory.class);
+        when(dudinka.getName()).thenReturn("Dudinka");
+        when(dudinka.getContinent()).thenReturn("Asia");
+
+        Territory tchita = mock(Territory.class);
+        when(tchita.getName()).thenReturn("Tchita");
+        when(tchita.getContinent()).thenReturn("Asia");
+
+        Territory mongolia = mock(Territory.class);
+        when(mongolia.getName()).thenReturn("Mongolia");
+        when(mongolia.getContinent()).thenReturn("Asia");
+
+        Territory siberia = mock(Territory.class);
+        when(siberia.getName()).thenReturn("Siberia");
+        when(siberia.getContinent()).thenReturn("Asia");
+
+        Territory vladvostok = mock(Territory.class);
+        when(vladvostok.getName()).thenReturn("Vladvostok");
+        when(vladvostok.getContinent()).thenReturn("Asia");
+
+        List<Territory> asianTerritories = new ArrayList<>();
+        asianTerritories.add(japan);
+        asianTerritories.add(vietnam);
+        asianTerritories.add(india);
+        asianTerritories.add(middleEast);
+        asianTerritories.add(aral);
+        asianTerritories.add(omsk);
+        asianTerritories.add(china);
+        asianTerritories.add(dudinka);
+        asianTerritories.add(tchita);
+        asianTerritories.add(mongolia);
+        asianTerritories.add(siberia);
+        asianTerritories.add(vladvostok);
+
+        when(player1.getConqueredTerritories()).thenReturn(asianTerritories);
+    }
+
+    private void mockEuropeanTerritories() {
+        Territory sweden = mock(Territory.class);
+        when(sweden.getName()).thenReturn("Sweden");
+        when(sweden.getContinent()).thenReturn("Europe");
+
+        Territory germany = mock(Territory.class);
+        when(germany.getName()).thenReturn("Germany");
+        when(germany.getContinent()).thenReturn("Europe");
+
+        Territory poland = mock(Territory.class);
+        when(poland.getName()).thenReturn("Poland");
+        when(poland.getContinent()).thenReturn("Europe");
+
+        Territory moscow = mock(Territory.class);
+        when(moscow.getName()).thenReturn("Moscow");
+        when(moscow.getContinent()).thenReturn("Europe");
+
+        Territory france = mock(Territory.class);
+        when(france.getName()).thenReturn("France");
+        when(france.getContinent()).thenReturn("Europe");
+
+        Territory england = mock(Territory.class);
+        when(england.getName()).thenReturn("England");
+        when(england.getContinent()).thenReturn("Europe");
+
+        Territory iceland = mock(Territory.class);
+        when(iceland.getName()).thenReturn("Iceland");
+        when(iceland.getContinent()).thenReturn("Europe");
+
+        Territory greenland = mock(Territory.class);
+        when(greenland.getName()).thenReturn("Greenland");
+        when(greenland.getContinent()).thenReturn("Europe");
+
+        List<Territory> europeanTerritories = new ArrayList<>();
+        europeanTerritories.add(sweden);
+        europeanTerritories.add(germany);
+        europeanTerritories.add(poland);
+        europeanTerritories.add(moscow);
+        europeanTerritories.add(france);
+        europeanTerritories.add(england);
+        europeanTerritories.add(iceland);
+        europeanTerritories.add(greenland);
+
+        when(player1.getConqueredTerritories()).thenReturn(europeanTerritories);
+    }
+
+    private void mockNorthAmericanTerritories() {
+        Territory alaska = mock(Territory.class);
+        when(alaska.getName()).thenReturn("Alaska");
+        when(alaska.getContinent()).thenReturn("North America");
+
+        Territory mackenzie = mock(Territory.class);
+        when(mackenzie.getName()).thenReturn("Mackenzie");
+        when(mackenzie.getContinent()).thenReturn("North America");
+
+        Territory vancouver = mock(Territory.class);
+        when(vancouver.getName()).thenReturn("Vancouver");
+        when(vancouver.getContinent()).thenReturn("North America");
+
+        Territory ottawa = mock(Territory.class);
+        when(ottawa.getName()).thenReturn("Ottawa");
+        when(ottawa.getContinent()).thenReturn("North America");
+
+        Territory newYork = mock(Territory.class);
+        when(newYork.getName()).thenReturn("New York");
+        when(newYork.getContinent()).thenReturn("North America");
+
+        Territory labrador = mock(Territory.class);
+        when(labrador.getName()).thenReturn("Labrador");
+        when(labrador.getContinent()).thenReturn("North America");
+
+        Territory mexico = mock(Territory.class);
+        when(mexico.getName()).thenReturn("Mexico");
+        when(mexico.getContinent()).thenReturn("North America");
+
+        Territory california = mock(Territory.class);
+        when(california.getName()).thenReturn("California");
+        when(california.getContinent()).thenReturn("North America");
+
+        List<Territory> northAmericanTerritories = new ArrayList<>();
+        northAmericanTerritories.add(alaska);
+        northAmericanTerritories.add(mackenzie);
+        northAmericanTerritories.add(vancouver);
+        northAmericanTerritories.add(ottawa);
+        northAmericanTerritories.add(newYork);
+        northAmericanTerritories.add(labrador);
+        northAmericanTerritories.add(mexico);
+        northAmericanTerritories.add(california);
+
+        when(player1.getConqueredTerritories()).thenReturn(northAmericanTerritories);
+    }
+
+    private void mockSouthAmericanTerritories() {
+        Territory brazil = mock(Territory.class);
+        when(brazil.getName()).thenReturn("Brazil");
+        when(brazil.getContinent()).thenReturn("South America");
+
+        Territory peru = mock(Territory.class);
+        when(peru.getName()).thenReturn("Peru");
+        when(peru.getContinent()).thenReturn("South America");
+
+        Territory argentina = mock(Territory.class);
+        when(argentina.getName()).thenReturn("Argentina");
+        when(argentina.getContinent()).thenReturn("South America");
+
+        Territory venezuela = mock(Territory.class);
+        when(venezuela.getName()).thenReturn("Venezuela");
+        when(venezuela.getContinent()).thenReturn("South America");
+
+        List<Territory> southAmericanTerritories = new ArrayList<>();
+        southAmericanTerritories.add(brazil);
+        southAmericanTerritories.add(peru);
+        southAmericanTerritories.add(argentina);
+        southAmericanTerritories.add(venezuela);
+
+        when(player1.getConqueredTerritories()).thenReturn(southAmericanTerritories);
+    }
+
+    private void mockOceanianTerritories() {
+        Territory australia = mock(Territory.class);
+        when(australia.getName()).thenReturn("Australia");
+        when(australia.getContinent()).thenReturn("Oceania");
+
+        Territory sumatra = mock(Territory.class);
+        when(sumatra.getName()).thenReturn("Sumatra");
+        when(sumatra.getContinent()).thenReturn("Oceania");
+
+        Territory borneo = mock(Territory.class);
+        when(borneo.getName()).thenReturn("Borneo");
+        when(borneo.getContinent()).thenReturn("Oceania");
+
+        Territory novaGuine = mock(Territory.class);
+        when(novaGuine.getName()).thenReturn("Nova Guine");
+        when(novaGuine.getContinent()).thenReturn("Oceania");
+
+        List<Territory> oceanianTerritories = new ArrayList<>();
+        oceanianTerritories.add(australia);
+        oceanianTerritories.add(sumatra);
+        oceanianTerritories.add(borneo);
+        oceanianTerritories.add(novaGuine);
+
+        when(player1.getConqueredTerritories()).thenReturn(oceanianTerritories);
+    }
+
     @Test
     public void testValidatesTroopsSentInTheInitialTurn() {
         mockPlayers();
         int totalTerritoriosValue = 42;
-        int exercitosRecebidos = alocar.deliverArmiesInTerritory(players);
+        DeliveryInitialState initialState = new DeliveryInitialState();
+        int exercitosRecebidos = initialState.deliverArmies(players);
 
         int expectedExercitosRecebidos = totalTerritoriosValue / players.size();
 
         assertEquals(expectedExercitosRecebidos, exercitosRecebidos);
-
     }
 
     @Test
     public void testValidatesTroopsSentInTerritorial() {
-        mockPlayers();mockPlayer1Territory();
+        mockPlayers();
+        mockPlayer1Territory();
         int totalTerritoriosValue = conqueredTerritories.size();
-        int expectedExercitosRecebidos = totalTerritoriosValue / 2;
-        troopsContext.setState(new DeliveryOfTerritoryState());
+        DeliveryOfTerritoryState territoryState = new DeliveryOfTerritoryState();
+        int exercitosRecebidos = territoryState.deliverArmies(players);
 
-        int exercitosRecebidos = troopsContext.deliverArmies(player1);
+        int expectedExercitosRecebidos = totalTerritoriosValue / 2;
 
         assertEquals(expectedExercitosRecebidos, exercitosRecebidos);
     }
 
-    //Criar teste para alocação de exercitos através da conquista de continente
-    /*Criar um método mock para alocar os continentes*/
+    @Test
+    public void testValidatesTroopsSentInContinentAfrica() {
+        mockPlayers();
+        mockAfricanTerritories();
+        ContinentTroopDelivery continentTroopDelivery = new ContinentTroopDelivery();
 
-    //Criar teste para alocação de exercitos através da troca de carta
-    /*Criar um método mock para alocar as cartas*/
+        int armiesReceived = continentTroopDelivery.deliverArmies(players);
+        int expectedArmiesReceived = 3;
+
+        assertEquals(expectedArmiesReceived, armiesReceived);
+    }
+
+    @Test
+    public void testValidatesTroopsSentInContinentAsia() {
+        mockPlayers();
+        mockAsianTerritories();
+        ContinentTroopDelivery continentTroopDelivery = new ContinentTroopDelivery();
+
+        int armiesReceived = continentTroopDelivery.deliverArmies(players);
+        int expectedArmiesReceived = 7;
+
+        assertEquals(expectedArmiesReceived, armiesReceived);
+    }
+
+    @Test
+    public void testValidatesTroopsSentInContinentEuropean() {
+        mockPlayers();
+        mockEuropeanTerritories();
+        ContinentTroopDelivery continentTroopDelivery = new ContinentTroopDelivery();
+
+        int armiesReceived = continentTroopDelivery.deliverArmies(players);
+        int expectedArmiesReceived = 5;
+
+        assertEquals(expectedArmiesReceived, armiesReceived);
+    }
+
+    @Test
+    public void testValidatesTroopsSentInContinentNorthAmerica() {
+        mockPlayers();
+        mockNorthAmericanTerritories();
+        ContinentTroopDelivery continentTroopDelivery = new ContinentTroopDelivery();
+
+        int armiesReceived = continentTroopDelivery.deliverArmies(players);
+        int expectedArmiesReceived = 5;
+
+        assertEquals(expectedArmiesReceived, armiesReceived);
+    }
+
+    @Test
+    public void testValidatesTroopsSentInContinentSouthAmerica() {
+        mockPlayers();
+        mockSouthAmericanTerritories();
+        ContinentTroopDelivery continentTroopDelivery = new ContinentTroopDelivery();
+
+        int armiesReceived = continentTroopDelivery.deliverArmies(players);
+        int expectedArmiesReceived = 2;
+
+        assertEquals(expectedArmiesReceived, armiesReceived);
+    }
+
+    @Test
+    public void testValidatesTroopsSentInContinentOceania() {
+        mockPlayers();
+        mockOceanianTerritories();
+        ContinentTroopDelivery continentTroopDelivery = new ContinentTroopDelivery();
+
+        int armiesReceived = continentTroopDelivery.deliverArmies(players);
+        int expectedArmiesReceived = 2;
+
+        assertEquals(expectedArmiesReceived, armiesReceived);
+    }
+
+    @Test
+    void testValidateReceiveExerciseInitialTurn() {
+        DeliveryByCard deliveryByCard = new DeliveryByCard();
+        mockPlayers();
+
+        int initialTroopCount = deliveryByCard.getTroopCount();
+        int newTroopCount = deliveryByCard.deliverArmies(players);
+
+        assertEquals(initialTroopCount, newTroopCount);
+    }
+
+    @Test
+    void testReceiveExerciseThreeDifferentCards() {
+        DeliveryByCard deliveryByCard = new DeliveryByCard();
+        Director director = new Director();
+        DefaultGameBuilder builder = new DefaultGameBuilder();
+        WarGame game = builder.getResult();
+        director.constructDefaultGame(builder);
+
+        player1 = game.getPlayers().get(0);
+        player1.addCard("triangulo");
+        player1.addCard("quadrado");
+        player1.addCard("bola");
+
+        int initialTroopCount = deliveryByCard.getTroopCount();
+
+        List<Player> listPlayers = Collections.singletonList(player1);
+        int newTroopCount = deliveryByCard.deliverArmies(listPlayers);
+
+        assertEquals(initialTroopCount + 4, newTroopCount);
+    }
+
+    @Test
+    void testReceiveExerciseThroughThreeEqualCards() {
+        DeliveryByCard deliveryByCard = new DeliveryByCard();
+        Director director = new Director();
+        DefaultGameBuilder builder = new DefaultGameBuilder();
+        WarGame game = builder.getResult();
+        director.constructDefaultGame(builder);
+
+        player1 = game.getPlayers().get(0);
+        player1.addCard("quadrado");
+        player1.addCard("quadrado");
+        player1.addCard("quadrado");
+
+        int initialTroopCount = deliveryByCard.getTroopCount();
+
+        List<Player> listPlayers = Collections.singletonList(player1);
+        int newTroopCount = deliveryByCard.deliverArmies(listPlayers);
+
+        assertEquals(initialTroopCount + 4, newTroopCount);
+    }
+
 }

@@ -5,23 +5,19 @@
 package br.unicap.eng2.debuggin_squad.war.service;
 
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
-import br.unicap.eng2.debuggin_squad.war.model.state.troops.TroopsContext;
+import br.unicap.eng2.debuggin_squad.war.model.composite.troops.TroopsComponent;
+
 
 import java.util.List;
 
 public class TroopsService {
-    private TroopsContext troopsContext;
+    private TroopsComponent troopsComponent;
 
-    public TroopsService( ) { troopsContext = new TroopsContext();}
-
-    public int deliverArmiesInTerritory(List<Player> players) {
-        List<Player> Player = players;
-        return troopsContext.deliverArmiesInInitialTurn(Player);
+    public TroopsService() {
+        this.troopsComponent = troopsComponent;
     }
 
-    //Falta alocar o recebimento de carta por {CONTINENTE}
-    /* Função: Recebe um determinado número de exercitos de acordo com a tabela*/
-
-    //Falta alocar o recebimento de carta por {TROCA DE CARTAS}
-    /* Recebe um determinado número de exercitos de acordo as figuras*/
+    public int deliverArmies(List<Player> players) {
+        return troopsComponent.deliverArmies(players);
+    }
 }

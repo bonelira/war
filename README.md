@@ -13,3 +13,4 @@
 * Leonardo H. C. da S. Cavalcanti - [(@leohcavalcanti)](https://github.com/leohcavalcanti)
 * Bruno V. Ferreira. - [(@ferreirabrunno)](https://github.com/ferreirabrunno)
 * Igor Freire Tenório Cavalcanti - [(@dokebu)](https://github.com/dokebu)
+* Roosevelt Bispo Dos Santos Junior - [(@rooseveltjnr)](https://github.com/rooseveltjnr)

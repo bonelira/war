@@ -1,15 +1,15 @@
 /**
- * @author Bruno Iraê <brunoirae@gmail.com / @brunoirae>
+ * @author Bruno Irae <brunoirae@gmail.com / @brunoirae>
  */
 
 package br.unicap.eng2.debuggin_squad.war.controller;
 
-import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Territory {
-    private String nome;
+    private String name;
     private Player proprietario;
     private int army;
     private Set<Territory> adjacentTerritories;
@@ -20,10 +20,15 @@ public class Territory {
         this.continent = continent;
     }
 
-    public Territory(String nome, int army) {
-        this.nome = nome;
+    public Territory(String name, int army) {
+        this.name = name;
         this.army = army;
+        this.proprietario = new Player(name, name);
         adjacentTerritories = new HashSet<>();
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void addArmies(int armies) {
@@ -78,4 +83,17 @@ public class Territory {
     public String getContinent() {
         return continent;
     }
+
+    public int getArmy() {
+        return this.army;
+    }
+
+    public boolean isAdjancent(Territory territory) {
+        return true;
+    }
+
+    public void setArmy(int value) {
+        this.army = value;
+    }
+
 }

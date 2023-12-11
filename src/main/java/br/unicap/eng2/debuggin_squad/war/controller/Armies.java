@@ -1,5 +1,5 @@
 /**
- * @author Bruno Iraê <brunoirae@gmail.com / @brunoirae>
+ * @author Bruno Irae <brunoirae@gmail.com / @brunoirae>
  */
 
 package br.unicap.eng2.debuggin_squad.war.controller;
