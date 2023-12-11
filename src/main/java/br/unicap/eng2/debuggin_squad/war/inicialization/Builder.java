@@ -15,13 +15,13 @@ public interface Builder {
 
     public void reset();
 
-    public void configureBoard(Board board); // mudar para Board
+    public void configureBoard(Boards board); // mudar para Board
 
     public void configurePlayers(PlayerCircularLinkedList players);
 
     public void configureCards(List<GoalCard> goalCards) throws Exception; // Preciso de um nome melhor?
 
-    public void configureInitialTerritoriesOwner(PlayerCircularLinkedList players, Board board) throws Exception;
+    public void configureInitialTerritoriesOwner(PlayerCircularLinkedList players, Boards board) throws Exception;
 
     public void configureInitialGoalCards(PlayerCircularLinkedList players, List<GoalCard> goalCards);
 

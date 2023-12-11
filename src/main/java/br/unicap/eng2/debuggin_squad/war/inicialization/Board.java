@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
 
-public class Board {
+public class Board implements Boards {
     private List<Territory> territories;
 
     public Board() {
@@ -21,6 +21,7 @@ public class Board {
         this.territories = territories;
     }
 
+    @Override
     public List<Territory> getBoardsTerritoriesList() { // private e criar todos os métodos necessários?
         List<Territory> territories = new ArrayList<>();
         Territory sweden = new Territory("Suecia", 1);
@@ -391,6 +392,7 @@ public class Board {
     // return this.territories;
     // }
 
+    @Override
     public List<Territory> getContinentCountriesList(String continentName) {
         List<Territory> allCountries = new ArrayList<>();
 
@@ -404,6 +406,7 @@ public class Board {
         return allCountries;
     }
 
+    @Override
     public List<Territory> getPlayersTerritories(Player player) {
         List<Territory> allTerritories = new ArrayList<>();
 
