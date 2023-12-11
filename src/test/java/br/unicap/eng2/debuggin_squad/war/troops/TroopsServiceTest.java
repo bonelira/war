@@ -429,7 +429,7 @@ public class TroopsServiceTest {
     }
 
     @Test
-    void testReceiveExerciseThreeDifferentCards() {
+    void testReceiveExerciseThreeDifferentCards() throws Exception {
         DeliveryByCard deliveryByCard = new DeliveryByCard();
         Director director = new Director();
         DefaultGameBuilder builder = new DefaultGameBuilder();
@@ -450,7 +450,7 @@ public class TroopsServiceTest {
     }
 
     @Test
-    void testReceiveExerciseThroughThreeEqualCards() {
+    void testReceiveExerciseThroughThreeEqualCards() throws Exception {
         DeliveryByCard deliveryByCard = new DeliveryByCard();
         Director director = new Director();
         DefaultGameBuilder builder = new DefaultGameBuilder();

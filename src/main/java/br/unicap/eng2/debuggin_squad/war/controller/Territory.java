@@ -5,7 +5,6 @@
 package br.unicap.eng2.debuggin_squad.war.controller;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class Territory {
@@ -15,7 +14,7 @@ public class Territory {
     private Set<Territory> adjacentTerritories;
     private boolean hasBeenUsedInCurrentMove = false;
     private String continent;
-    
+
     public void setContinent(String continent) {
         this.continent = continent;
     }
@@ -81,6 +80,18 @@ public class Territory {
 
     public String getContinent() {
         return continent;
+    }
+
+    public int getArmy() {
+        return this.army;
+    }
+
+    public boolean isAdjancent(Territory territory) {
+        return true;
+    }
+
+    public void setArmy(int value) {
+        this.army = value;
     }
 
 }

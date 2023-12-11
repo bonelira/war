@@ -49,7 +49,7 @@ public class FortifyServiceTest  {
     }
 
     @Test
-    public void testVerifyExerciseAcquisitionAndAllocation() {
+    public void testVerifyExerciseAcquisitionAndAllocation() throws Exception {
         director.constructDefaultGame(builder);
         player1 = game.getPlayers().get(0) ;
         territory = player1.getConqueredTerritories().get(0);
@@ -63,7 +63,7 @@ public class FortifyServiceTest  {
     }
 
     @Test
-    public void testCheckWhetherTheArmyIsBeingAllocated() {
+    public void testCheckWhetherTheArmyIsBeingAllocated() throws Exception{
         director.constructDefaultGame(builder);
         player1 = game.getPlayers().get(0);
         territory = player1.getConqueredTerritories().get(0);
@@ -77,23 +77,23 @@ public class FortifyServiceTest  {
     }
 
     @Test
-    public void testValidateErrorArmyAllocation() {
+    public void testValidateErrorArmyAllocation() throws Exception{
         fortifyContext.setState(new FortifyAfterConquerState());
         director.constructDefaultGame(builder);
         player1 = game.getPlayers().get(0);
         territory = player1.getConqueredTerritories().get(0);
         territory.setProprietario(player1);territory.setArmiesCount(0);
 
-        List<Player> allPlayers = game.getPlayers();
+        List<Player> listPlayers = Collections.singletonList(player1);
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            fortifyContext.fortifyArmies(allPlayers, 0, territory);
+            fortifyContext.fortifyArmies(listPlayers, 0, territory);
         });
 
         assertEquals(FortifyAfterConquerState.MSG_ALLOCATE_MORE_ARMY, exception.getMessage());
     }
 
     @Test
-    public void testValidateErrorAllocateAllArmies() {
+    public void testValidateErrorAllocateAllArmies() throws Exception{
         fortifyContext.setState(new FortifyAfterConquerState());
         director.constructDefaultGame(builder);
         player1 = game.getPlayers().get(4) ;

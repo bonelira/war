@@ -47,7 +47,7 @@ public class RelocationServiceTest {
     }
 
     @Test
-    public void testValidRelocation() {
+    public void testValidRelocation() throws Exception {
         director.constructDefaultGame(builder);
         player1 = game.getPlayers().get(0) ;
         territory = player1.getConqueredTerritories().get(0);territory.setArmiesCount(5);
@@ -62,7 +62,7 @@ public class RelocationServiceTest {
     }
 
     @Test
-    public void testValidateErrorTerritoryNotAdjacent() {
+    public void testValidateErrorTerritoryNotAdjacent() throws Exception {
         director.constructDefaultGame(builder);
         player1 = game.getPlayers().get(0) ;
         territory = player1.getConqueredTerritories().get(0);territory.setArmiesCount(5);
@@ -77,7 +77,7 @@ public class RelocationServiceTest {
     }
 
     @Test
-    public void testValidateErrorTerritoryNotConquered() {
+    public void testValidateErrorTerritoryNotConquered() throws Exception {
         director.constructDefaultGame(builder);
         player1 = game.getPlayers().get(0);
         player2 = game.getPlayers().get(1);
@@ -94,7 +94,7 @@ public class RelocationServiceTest {
     }
 
     @Test
-    public void testValidRelocationAfterCurrentMovement() {
+    public void testValidRelocationAfterCurrentMovement() throws Exception {
         director.constructDefaultGame(builder);
         player1 = game.getPlayers().get(0) ;
         territory = player1.getConqueredTerritories().get(0);territory.setArmiesCount(5);
