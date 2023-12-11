@@ -32,32 +32,33 @@ public class MockGameWar {
 
     private PlayerCircularLinkedList getDefaultPlayersList() {
         PlayerCircularLinkedList playersCompleteList = new PlayerCircularLinkedList();
-        Player player1 = new Player("Bone", ID.BLACK);
-        Player player2 = new Player("Roosevelt", ID.BLUE);
-        Player player3 = new Player("Bruno", ID.YELLOW);
-        Player player4 = new Player("Vicente", ID.RED);
-        Player player5 = new Player("Igor", ID.GREEN);
-        Player player6 = new Player("Leonardo", ID.WHITE);
-        playersCompleteList.addFirst(player1);
-        playersCompleteList.addFirst(player2);
-        playersCompleteList.addFirst(player3);
-        playersCompleteList.addFirst(player4);
-        playersCompleteList.addFirst(player5);
-        playersCompleteList.addFirst(player6);
+        // Player player1 = new Player("Bone", ID.BLACK);
+        // Player player2 = new Player("Roosevelt", ID.BLUE);
+        // Player player3 = new Player("Bruno", ID.YELLOW);
+        // Player player4 = new Player("Vicente", ID.RED);
+        // Player player5 = new Player("Igor", ID.GREEN);
+        // Player player6 = new Player("Leonardo", ID.WHITE);
+        playersCompleteList.addLast(new Player("Bone", ID.BLACK));
+        playersCompleteList.addLast(new Player("Roosevelt", ID.BLUE));
+        playersCompleteList.addLast(new Player("Bruno", ID.YELLOW));
+        playersCompleteList.addLast(new Player("Vicente", ID.RED));
+        playersCompleteList.addLast(new Player("Igor", ID.GREEN));
+        playersCompleteList.addLast(new Player("Leonardo", ID.WHITE));
 
         return playersCompleteList;
+
     }
 
     // Default goal Card: Conquistar 24 territorios ou continente
     private List<GoalCard> getDefaultGoalCardsList() {
         List<GoalCard> goalCards = new ArrayList<>();
         GoalCard goalCard1 = new GoalCard("Conquistar 24 territorios ou continente");
-        // GoalCard goalCard2 = new GoalCard("Conquistar continente");
-        // GoalCard goalCard3 = new GoalCard("Eliminar jogador");
+        GoalCard goalCard2 = new GoalCard("Conquistar continente");
+        GoalCard goalCard3 = new GoalCard("Eliminar jogador");
 
         goalCards.add(goalCard1);
-        // goalCards.add(goalCard2);
-        // goalCards.add(goalCard3);
+        goalCards.add(goalCard2);
+        goalCards.add(goalCard3);
 
         return goalCards;
 
