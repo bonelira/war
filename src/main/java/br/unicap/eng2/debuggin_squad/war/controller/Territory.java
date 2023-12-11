@@ -5,7 +5,6 @@
 package br.unicap.eng2.debuggin_squad.war.controller;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class Territory {
@@ -23,7 +22,6 @@ public class Territory {
     public Territory(String name, int army) {
         this.name = name;
         this.army = army;
-        this.proprietario = new Player(name, name);
         adjacentTerritories = new HashSet<>();
     }
 
