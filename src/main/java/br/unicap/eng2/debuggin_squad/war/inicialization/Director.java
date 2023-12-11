@@ -16,8 +16,12 @@ public class Director {
         builder.configureInitialTerritoriesOwner(mock.getPlayers(), board);
     }
 
+    public void constructEmptyGame(Builder builder) throws Exception {
+        builder.reset(); // mandar apenas o jogo reiniciado vazio mesmo.
+    }
+
     // outros diretores construtores aqui:
 
-    // public
+
 
 }
