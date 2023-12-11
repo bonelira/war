@@ -7,7 +7,6 @@ package br.unicap.eng2.debuggin_squad.war.inicialization;
 import java.util.List;
 import java.util.ArrayList;
 
-
 import br.unicap.eng2.debuggin_squad.war.inicialization.Board;
 import br.unicap.eng2.debuggin_squad.war.GoalCard;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
@@ -33,13 +32,6 @@ public class DefaultGameBuilder implements Builder { // Forma padrão do jogo: (
     private int playersQuantity;
     private List<Territory> territories;
 
-    @Override
-
-    public void configureBoard(Board board) {
-        game.setBoard(board);
-    }
-
-    @Override
     // Por enquanto nenhuma config a mais e necessaria, pois ha apenas 1 goal
     public void configureCards(List<GoalCard> goalCards) throws Exception { // conquistar 24 territorios ou continente.
 
@@ -119,8 +111,19 @@ public class DefaultGameBuilder implements Builder { // Forma padrão do jogo: (
 
     }
 
+    private void bidirecionaOwnershipPlayerBoard(Player currentPlayer, Territory currentTerritory) {
+        currentPlayer.setTerritory(currentTerritory);
+        currentTerritory.setProprietario(currentPlayer);
+    }
+
     @Override
-    public void configureInitialTerritoriesOwner(PlayerCircularLinkedList players, Board board) throws Exception {
+    public void configureBoard(Board board) {
+        game.setBoard(board);
+
+    }
+
+    @Override
+    public void configureInitialTerritoriesOwner(PlayerCircularLinkedList players, Boards board) throws Exception {
         if (players.isEmpty()) {
             return;
         }
@@ -141,11 +144,5 @@ public class DefaultGameBuilder implements Builder { // Forma padrão do jogo: (
                                                                          // circular
             territoryIndex++;
         }
-
-    }
-
-    private void bidirecionaOwnershipPlayerBoard(Player currentPlayer, Territory currentTerritory) {
-        currentPlayer.setTerritory(currentTerritory);
-        currentTerritory.setProprietario(currentPlayer);
     }
 }
