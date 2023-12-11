@@ -4,7 +4,7 @@ import br.unicap.eng2.debuggin_squad.war.controller.Player;
 
 public class PlayerCircularLinkedList {
 
-    private PlayerCircularListNode sentinel;
+    PlayerCircularListNode sentinel;
 
     public PlayerCircularLinkedList() {
         this.sentinel = new PlayerCircularListNode(null, null, null);
@@ -12,16 +12,16 @@ public class PlayerCircularLinkedList {
         this.sentinel.setPrevious(this.sentinel);
     }
 
-    public void addFirst(Player value) {
+    public void addFirst(Player player) {
         PlayerCircularListNode oldhead = this.sentinel.getNext();
-        PlayerCircularListNode newHead = new PlayerCircularListNode(value, this.sentinel.getNext(), this.sentinel);
+        PlayerCircularListNode newHead = new PlayerCircularListNode(player, this.sentinel.getNext(), this.sentinel);
         oldhead.setPrevious(newHead);
         sentinel.setNext(newHead);
     }
 
-    public void addLast(Player value) {
+    public void addLast(Player player) {
         PlayerCircularListNode oldTail = this.getTail();
-        PlayerCircularListNode newTail = new PlayerCircularListNode(value, this.sentinel, oldTail);
+        PlayerCircularListNode newTail = new PlayerCircularListNode(player, this.sentinel, oldTail);
 
         oldTail.setNext(newTail);
         setTail(newTail);
@@ -42,7 +42,7 @@ public class PlayerCircularLinkedList {
         PlayerCircularListNode node = this.getHead();
 
         while (node != this.sentinel) {
-            if (value == node.getValue()) {
+            if (value == node.getPlayer()) {
                 return node;
             }
             node = node.getNext();
@@ -59,8 +59,8 @@ public class PlayerCircularLinkedList {
 
         while (node.getNext() != this.sentinel) {
             node = node.getNext();
-            previousName = node.getPrevious().getValue().getName();
-            String currentNodeName = node.getValue().getName();
+            previousName = node.getPrevious().getPlayer().getName();
+            String currentNodeName = node.getPlayer().getName();
 
             if (ascending) {
                 if (previousName.compareTo(currentNodeName) > 0) {
@@ -100,7 +100,7 @@ public class PlayerCircularLinkedList {
         PlayerCircularListNode node = this.getHead();
 
         while (node != this.sentinel) {
-            copiedList.addLast(node.getValue());
+            copiedList.addLast(node.getPlayer());
             node = node.getNext();
         }
         return copiedList;
@@ -114,7 +114,7 @@ public class PlayerCircularLinkedList {
         PlayerCircularListNode nodeListTwo = list.getHead();
 
         while (nodeListOne != this.sentinel) {
-            if (nodeListOne.getValue() != nodeListTwo.getValue()) {
+            if (nodeListOne.getPlayer() != nodeListTwo.getPlayer()) {
                 return false;
             }
             nodeListOne = nodeListOne.getNext();
@@ -125,9 +125,7 @@ public class PlayerCircularLinkedList {
     }
 
     public Player get(Integer index) throws Exception {
-        if (isEmpty()) {
-            throw new Exception("List is empty");
-        }
+
         PlayerCircularListNode node = this.getHead();
 
         for (int i = 0; i < index; i++) {
@@ -136,7 +134,7 @@ public class PlayerCircularLinkedList {
                 node = node.getNext();
             }
         }
-        return node.getValue();
+        return node.getPlayer();
     }
 
     public PlayerCircularListNode getSuccessor(PlayerCircularListNode currentNode) {

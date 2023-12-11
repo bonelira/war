@@ -8,8 +8,8 @@ public class PlayerCircularListNode {
     private PlayerCircularListNode next;
     private Player value;
 
-    public PlayerCircularListNode(Player value, PlayerCircularListNode next, PlayerCircularListNode previous) {
-        this.value = value;
+    public PlayerCircularListNode(Player player, PlayerCircularListNode next, PlayerCircularListNode previous) {
+        this.value = player;
         this.next = next;
         this.previous = previous;
     }
@@ -17,12 +17,12 @@ public class PlayerCircularListNode {
     public PlayerCircularListNode() {
     }
 
-    public Player getValue() {
+    public Player getPlayer() {
         return value;
     }
 
-    public void setValue(Player value) {
-        this.value = value;
+    public void setPlayer(Player player) {
+        this.value = player;
     }
 
     public PlayerCircularListNode getPrevious() {
