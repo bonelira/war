@@ -15,7 +15,7 @@ public interface Builder {
 
     public void reset();
 
-    public void configureBoard(Boards board); // mudar para Board
+    public void configureBoard(Board board); // mudar para Board
 
     public void configurePlayers(PlayerCircularLinkedList players);
 
