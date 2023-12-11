@@ -14,7 +14,7 @@ import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.enumWar.ID;
 
 public class MockGameWar {
-    private List<Player> players;
+    private PlayerCircularLinkedList players;
     private List<GoalCard> goalCards;
 
     MockGameWar() {
@@ -26,24 +26,24 @@ public class MockGameWar {
         return goalCards;
     }
 
-    public List<Player> getPlayers() {
+    public PlayerCircularLinkedList getPlayers() {
         return players;
     }
 
-    private List<Player> getDefaultPlayersList() {
-        List<Player> playersCompleteList = new ArrayList<>();
+    private PlayerCircularLinkedList getDefaultPlayersList() {
+        PlayerCircularLinkedList playersCompleteList = new PlayerCircularLinkedList();
         Player player1 = new Player("Bone", ID.BLACK);
         Player player2 = new Player("Roosevelt", ID.BLUE);
         Player player3 = new Player("Bruno", ID.YELLOW);
         Player player4 = new Player("Vicente", ID.RED);
         Player player5 = new Player("Igor", ID.GREEN);
         Player player6 = new Player("Leonardo", ID.WHITE);
-        playersCompleteList.add(player1);
-        playersCompleteList.add(player2);
-        playersCompleteList.add(player3);
-        playersCompleteList.add(player4);
-        playersCompleteList.add(player5);
-        playersCompleteList.add(player6);
+        playersCompleteList.addFirst(player1);
+        playersCompleteList.addFirst(player2);
+        playersCompleteList.addFirst(player3);
+        playersCompleteList.addFirst(player4);
+        playersCompleteList.addFirst(player5);
+        playersCompleteList.addFirst(player6);
 
         return playersCompleteList;
     }

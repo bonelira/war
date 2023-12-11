@@ -17,11 +17,13 @@ public interface Builder {
 
     public void configureBoard(Board board); // mudar para Board
 
-    public void configurePlayers(List<Player> players);
+    public void configurePlayers(PlayerCircularLinkedList players);
 
-    public void configureCards(List<GoalCard> goalCards); // Preciso de um nome melhor?
+    public void configureCards(List<GoalCard> goalCards) throws Exception; // Preciso de um nome melhor?
 
-    public void configureInitialTerritoriesOwner(List<Player> players, Board board);
+    public void configureInitialTerritoriesOwner(PlayerCircularLinkedList players, Board board);
+
+    public void configureInitialGoalCards(PlayerCircularLinkedList players, List<GoalCard> goalCards);
 
     public WarGame getResult();
 }

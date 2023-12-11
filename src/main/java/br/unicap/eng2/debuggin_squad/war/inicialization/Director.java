@@ -9,7 +9,7 @@ public class Director {
     private Board board = new Board();
     private MockGameWar mock = new MockGameWar();
 
-    public void constructDefaultGame(Builder builder) {
+    public void constructDefaultGame(Builder builder) throws Exception {
         builder.configureBoard(board);
         builder.configureCards(mock.getGoalCards());
         builder.configurePlayers(mock.getPlayers());

@@ -27,7 +27,7 @@ public class DefaultGameBuilder implements Builder { // Forma padrão do jogo: (
 
     private WarGame game;
     private Board board;
-    private List<Player> players;
+    private PlayerCircularLinkedList playersCircularList;
     private List<GoalCard> goalCards;
     private int playersQuantity;
     private List<Territory> territories;
@@ -40,18 +40,17 @@ public class DefaultGameBuilder implements Builder { // Forma padrão do jogo: (
 
     @Override
     // Por enquanto nenhuma config a mais e necessaria, pois ha apenas 1 goal
-    public void configureCards(List<GoalCard> goalCards) { // conquistar 24 territorios ou continente.
-        GoalCard goalCard = game.getGoalCards().get(0);
-        for (Player player : players) {
-            player.setGoalCard(goalCard);
-        }
+    public void configureCards(List<GoalCard> goalCards) throws Exception { // conquistar 24 territorios ou continente.
+
         game.setGoalCards(goalCards);
     }
 
     @Override
-    public void configurePlayers(List<Player> players) { // No default ele apenas retorna a lista default de players
+    public void configurePlayers(PlayerCircularLinkedList players) { // No default ele apenas retorna a lista default de
+                                                                     // players
         // giveInitialTerritoriesForEachPlayer(players);
         // giveInitialGoalCardsForEachPlayer(players);
+
         game.setPlayers(players);
     }
 
@@ -96,12 +95,45 @@ public class DefaultGameBuilder implements Builder { // Forma padrão do jogo: (
     }
 
     @Override
-    public void configureInitialTerritoriesOwner(List<Player> players, Board board) {
-        // Usando a lista circular de players adicionar território por território a
-        // lista de owners e em cada território setar o dono.
-        // bidirecionaOwnershipPlayerBoard()
-        // Nesse método eu vou passando pela lista de players pelo tamanho do board até
-        // que todos os territórios tenham sido setados
+    public void configureInitialGoalCards(PlayerCircularLinkedList players, List<GoalCard> goalCards) {
+        if (players.isEmpty()) {
+            return; // Não há jogadores na lista ou territórios para distribuir
+        }
+
+        PlayerCircularListNode currentNode = players.getHead();
+        // int territoryIndex = 0;
+
+        for (int i = 0; i < players.size(); i++) {
+            currentNode.getPlayer().setGoalCard(goalCards.get(i));
+            currentNode = currentNode.getNext();
+        }
+
+        // do {
+        // currentNode.getValue().addCard(goalCards.get(territoryIndex).getGoal());
+
+        // territoryIndex = (territoryIndex + 1) % territories.size();
+        // currentNode = currentNode.getNext();
+        // } while (currentNode != players.sentinel);
+    }
+
+    @Override
+    public void configureInitialTerritoriesOwner(PlayerCircularLinkedList players, Board board) {
+        if (players.isEmpty()) {
+            return; // vaziaa
+        }
+
+        List<Territory> territories = board.getBoardsTerritoriesList();
+
+        PlayerCircularListNode currentNode = players.getHead();
+
+        for (Territory territory : territories) {
+            Player currentPlayer = currentNode.getPlayer();
+            if (currentPlayer != null) {
+                bidirecionaOwnershipPlayerBoard(currentPlayer, territory);
+            }
+
+            currentNode = currentNode.getNext();
+        }
 
     }
 

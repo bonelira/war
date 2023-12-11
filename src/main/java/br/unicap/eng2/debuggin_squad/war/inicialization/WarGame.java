@@ -16,7 +16,7 @@ import java.util.List;
 public class WarGame {
 
     private Board board;
-    private List<Player> players;
+    private PlayerCircularLinkedList players;
     private List<GoalCard> goalCards;
     private List<Territory> territoriesList;
     // private CircularPlayerList playersOrder;
@@ -30,7 +30,7 @@ public class WarGame {
         this.territoriesList = territoriesList;
     }
 
-    public WarGame(Board board, List<Player> players, List<GoalCard> goalCards, int playersQuantity) {
+    public WarGame(Board board, PlayerCircularLinkedList players, List<GoalCard> goalCards, int playersQuantity) {
         this.board = board;
         this.players = players;
         this.goalCards = goalCards;
@@ -49,7 +49,7 @@ public class WarGame {
         this.board = board;
     }
 
-    public void setPlayers(List<Player> players) {
+    public void setPlayers(PlayerCircularLinkedList players) {
         this.players = players;
     }
 
@@ -65,7 +65,7 @@ public class WarGame {
         return playersQuantity;
     }
 
-    public List<Player> getPlayers() {
+    public PlayerCircularLinkedList getPlayers() {
         return players;
     }
 
