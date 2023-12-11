@@ -32,12 +32,6 @@ public class MockGameWar {
 
     private PlayerCircularLinkedList getDefaultPlayersList() {
         PlayerCircularLinkedList playersCompleteList = new PlayerCircularLinkedList();
-        // Player player1 = new Player("Bone", ID.BLACK);
-        // Player player2 = new Player("Roosevelt", ID.BLUE);
-        // Player player3 = new Player("Bruno", ID.YELLOW);
-        // Player player4 = new Player("Vicente", ID.RED);
-        // Player player5 = new Player("Igor", ID.GREEN);
-        // Player player6 = new Player("Leonardo", ID.WHITE);
         playersCompleteList.addLast(new Player("Bone", ID.BLACK));
         playersCompleteList.addLast(new Player("Roosevelt", ID.BLUE));
         playersCompleteList.addLast(new Player("Bruno", ID.YELLOW));
