@@ -98,20 +98,16 @@ public class DefaultGameBuilder implements Builder { // Forma padrão do jogo: (
         }
 
         List<Territory> territories = board.getBoardsTerritoriesList();
-        int territoryIndex = 0;
         PlayerCircularListNode currentPlayerNode = players.getHead();
 
-        while (territoryIndex < territories.size()) {
-            Territory currentTerritory = territories.get(territoryIndex);
+        for (Territory currentTerritory : territories) {
             Player currentPlayer = currentPlayerNode.getPlayer();
 
             if (currentPlayer != null) {
                 bidirecionaOwnershipPlayerBoard(currentPlayer, currentTerritory);
             }
 
-            currentPlayerNode = players.getSuccessor(currentPlayerNode); // Utiliza getSuccessor para avançar na lista
-                                                                         // circular
-            territoryIndex++;
+            currentPlayerNode = players.getSuccessor(currentPlayerNode); // Avança na lista circular
         }
     }
 }
