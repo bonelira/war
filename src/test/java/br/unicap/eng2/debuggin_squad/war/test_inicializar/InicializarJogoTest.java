@@ -4,6 +4,7 @@
 package br.unicap.eng2.debuggin_squad.war.test_inicializar;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -369,5 +370,45 @@ public class InicializarJogoTest {
     // // ID vai de 1 - 6.
     // // verifica se cada jogador recebeu um ID único
     // }
+
+    @Test
+    public void emptyGameBuilderHasEmptyBoard() throws Exception {
+        Director director = new Director();
+        DefaultGameBuilder builder = new DefaultGameBuilder();
+        director.constructEmptyGame(builder);
+        game = builder.getResult(); // Atribuir o jogo criado ao campo 'game'
+
+        Board actualEmptyBoard = game.getBoard();
+
+        assertNull(actualEmptyBoard);
+    }
+
+    @Test
+    public void emptyGameBuilderHasEmptyPlayers() throws Exception {
+        Director director = new Director();
+        DefaultGameBuilder builder = new DefaultGameBuilder();
+        director.constructEmptyGame(builder);
+        game = builder.getResult(); // Atribuir o jogo criado ao campo 'game'
+
+        // int totalPlayers = game.getPlayersQuantity();
+
+        PlayerCircularLinkedList actualEmptyPlayers = game.getPlayers();
+
+        // assertEquals(0, totalPlayers);
+
+        assertNull(actualEmptyPlayers);
+    }
+
+    @Test
+    public void emptyGameBuilderHasEmptyAttributesButIsNotAEmptyGame() throws Exception {
+        Director director = new Director();
+        DefaultGameBuilder builder = new DefaultGameBuilder();
+        director.constructEmptyGame(builder);
+        game = builder.getResult(); // Atribuir o jogo criado ao campo 'game'
+
+        WarGame actualEmptyGame = builder.getResult();
+
+        assertNotNull(actualEmptyGame);
+    }
 
 }
