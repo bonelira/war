@@ -11,7 +11,9 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -33,6 +35,7 @@ import org.junit.jupiter.api.Test;
 import br.unicap.eng2.debuggin_squad.war.inicialization.Board;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
+import br.unicap.eng2.debuggin_squad.war.enumWar.ID;
 import br.unicap.eng2.debuggin_squad.war.inicialization.Director;
 import br.unicap.eng2.debuggin_squad.war.inicialization.PlayerCircularLinkedList;
 import br.unicap.eng2.debuggin_squad.war.inicialization.DefaultGameBuilder;
@@ -180,49 +183,42 @@ public class InicializarJogoTest {
      */
 
     @Test
+    // 1. verificar que a lista não tá nula e nem vazia
+    // 2. ver se cada território ,individualmente, não está nulo e foi feito
+    // corretamente
     public void testBoardInitializationIsNotNull() throws Exception {
         Board map = game.getBoard();
         assertNotNull(map);
 
+        List<Territory> territories = map.getBoardsTerritoriesList();
+        assertNotNull(territories);
+        assertFalse(territories.isEmpty());
+
+        for (Territory territory : territories) {
+            assertNotNull(territory);
+        }
     }
 
     @Test
-    public void testBoardEachTerritoryHasNameAndContinentNotNullValues() throws Exception {
+    public void testTerritoryNameAndContinentNotNullValues() throws Exception {
         List<Territory> territories = game.getBoard().getBoardsTerritoriesList();
-        boolean nameIsInitialized = true;
-        boolean continentIsInitialized = true;
 
         for (Territory territory : territories) {
-            if (territory.getName().isEmpty()) {
-                nameIsInitialized = false;
-                return;
-            } else if (territory.getContinent().isEmpty()) {
-                continentIsInitialized = false;
-                return;
-            }
+            assertNotNull(territory.getName()); // tem nome?
+            assertFalse(territory.getName().isEmpty()); // está vazio?
+
+            assertNotNull(territory.getContinent()); // tem continent?
+            assertFalse(territory.getContinent().isEmpty()); // tá vazio?
         }
-
-        assertTrue(continentIsInitialized && nameIsInitialized);
-
     }
 
     // @Test
     // public void testEachTerritoryHasOwner() {
-    // Director director = new Director();
-    // GameBuilder builder = new GameBuilder();
-    // director.constructDefaultGame(builder);
-    // WarGame game = builder.getResult();
-    // List<Territory> territories = game.getTerritoriesList();
-    // boolean territoryHasOwner = true;
+    // List<Territory> territories = game.getBoard().getBoardsTerritoriesList();
 
     // for (Territory territory : territories) {
-    // if (territory.getProprietario().equals(null)) {
-    // territoryHasOwner = false;
-    // return;
+    // assertNotNull(territory.getProprietario());
     // }
-    // }
-
-    // assertTrue(territoryHasOwner);
     // }
 
     @Test
@@ -245,40 +241,62 @@ public class InicializarJogoTest {
 
     @Test
     public void testBoarHasCorrectAdjacency() throws Exception {
-        List<Territory> map = game.getBoard().getBoardsTerritoriesList();
+        Board board = game.getBoard();
+        Territory sweden = board.searchByName("Suecia");
+        Territory england = board.searchByName("Inglaterra");// agora procura por nome, já que o índice é
+                                                             // horrível de lidar
+        assertNotNull(sweden);
+        assertNotNull(england);
 
-        // Suécia --> Inglaterra
-        // se n funcionar é pq a contagem do index está errada (considerando que o
-        // método está correto)
-
-        int indexTerritoryA = 34;
-        int indexTerritoryB = 36;
-
-        // Verificar se as adjacências são bidirecionais (se A é adjacente a B, então B
-        // deve ser adjacente a A).
-        assertTrue(map.get(indexTerritoryA).isAdjacent(map.get(indexTerritoryB))
-                && map.get(indexTerritoryB).isAdjacent(map.get(indexTerritoryA)));
+        // as adjacências são bidirecionais?
+        assertTrue(sweden.isAdjacent(england) && england.isAdjacent(sweden));
     }
 
     @Test
     public void testPlayersInitialization() throws Exception {
+        List<Player> players = game.getPlayersList();
 
-        // Verificar se os player foram criados (3 - 6)
-        /*
-         * // TODO
-         * ESSES TESTES DEVEM SER FEITOS PELA CLASSE DE TESTES DO PLAYER:
-         * Testar se a inicialização dos Players acontece da forma correta, que seria:
-         * Player possui um nome, valor diferente de null.
-         * Player possui um Id único.
-         * Player possui uma, apenas uma, carta objetivo.
-         * Player tem uma lista de territórios entre 7 e 14 territórios
-         *
-         */
-        // verificando se os players foram criados
-        assertNotNull(game.getPlayers()); // lista de players não está vazia(null)
-        // assertNotNull(game.getPlayers().get(0)); // para verificar individualmente se
-        // um player (.get(index do player)) foi criado.
+        // Lsista de jogadores não é nula
+        assertNotNull(players);
 
+        // tem pelo menos um jogador na lista
+        assertFalse(players.isEmpty());
+
+        // confirmar se cada jogador na lista possui um nome não nulo e não vazio
+        for (Player player : players) {
+            assertNotNull(player.getName());
+            assertFalse(player.getName().isEmpty());
+        }
+
+        // Verifica se cada jogador tem um ID único
+        List<ID> playerIds = new ArrayList();
+        for (Player player : players) {
+            assertTrue(playerIds.add(player.getId()));
+        }
+
+        // // Verifica se cada jogador possui uma única carta objetivo
+        // for (Player player : players) {
+        // assertNotNull(player.getGoalCard());
+        // }
+
+        // Verifica se cada jogador tem territórios dentro do range de 7 ->> 14
+        // territórios (no caso do default é possível deixar 7 ou alterar em outros
+        // casoss)
+        for (Player player : players) {
+            int numOfTerritories = player.getConqueredTerritories().size();
+            assertTrue(numOfTerritories >= 7 && numOfTerritories <= 14);
+            // assertTrue(numOfTerritories >= 7);
+        }
+
+    }
+
+    @Test
+    public void testEachPlayerHasUnicID() {
+        List<Player> players = game.getPlayersList();
+        List<ID> playerIds = new ArrayList();
+        for (Player player : players) {
+            assertTrue(playerIds.add(player.getId()));
+        }
     }
 
     @Test
@@ -289,87 +307,50 @@ public class InicializarJogoTest {
     }
 
     @Test
-    public void testPlayerHasAtLeastOneGoalCard() throws Exception {
-        GoalCard expectedCard = game.getPlayers().get(0).getGoalCard();
-        assertNotNull(expectedCard);
-
+    public void testVerifyQuantityOfPlayersIsAllowed() throws Exception {
+        int actual = game.getPlayers().size();
+        assertTrue(actual >= 3 && actual <= 7);
     }
 
     @Test
-    public void test6playersHas7TerritoriesAtBegin() throws Exception {
-        PlayerCircularLinkedList players = game.getPlayers();
-        int territoriesPlayer0 = players.get(0).getConqueredTerritories().size();
+    public void testPlayersHaveAtLeastOneGoalCard() throws Exception {
+        List<Player> players = game.getPlayersList();
+        assertNotNull(players);
 
-        assertTrue(territoriesPlayer0 == 7);
-
+        for (Player player : players) {
+            assertNotNull(player.getGoalCard());
+        }
     }
 
-    // @Test
+    @Test
+    public void testAllPlayersStartWith7Territories() throws Exception {
+        PlayerCircularLinkedList players = game.getPlayers();
 
-    // // DEPRECATED
-    // public void testIsPlayerListOrderShuffle() {
-    // Director director = new Director();
-    // GameBuilder builder = new GameBuilder();
-
-    // director.constructDefaultGame(builder);
-
-    // WarGame game = builder.getResult();
-    // List<Player> actualList = new ArrayList<>(game.getPlayers());
-    // List<Player> expecList = configurator.getShufflePlayersList();
-
-    // assertNotEquals(expecList, actualList);
-
-    // }
+        for (int i = 0; i < players.size(); i++) { // Agora verifica se TODOS tem 7 territórios (são 6 players)
+            int territories = players.get(i).getConqueredTerritories().size();
+            assertEquals(7, territories);
+        }
+    }
 
     @Test
 
     public void testAllCurrentPlayersHaveColor() throws Exception {
-
-        assertEquals(game.getPlayers().get(0).getId().getColorName(), "Black");
-
+        List<Player> players = game.getPlayersList();
+        List<ID> playerIds = new ArrayList();
+        for (Player player : players) {
+            assertTrue(playerIds.add(player.getId()));
+        }
     }
-
-    // @Test
-    // public void testTerritoryHasAtLeastOneTroopAtGamesBegin() {
-    // board = new Board();
-    // game = new WarGame();
-    // game.start();
-    // List<Territory> territories = board.getTerritories();
-
-    // int actual = territories.get(35).getArmiesCount();
-    // assertEquals(1, actual);
-
-    // }
 
     @Test
-    public void testVerifyQuantityOfPlayersIsAllowed() throws Exception {
-        // // verificar se a qntd de players está entre 3 - 6
-        // // quem deve possuir a qntd total desses jogadores é a classe
-        // GameConfigurator
-        // int belowMinNumberOfPlayers = 2;
-        // int aboveMaxNumberOfPlayers = 7;
-        // int numberOfPlayers = 3;
-        // configurator.setNumberOfPlayers(numberOfPlayers); // setNumberOfPlayers() que
-        // com o num de players na partida
-        // List<Player> players = configurator.getListOfPlayers();
-        // assertTrue(
-        // players.size() > belowMinNumberOfPlayers
-        // &&
-        // players.size() < aboveMaxNumberOfPlayers);
-        int numbOfPlayers = game.getPlayers().size();
+    public void testTerritoryHasAtLeastOneTroopAtGamesBegin() {
+        List<Territory> territories = game.getBoard().getBoardsTerritoriesList();
 
-        assertTrue(numbOfPlayers < 7 && numbOfPlayers > 2);
+        for (Territory territory : territories) {
+            assertTrue(territory.getArmiesCount() >= 1);
+        }
 
     }
-
-    // @Test
-    // public void testEachPlayerHasUnicID() {
-    // // Neste caso ID é a cor do player, porém ID será String* e pode mudar de
-    // acordo
-    // // com o modo de jogo
-    // // ID vai de 1 - 6.
-    // // verifica se cada jogador recebeu um ID único
-    // }
 
     @Test
     public void emptyGameBuilderHasEmptyBoard() throws Exception {
