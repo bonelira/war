@@ -420,4 +420,21 @@ public class Board implements Boards {
         return allTerritories;
     }
 
+    // public void addOwner(Player player, Territory t) {
+    // for (Territory territory : territories) {
+    // if (territory.equals(t)) {
+    // territory.setProprietario(player);
+    // }
+    // }
+    // }
+
+    public Territory searchByName(String name) {
+        for (Territory territory : territories) {
+            if (territory.getName().equalsIgnoreCase(name)) {
+                return territory;
+            }
+        }
+        return null;
+    }
+
 }
