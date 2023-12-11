@@ -7,6 +7,7 @@ package br.unicap.eng2.debuggin_squad.war.inicialization;
 import java.util.List;
 import java.util.ArrayList;
 
+
 import br.unicap.eng2.debuggin_squad.war.inicialization.Board;
 import br.unicap.eng2.debuggin_squad.war.GoalCard;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
@@ -97,49 +98,54 @@ public class DefaultGameBuilder implements Builder { // Forma padrão do jogo: (
     @Override
     public void configureInitialGoalCards(PlayerCircularLinkedList players, List<GoalCard> goalCards) {
         if (players.isEmpty()) {
-            return; // Não há jogadores na lista ou territórios para distribuir
+            return;
         }
 
-        PlayerCircularListNode currentNode = players.getHead();
-        // int territoryIndex = 0;
+        int territoryIndex = 0;
+        PlayerCircularListNode currentPlayerNode = players.getHead();
 
-        for (int i = 0; i < players.size(); i++) {
-            currentNode.getPlayer().setGoalCard(goalCards.get(i));
-            currentNode = currentNode.getNext();
+        while (territoryIndex < goalCards.size()) {
+            GoalCard currentGoalCard = goalCards.get(territoryIndex);
+            Player currentPlayer = currentPlayerNode.getPlayer();
+
+            if (currentPlayer != null) {
+                currentPlayer.setGoalCard(currentGoalCard);
+            }
+
+            currentPlayerNode = players.getSuccessor(currentPlayerNode); // Utiliza getSuccessor para avançar na lista
+                                                                         // circular
+            territoryIndex++;
         }
 
-        // do {
-        // currentNode.getValue().addCard(goalCards.get(territoryIndex).getGoal());
-
-        // territoryIndex = (territoryIndex + 1) % territories.size();
-        // currentNode = currentNode.getNext();
-        // } while (currentNode != players.sentinel);
     }
 
     @Override
-    public void configureInitialTerritoriesOwner(PlayerCircularLinkedList players, Board board) {
+    public void configureInitialTerritoriesOwner(PlayerCircularLinkedList players, Board board) throws Exception {
         if (players.isEmpty()) {
-            return; // vaziaa
+            return;
         }
 
         List<Territory> territories = board.getBoardsTerritoriesList();
+        int territoryIndex = 0;
+        PlayerCircularListNode currentPlayerNode = players.getHead();
 
-        PlayerCircularListNode currentNode = players.getHead();
+        while (territoryIndex < territories.size()) {
+            Territory currentTerritory = territories.get(territoryIndex);
+            Player currentPlayer = currentPlayerNode.getPlayer();
 
-        for (Territory territory : territories) {
-            Player currentPlayer = currentNode.getPlayer();
             if (currentPlayer != null) {
-                bidirecionaOwnershipPlayerBoard(currentPlayer, territory);
+                bidirecionaOwnershipPlayerBoard(currentPlayer, currentTerritory);
             }
 
-            currentNode = currentNode.getNext();
+            currentPlayerNode = players.getSuccessor(currentPlayerNode); // Utiliza getSuccessor para avançar na lista
+                                                                         // circular
+            territoryIndex++;
         }
 
     }
 
-    private void bidirecionaOwnershipPlayerBoard(Player player, Territory territory) {
-        player.setTerritory(territory);
-        territory.setProprietario(player);
+    private void bidirecionaOwnershipPlayerBoard(Player currentPlayer, Territory currentTerritory) {
+        currentPlayer.setTerritory(currentTerritory);
+        currentTerritory.setProprietario(currentPlayer);
     }
-
 }
