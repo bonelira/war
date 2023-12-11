@@ -18,7 +18,7 @@ public class Player {
         this.name = name;
         this.armies = null;
         this.cards = null;
-        this.territories = new  ArrayList<Territory>();
+        this.territories = new ArrayList<Territory>();
     }
 
     public void setArmies() {
@@ -64,12 +64,11 @@ public class Player {
         return territories;
     }
 
-
     public void setTerritory(Territory territory) {
-        if (territory == null) {
+        if (territory.equals(null)) {
             throw new AssertionError("The territory must not be null");
         }
         this.territories.add(territory);
     }
-    
+
 }
