@@ -7,7 +7,7 @@ package br.unicap.eng2.debuggin_squad.war.fortify;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
 import br.unicap.eng2.debuggin_squad.war.inicialization.Director;
-import br.unicap.eng2.debuggin_squad.war.inicialization.GameBuilder;
+import br.unicap.eng2.debuggin_squad.war.inicialization.DefaultGameBuilder;
 import br.unicap.eng2.debuggin_squad.war.inicialization.WarGame;
 import br.unicap.eng2.debuggin_squad.war.model.state.fortify.FortifyAfterConquerState;
 import br.unicap.eng2.debuggin_squad.war.model.state.fortify.FortifyContext;
@@ -35,7 +35,7 @@ public class FortifyServiceTest  {
 
     private Director director;
 
-    private GameBuilder builder;
+    private DefaultGameBuilder builder;
 
     private WarGame game;
 
@@ -44,7 +44,7 @@ public class FortifyServiceTest  {
         fortificar = new FortifyService();
         fortifyContext = new FortifyContext();
         director = new Director();
-        builder = new GameBuilder();
+        builder = new DefaultGameBuilder();
         game = builder.getResult();
     }
 

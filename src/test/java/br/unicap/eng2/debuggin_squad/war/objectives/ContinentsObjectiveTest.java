@@ -4,6 +4,7 @@
 
 package br.unicap.eng2.debuggin_squad.war.objectives;
 
+import br.unicap.eng2.debuggin_squad.war.enumWar.ID;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
 import org.junit.jupiter.api.BeforeEach;
@@ -61,7 +62,7 @@ public class ContinentsObjectiveTest {
                 (NAME_EUROPE_AND_OCEANIA, DESCRIPTION_EUROPE_AND_OCEANIA, 1);
         northAmericaAndAfrica = new ConqueringNorthAmericaAndAfrica
                 (NAME_NORTH_AMERICA_AND_AFRICA, DESCRIPTION_NORTH_AMERICA_AND_AFRICA, 2);
-        player = new Player("player 1", "0");
+        player = new Player("player 1", ID.BLACK);
     }
 
     private void setCountries(String[] countrie) {

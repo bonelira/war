@@ -13,6 +13,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import br.unicap.eng2.debuggin_squad.war.enumWar.ID;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
 import br.unicap.eng2.debuggin_squad.war.service.PovoarTerritory;
@@ -24,7 +25,7 @@ public class PovoarTerritoryTest {
     public void test01PopulateConqueredTerritory() {
         Territory conqueredTerritory = new Territory("ConqueredTerritory", 5);
         List<Territory> adjacentTerritories = new ArrayList<>();
-        Player conqueringPlayer = new Player("ConqueringPlayer", "1");
+        Player conqueringPlayer = new Player("ConqueringPlayer", ID.BLACK);
 
         PovoarTerritory.populateConqueredTerritory(conqueredTerritory, adjacentTerritories, conqueringPlayer, 3);
 
@@ -40,7 +41,7 @@ public class PovoarTerritoryTest {
         List<Territory> adjacentTerritories = new ArrayList<>();
         adjacentTerritories.add(new Territory("AdjacentTerritory1", 5));
         adjacentTerritories.add(new Territory("AdjacentTerritory2", 5));
-        Player conqueringPlayer = new Player("ConqueringPlayer", "1");
+        Player conqueringPlayer = new Player("ConqueringPlayer", ID.BLACK);
 
         PovoarTerritory.conquerAdjacentTerritories(conqueringPlayer, conqueredTerritory, adjacentTerritories);
 

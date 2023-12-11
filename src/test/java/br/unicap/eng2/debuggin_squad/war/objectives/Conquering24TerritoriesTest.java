@@ -4,6 +4,7 @@
 
 package br.unicap.eng2.debuggin_squad.war.objectives;
 
+import br.unicap.eng2.debuggin_squad.war.enumWar.ID;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
 import org.junit.jupiter.api.BeforeEach;
@@ -32,7 +33,7 @@ public class Conquering24TerritoriesTest {
     @BeforeEach
     public void setUp() {
         conquering24Territories = new Conquering24Territories(NAME, DESCRIPTION, 0);
-        player = new Player("player 1", "0");
+        player = new Player("player 1", ID.BLACK);
 
     }
 

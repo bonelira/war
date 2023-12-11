@@ -4,7 +4,7 @@
 
 package br.unicap.eng2.debuggin_squad.war.inicialization;
 
-import br.unicap.eng2.debuggin_squad.war.Board;
+import br.unicap.eng2.debuggin_squad.war.inicialization.Board;
 import br.unicap.eng2.debuggin_squad.war.GoalCard;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
@@ -15,11 +15,15 @@ public interface Builder {
 
     public void reset();
 
-    public void configureBoard(List<Territory> territories);
+    public void configureBoard(Board board); // mudar para Board
 
-    public void configurePlayers(List<Player> players);
+    public void configurePlayers(PlayerCircularLinkedList players);
 
-    public void configureCards(List<GoalCard> goalCards); // Preciso de um nome melhor?
+    public void configureCards(List<GoalCard> goalCards) throws Exception; // Preciso de um nome melhor?
+
+    public void configureInitialTerritoriesOwner(PlayerCircularLinkedList players, Board board) throws Exception;
+
+    public void configureInitialGoalCards(PlayerCircularLinkedList players, List<GoalCard> goalCards);
 
     public WarGame getResult();
 }

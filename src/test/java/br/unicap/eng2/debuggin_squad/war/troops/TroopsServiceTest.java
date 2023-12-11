@@ -4,10 +4,11 @@
 
 package br.unicap.eng2.debuggin_squad.war.troops;
 
+import br.unicap.eng2.debuggin_squad.war.enumWar.ID;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
 import br.unicap.eng2.debuggin_squad.war.inicialization.Director;
-import br.unicap.eng2.debuggin_squad.war.inicialization.GameBuilder;
+import br.unicap.eng2.debuggin_squad.war.inicialization.DefaultGameBuilder;
 import br.unicap.eng2.debuggin_squad.war.inicialization.WarGame;
 import br.unicap.eng2.debuggin_squad.war.model.composite.troops.ContinentTroopDelivery;
 import br.unicap.eng2.debuggin_squad.war.model.composite.troops.DeliveryByCard;
@@ -55,9 +56,9 @@ public class TroopsServiceTest {
         player2 = mock(Player.class);
         player3 = mock(Player.class);
 
-        when(player1.getId()).thenReturn("1");
-        when(player2.getId()).thenReturn("2");
-        when(player3.getId()).thenReturn("3");
+        when(player1.getId()).thenReturn(ID.BLACK);
+        when(player2.getId()).thenReturn(ID.WHITE);
+        when(player3.getId()).thenReturn(ID.RED);
 
         players = new ArrayList<Player>();
         players.add(player1);
@@ -431,11 +432,11 @@ public class TroopsServiceTest {
     void testReceiveExerciseThreeDifferentCards() {
         DeliveryByCard deliveryByCard = new DeliveryByCard();
         Director director = new Director();
-        GameBuilder builder = new GameBuilder();
+        DefaultGameBuilder builder = new DefaultGameBuilder();
         WarGame game = builder.getResult();
         director.constructDefaultGame(builder);
 
-        player1 = game.getPlayers().get(0) ;
+        player1 = game.getPlayers().get(0);
         player1.addCard("triangulo");
         player1.addCard("quadrado");
         player1.addCard("bola");
@@ -452,11 +453,11 @@ public class TroopsServiceTest {
     void testReceiveExerciseThroughThreeEqualCards() {
         DeliveryByCard deliveryByCard = new DeliveryByCard();
         Director director = new Director();
-        GameBuilder builder = new GameBuilder();
+        DefaultGameBuilder builder = new DefaultGameBuilder();
         WarGame game = builder.getResult();
         director.constructDefaultGame(builder);
 
-        player1 = game.getPlayers().get(0) ;
+        player1 = game.getPlayers().get(0);
         player1.addCard("quadrado");
         player1.addCard("quadrado");
         player1.addCard("quadrado");

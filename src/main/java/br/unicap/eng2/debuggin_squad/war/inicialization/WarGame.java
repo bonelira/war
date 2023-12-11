@@ -4,7 +4,7 @@
 
 package br.unicap.eng2.debuggin_squad.war.inicialization;
 
-import br.unicap.eng2.debuggin_squad.war.Board;
+import br.unicap.eng2.debuggin_squad.war.inicialization.Board;
 import br.unicap.eng2.debuggin_squad.war.GameConfigurator;
 import br.unicap.eng2.debuggin_squad.war.GoalCard;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
@@ -16,7 +16,11 @@ import java.util.List;
 public class WarGame {
 
     private Board board;
-    List<Territory> territoriesList;
+    private PlayerCircularLinkedList players;
+    private List<GoalCard> goalCards;
+    private List<Territory> territoriesList;
+    // private CircularPlayerList playersOrder;
+    private int playersQuantity;
 
     public List<Territory> getTerritoriesList() {
         return territoriesList;
@@ -26,11 +30,8 @@ public class WarGame {
         this.territoriesList = territoriesList;
     }
 
-    private List<Player> players;
-    private List<GoalCard> goalCards;
-
-    public WarGame(List<Territory> board, List<Player> players, List<GoalCard> goalCards, int playersQuantity) {
-        this.territoriesList = board;
+    public WarGame(Board board, PlayerCircularLinkedList players, List<GoalCard> goalCards, int playersQuantity) {
+        this.board = board;
         this.players = players;
         this.goalCards = goalCards;
         this.playersQuantity = playersQuantity;
@@ -48,7 +49,7 @@ public class WarGame {
         this.board = board;
     }
 
-    public void setPlayers(List<Player> players) {
+    public void setPlayers(PlayerCircularLinkedList players) {
         this.players = players;
     }
 
@@ -64,9 +65,7 @@ public class WarGame {
         return playersQuantity;
     }
 
-    private int playersQuantity;
-
-    public List<Player> getPlayers() {
+    public PlayerCircularLinkedList getPlayers() {
         return players;
     }
 

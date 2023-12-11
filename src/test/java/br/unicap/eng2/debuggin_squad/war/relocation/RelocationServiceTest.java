@@ -7,7 +7,7 @@ package br.unicap.eng2.debuggin_squad.war.relocation;
 import br.unicap.eng2.debuggin_squad.war.controller.Player;
 import br.unicap.eng2.debuggin_squad.war.controller.Territory;
 import br.unicap.eng2.debuggin_squad.war.inicialization.Director;
-import br.unicap.eng2.debuggin_squad.war.inicialization.GameBuilder;
+import br.unicap.eng2.debuggin_squad.war.inicialization.DefaultGameBuilder;
 import br.unicap.eng2.debuggin_squad.war.inicialization.WarGame;
 import br.unicap.eng2.debuggin_squad.war.model.state.relocation.RelocationContext;
 import br.unicap.eng2.debuggin_squad.war.model.state.relocation.RelocationNormalState;
@@ -33,7 +33,7 @@ public class RelocationServiceTest {
 
     private Director director;
 
-    private GameBuilder builder;
+    private DefaultGameBuilder builder;
 
     private WarGame game;
 
@@ -42,7 +42,7 @@ public class RelocationServiceTest {
         realocar = new RelocationService();
         relocationContext = new RelocationContext();
         director = new Director();
-        builder = new GameBuilder();
+        builder = new DefaultGameBuilder();
         game = builder.getResult();
     }
 
