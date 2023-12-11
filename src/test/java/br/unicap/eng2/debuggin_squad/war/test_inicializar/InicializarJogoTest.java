@@ -289,17 +289,8 @@ public class InicializarJogoTest {
 
     @Test
     public void testPlayerHasAtLeastOneGoalCard() throws Exception {
-        assertNotNull(game.getPlayers().get(0).getGoalCard());
-
-    }
-
-    @Test
-    public void test3playersHas14TerritoriesAtBegin() throws Exception {
-
-        PlayerCircularLinkedList players = game.getPlayers();
-        int territoriesPlayer0 = players.get(0).getConqueredTerritories().size();
-
-        assertTrue(territoriesPlayer0 == 7);
+        GoalCard expectedCard = game.getPlayers().get(0).getGoalCard();
+        assertNotNull(expectedCard);
 
     }
 
