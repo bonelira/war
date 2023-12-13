@@ -1,4 +1,4 @@
-package br.unicap.eng2.debuggin_squad.war;
+package br.unicap.eng2.debuggin_squad.war.objectives;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
